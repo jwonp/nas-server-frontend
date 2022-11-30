@@ -1,0 +1,23 @@
+.storageSize {
+    padding: 5px 15px;
+}
+
+.percentBar {
+    height: 6px;
+    background-color: #F2E7D5;
+    border: 0.5px solid #393E46;
+    border-radius: 6px;
+}
+
+.percent {
+    height: 5px;
+    background-color: #6D9886;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .percentBar {
+        background-color: #F7F7F7;
+    }
+
+}
