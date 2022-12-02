@@ -15,7 +15,7 @@ const StorageSizeBar = () => {
   }, []);
   const getStorageSize = async () => {
     return await axios
-      .get("http://localhost:8000/api/getstoragesize/")
+      .get("/api/getstoragesize/")
       .then((res) => {
         console.log(res.data);
       })
