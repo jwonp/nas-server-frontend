@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useQuery } from "react-query";
+import { useEffect, useMemo } from "react";
+// import { useQuery } from "react-query";
 import axios from "axios";
 import styles from "../styles/StorageSizeBar.module.css";
 
@@ -15,7 +15,7 @@ const StorageSizeBar = () => {
   }, []);
   const getStorageSize = async () => {
     return await axios
-      .get("/api/getstoragesize/")
+      .get("/api/getstoragesize/", { withCredentials: true })
       .then((res) => {
         console.log(res.data);
       })
