@@ -1,35 +1,25 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 // import { useQuery } from "react-query";
 import axios from "axios";
 import styles from "../styles/StorageSizeBar.module.css";
 
 const StorageSizeBar = () => {
-  const maxStorageSize = useMemo<number>(() => {
-    return 10;
-  }, []);
-  const usedStorageSize = useMemo<number>(() => {
-    return 1;
-  }, []);
+  const [maxStorageSize, setMaxStorageSize] = useState<number>();
+  const [usedStorageSize, setUsedStorageSize] = useState<number>();
   useEffect(() => {
     getStorageSize();
   }, []);
   const getStorageSize = async () => {
     return await axios
-      .get("/api/getstoragesize/", { withCredentials: true })
+      .get("/test/getStorageSize", { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        setMaxStorageSize(res.data.max);
+        setUsedStorageSize(res.data.used);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  // const { status, data, error, isFetching } = useQuery(
-  //   ["stoargeSize"],
-  //   async () => {
-  //     const res = await axios.get("");
-  //     // return res.data;
-  //   }
-  // );
   return (
     <div className={`${styles.storageSize}`}>
       <p>

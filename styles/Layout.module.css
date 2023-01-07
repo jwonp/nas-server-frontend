@@ -5,10 +5,21 @@
 }
 
 .children {
-    height: 100%;
+    /* height: 100%; */
+    width: calc(100% - 240px);
     padding-top: 70px;
+    overflow: scroll;
 }
 
 /* .withDrawer {
     left: 240px;
 } */
+
+@media(max-width: 1100px) {
+    .children {
+        height: 100%;
+        width: 100%;
+        padding-top: 70px;
+        overflow: scroll;
+    }
+}

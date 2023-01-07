@@ -1,0 +1,18 @@
+.wrapper {
+    height: 200px;
+    max-width: 240px;
+    min-width: 240px;
+    background-color: beige;
+}
+
+.drag_entered {
+    background-color: aquamarine;
+}
+
+.upload_btn {
+    font-size: 30px;
+}
+
+.upload_btn:hover {
+    background-color: green;
+}
