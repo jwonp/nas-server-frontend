@@ -1,14 +1,15 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "../styles/DragAndDropArea.module.css";
 const DragAndDropArea = () => {
+  const router = useRouter();
   const $areaDiv = useRef<HTMLDivElement>(null);
   const $fileInput = useRef<HTMLInputElement>(null);
 
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
     const formData = new FormData();
-
     for (const file of files) {
       //   formData.append(file.name.split(".")[0], file);
       formData.append("files", file);
@@ -24,7 +25,7 @@ const DragAndDropArea = () => {
           "access_token"
         )}`,
         "X-CSRFToken": document.cookie.split("=")[1],
-        "File-Path": "/path/typing",
+        "File-Path": router.asPath,
       },
     }).then((res) => {
       console.log(res.data);
@@ -37,6 +38,9 @@ const DragAndDropArea = () => {
       <div
         ref={$areaDiv}
         className={`${styles.wrapper}`}
+        onClick={() => {
+          $fileInput.current.click();
+        }}
         onDrop={(e) => {
           e.preventDefault();
           const files = e.dataTransfer?.files;
@@ -54,15 +58,13 @@ const DragAndDropArea = () => {
           $areaDiv.current.classList.toggle(styles.drag_entered, false);
         }}
       >
-        <input ref={$fileInput} type="file" id="fileInput" />
-      </div>
-      <div
-        className={`${styles.upload_btn}`}
-        onClick={() => {
-          uploadFiles();
-        }}
-      >
-        upload files
+        <div>이곳에 파일을 드래그 앤 드롭 하세요</div>
+        <input
+          ref={$fileInput}
+          type="file"
+          id="fileInput"
+          className={`${styles.fileInput}`}
+        />
       </div>
     </>
   );

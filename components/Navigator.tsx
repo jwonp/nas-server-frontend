@@ -5,11 +5,12 @@ import DrawerStyles from "../styles/Drawer.module.css";
 
 import { useRouter } from "next/router";
 import Link from "next/link";
-import axios from "axios";
+import { logout } from "./tools/requests";
 import useSWR from "swr";
-
+import store from "../redux/store";
 import { authorizeToken } from "./tools/fetcher";
 import { useEffect } from "react";
+import FileHandleOptions from "./FileHandleOptions";
 
 const Navigator = ({ refresh_token }) => {
   const router = useRouter();
@@ -23,6 +24,8 @@ const Navigator = ({ refresh_token }) => {
     }
   );
   useEffect(() => {
+    console.log(store.getState().drawerSwitch.value);
+
     if (data && data.name) {
       window.localStorage.setItem("name", data.name);
     }
@@ -31,9 +34,9 @@ const Navigator = ({ refresh_token }) => {
 
   const visibleDrawer = () => {
     const drawer = document.getElementById("drawer") as HTMLDivElement;
-    drawer.classList.contains(DrawerStyles.fixed_visible)
-      ? drawer.classList.toggle(DrawerStyles.fixed_visible, false)
-      : drawer.classList.toggle(DrawerStyles.fixed_visible, true);
+    drawer?.classList.contains(DrawerStyles.fixed_visible)
+      ? drawer?.classList.toggle(DrawerStyles.fixed_visible, false)
+      : drawer?.classList.toggle(DrawerStyles.fixed_visible, true);
   };
 
   const revokeToken = async () => {
@@ -43,15 +46,7 @@ const Navigator = ({ refresh_token }) => {
       client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
     };
 
-    await axios({
-      method: "POST",
-      url: "/test/logout",
-      data: revokeData,
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": document.cookie.split("=")[1],
-      },
-    })
+    logout(revokeData)
       .then((res) => {
         if (res.status === 200) {
           window.localStorage.removeItem("access_token");
@@ -60,7 +55,7 @@ const Navigator = ({ refresh_token }) => {
 
           mutate({ name: null });
           // console.log(data);
-          router.push("/");
+          router.reload();
         }
       })
       .catch((err) => {
@@ -69,51 +64,52 @@ const Navigator = ({ refresh_token }) => {
   };
   return (
     <div className={`${styles.wrapper}`}>
-      <Link href={"/"}>
-        <div className={`${styles.logo}`}>
-          <Image src={icon} width={45} height={45} alt={"No image"} />
+      <div className={`${styles.grid_container}`}>
+        <Link href={"/"}>
+          <div className={`${styles.logo}`}>
+            <Image src={icon} width={45} height={45} alt={"No image"} />
+          </div>
+        </Link>
+        {data && data?.name ? (
+          <div className={`${styles.title}`}>{data.name}</div>
+        ) : (
+          <></>
+        )}
+      </div>
+      <div className={`${styles.grid_container}`}>
+        <div className={`${styles.title} `}>
+          {refs?.join(" > ").replace("_", " ")}
         </div>
-      </Link>
-
-      <Link href={"/register"}>
-        <div className={`${styles.title} ${styles.float_left}`}>
-          회원가입 페이지
-        </div>
-      </Link>
-
-      <div className={`${styles.title} ${styles.float_left}`}>
-        {refs?.join(" > ")}
       </div>
 
-      <div
-        className={`${styles.drawer_button} ${styles.float_right}`}
-        onClick={() => {
-          visibleDrawer();
-        }}
-      >
-        OPEN
+      <div className={`${styles.grid_container}`}>
+        <FileHandleOptions />
       </div>
-      {data && data?.name ? (
-        <div className={`${styles.title} ${styles.float_left}`}>
-          {data.name}
-        </div>
-      ) : (
-        <></>
-      )}
-      {data && data.name ? (
+
+      <div className={`${styles.grid_container}`}>
         <div
-          className={`${styles.title} ${styles.cursor_click} ${styles.float_right}`}
+          className={`${styles.drawer_button}  ${styles.cursor_click} `}
           onClick={() => {
-            revokeToken();
+            visibleDrawer();
           }}
         >
-          로그아웃
+          OPEN
         </div>
-      ) : (
-        <Link href={"/login"}>
-          <div className={`${styles.title} ${styles.float_right}`}>로그인</div>
-        </Link>
-      )}
+        {data && data.name ? (
+          <div
+            className={`${styles.title} ${styles.cursor_click} `}
+            onClick={() => {
+              revokeToken();
+            }}
+          >
+            로그아웃
+          </div>
+        ) : (
+          <Link href={"/login"}>
+            <div className={`${styles.title} `}>로그인</div>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

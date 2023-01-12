@@ -12,12 +12,12 @@ const getFolders = async () => {
 };
 
 const Drawer = ({ refresh_token }) => {
-  const [folders, setFolders] = useState<string[]>([]);
-  useEffect(() => {
-    getFolders().then((res) => {
-      setFolders(res.data);
-    });
-  }, []);
+  // const [folders, setFolders] = useState<string[]>([]);
+  // useEffect(() => {
+  //   getFolders().then((res) => {
+  //     setFolders(res.data);
+  //   });
+  // }, []);
   const isToken = useMemo(() => {
     // console.log("istoken : ", refresh_token);
     if (refresh_token) return true;
@@ -28,9 +28,9 @@ const Drawer = ({ refresh_token }) => {
       <div id="drawer" className={`${styles.wrapper}`}>
         <DrawerBar name={ROOT_REF_NAME} />
         <DrawerBar name={FAVORITE_REF_NAME} />
-        {folders?.map((item) => (
+        {/* {folders?.map((item) => (
           <DrawerBar key={item} name={item} />
-        ))}
+        ))} */}
         <StorageSizeBar />
         <DragAndDropArea />
       </div>

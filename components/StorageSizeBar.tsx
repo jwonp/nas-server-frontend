@@ -1,20 +1,28 @@
 import { useEffect, useMemo, useState } from "react";
-// import { useQuery } from "react-query";
-import axios from "axios";
+import { remainingStorageSizeType } from "../static/types/RemainingStorageSizeType";
 import styles from "../styles/StorageSizeBar.module.css";
+import { getRemainingStorageSize } from "./tools/requests";
+import { convertByteByUnit, convertByteToUpper } from "./tools/functions";
 
 const StorageSizeBar = () => {
-  const [maxStorageSize, setMaxStorageSize] = useState<number>();
-  const [usedStorageSize, setUsedStorageSize] = useState<number>();
+  const [maxStorageSize, setMaxStorageSize] = useState<number>(0);
+  const [usedStorageSize, setUsedStorageSize] = useState<number>(0);
+  const [storageSizeUnit, setStorageSizeUnit] = useState<string>("Byte");
   useEffect(() => {
     getStorageSize();
   }, []);
-  const getStorageSize = async () => {
-    return await axios
-      .get("/test/getStorageSize", { withCredentials: true })
+  const getStorageSize = () => {
+    getRemainingStorageSize()
       .then((res) => {
-        setMaxStorageSize(res.data.max);
-        setUsedStorageSize(res.data.used);
+        const storageSizes: remainingStorageSizeType = res.data;
+        const maxSize = convertByteToUpper(storageSizes.max_storage_size);
+        const usedSize = convertByteByUnit(
+          storageSizes.used_storage_size,
+          maxSize.unit
+        );
+        setMaxStorageSize(maxSize.size);
+        setStorageSizeUnit(maxSize.unit);
+        setUsedStorageSize(usedSize);
       })
       .catch((error) => {
         console.log(error);
@@ -35,7 +43,9 @@ const StorageSizeBar = () => {
         ></div>
       </div>
       <p>
-        {maxStorageSize}GB 중 {usedStorageSize}GB 사용
+        {maxStorageSize}
+        {storageSizeUnit} 중 {usedStorageSize}
+        {storageSizeUnit} 사용
       </p>
     </div>
   );

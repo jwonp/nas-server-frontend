@@ -4,13 +4,24 @@ import { useEffect } from "react";
 
 const Home = ({ access_token, refresh_token }) => {
   useEffect(() => {
-    // console.log("access_token", access_token);
-    // console.log("refresh_token", refresh_token);
-    window.localStorage.setItem("access_token", access_token);
-    window.localStorage.setItem("refresh_token", refresh_token);
-    axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${window.localStorage.getItem("access_token")}`;
+    const isAccessToken =
+      window.localStorage.getItem("access_token") === undefined ? true : false;
+    const isRefreshToken =
+      window.localStorage.getItem("refresh_token") === undefined ? true : false;
+    console.log(window.localStorage.getItem("access_token"));
+    console.log(
+      "isAccessToken",
+      isAccessToken,
+      "isRefreshToken",
+      isRefreshToken
+    );
+    if (!isAccessToken && !isRefreshToken) {
+      window.localStorage.setItem("access_token", access_token);
+      window.localStorage.setItem("refresh_token", refresh_token);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${window.localStorage.getItem("access_token")}`;
+    }
   }, []);
 
   const validtoken = async () => {

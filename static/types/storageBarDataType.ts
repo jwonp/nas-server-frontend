@@ -1,7 +1,6 @@
 export interface storageBarDataType {
-  fileID: string;
+  fileID: number;
   name: string;
-  type: string;
   size: number;
   date: string;
 }

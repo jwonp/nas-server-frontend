@@ -1,0 +1,28 @@
+.wrapper {
+    float: left;
+    display: flex;
+    height: 70px;
+
+}
+
+.item {
+    cursor: pointer;
+    margin: 0 10px;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 70px;
+}
+
+@media(max-width: 1100px) {
+    .wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 70px;
+    }
+
+    .item {
+        font-size: 26px;
+
+    }
+}

@@ -37,7 +37,7 @@ const nextConfig = {
       },
       {
         source: "/test/getStorageSize",
-        destination: "http://127.0.0.1:8000/getstoragesize/",
+        destination: "http://127.0.0.1:8000/users/getstoragesize/",
       },
       {
         source: "/test/getfolders",
@@ -83,6 +83,10 @@ const nextConfig = {
       {
         source: "/test/validtoken",
         destination: "http://127.0.0.1:8000/users/validtoken/",
+      },
+      {
+        source: "/test/getfilelistbypath/:path*",
+        destination: "http://127.0.0.1:8000/users/getfilelistbypath/:path*",
       },
     ];
   },

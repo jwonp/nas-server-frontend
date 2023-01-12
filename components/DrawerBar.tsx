@@ -17,7 +17,7 @@ const DrawerBar = (props: { name: string; ref?: string }) => {
     >
       <div className={`${styles.wrapper}`}>
         <Image src={folder} height={30} alt={"None"} />
-        <span>{props.name}</span>
+        <span>{props.name.replace("_", " ")}</span>
       </div>
     </Link>
   );
