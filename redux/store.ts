@@ -1,14 +1,29 @@
-import { configureStore } from "@reduxjs/toolkit";
-import loginDataReducer from "./features/loginData";
+import { configureStore, ThunkAction } from "@reduxjs/toolkit";
 import drawerSwitchReducer from "./features/drawerSwitch";
-const store = configureStore({
-  reducer: {
-    loginData: loginDataReducer,
-    drawerSwitch: drawerSwitchReducer,
-  },
-});
-export default store;
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+import usernameReducer from "./features/menu";
+import selectedFilesReducer from "./features/selectedFiles";
+import storageSizeReducer from "./features/storageSize";
+import { Action } from "redux";
+import { createWrapper } from "next-redux-wrapper";
+export const makeStore = () => {
+  return configureStore({
+    reducer: {
+      drawerSwitch: drawerSwitchReducer,
+      menu: usernameReducer,
+      selectedFiles: selectedFilesReducer,
+      storageSize: storageSizeReducer,
+    },
+  });
+};
+const store = makeStore();
+export type AppState = ReturnType<typeof store.getState>;
+
 export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  AppState,
+  unknown,
+  Action<string>
+>;
+
+export default store;

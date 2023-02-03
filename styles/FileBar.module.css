@@ -4,16 +4,16 @@
     min-width: 540px;
     min-height: 60px;
     max-height: 60px;
-    margin-bottom: 5px;
-    padding: 5px;
+
+    padding: 3px;
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
 
 }
 
 .wrapper:hover {
-    /* border: 2px solid darkorchid */
-    background-color: #6D9886;
+
+    cursor: pointer;
 }
 
 .item {
@@ -21,8 +21,15 @@
     font-size: 18px;
     line-height: 50px;
     vertical-align: middle;
+    overflow: hidden;
+    /* border-top: 1px solid rgb(247, 247, 247, 0.5); */
+    border-bottom: 1px solid rgb(247, 247, 247, 0.5);
 }
 
-.align_right {
+.right {
     text-align: right;
+}
+
+.selected {
+    color: #6D9886;
 }

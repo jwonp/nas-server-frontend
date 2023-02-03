@@ -4,11 +4,15 @@ const { query } = require("express");
  * @type {import('next').NextConfig}
  *  */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   async rewrites() {
     return [
       //pages
+      {
+        source: "/storage",
+        destination: "/storage/내_드라이브",
+      },
       {
         source: "/login/authorize",
         destination: `http://127.0.0.1:8000/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://127.0.0.1:3000/`,
@@ -48,6 +52,14 @@ const nextConfig = {
         destination: "http://127.0.0.1:8000/users/uploadfiles/",
       },
       {
+        source: "/test/downloadfiles",
+        destination: "http://127.0.0.1:8000/users/downloadfiles/",
+      },
+      {
+        source: "/test/deletefiles",
+        destination: "http://127.0.0.1:8000/users/deletefiles/",
+      },
+      {
         source: "/test/register",
         destination: "http://127.0.0.1:8000/register/",
       },
@@ -78,7 +90,7 @@ const nextConfig = {
 
       {
         source: "/test/refresh",
-        destination: "http://127.0.0.1:8000/users/refreshtoken/",
+        destination: "http://127.0.0.1:8000/refreshtoken/",
       },
       {
         source: "/test/validtoken",
@@ -87,6 +99,10 @@ const nextConfig = {
       {
         source: "/test/getfilelistbypath/:path*",
         destination: "http://127.0.0.1:8000/users/getfilelistbypath/:path*",
+      },
+      {
+        source: "/test/addFolder/:path*",
+        destination: "http://127.0.0.1:8000/users/addfolder/",
       },
     ];
   },

@@ -1,33 +1,43 @@
-import { useEffect, useMemo, useState } from "react";
-import { remainingStorageSizeType } from "../static/types/RemainingStorageSizeType";
+import { useEffect } from "react";
+import { remainingStorageSizeType } from "../public/static/types/remainingStorageSizeType";
 import styles from "../styles/StorageSizeBar.module.css";
 import { getRemainingStorageSize } from "./tools/requests";
 import { convertByteByUnit, convertByteToUpper } from "./tools/functions";
 
+import { useRouter } from "next/router";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {
+  getMax,
+  getUnit,
+  getUsed,
+  setMax,
+  setUnit,
+  setUsed,
+} from "../redux/features/storageSize";
 const StorageSizeBar = () => {
-  const [maxStorageSize, setMaxStorageSize] = useState<number>(0);
-  const [usedStorageSize, setUsedStorageSize] = useState<number>(0);
-  const [storageSizeUnit, setStorageSizeUnit] = useState<string>("Byte");
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const maxStorageSize = useAppSelector(getMax);
+  const usedStorageSize = useAppSelector(getUsed);
+  const storageSizeUnit = useAppSelector(getUnit);
+
   useEffect(() => {
-    getStorageSize();
-  }, []);
-  const getStorageSize = () => {
-    getRemainingStorageSize()
-      .then((res) => {
+    if (router.isReady) {
+      getRemainingStorageSize((res) => {
         const storageSizes: remainingStorageSizeType = res.data;
         const maxSize = convertByteToUpper(storageSizes.max_storage_size);
         const usedSize = convertByteByUnit(
           storageSizes.used_storage_size,
           maxSize.unit
         );
-        setMaxStorageSize(maxSize.size);
-        setStorageSizeUnit(maxSize.unit);
-        setUsedStorageSize(usedSize);
-      })
-      .catch((error) => {
-        console.log(error);
+        dispatch(setMax(maxSize.size));
+        dispatch(setUnit(maxSize.unit));
+        dispatch(setUsed(usedSize));
       });
-  };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   return (
     <div className={`${styles.storageSize}`}>
       <p>

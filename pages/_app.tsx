@@ -2,10 +2,12 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import Head from "next/head";
-import { SWRConfig } from "swr";
-export default function App({ Component, pageProps }: AppProps) {
+import { Provider } from "react-redux";
+import store from "../redux/store";
+
+const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <SWRConfig>
+    <Provider store={store}>
       <Head>
         <title>Clips NAS</title>
         <link rel="icon" href="/favicon.ico" />
@@ -14,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </SWRConfig>
+    </Provider>
   );
-}
+};
+export default App;

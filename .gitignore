@@ -38,3 +38,7 @@ next-env.d.ts
 colorset.txt
 
 package-lock.json
+
+
+/pages/api/selectedFilesAPI.ts
+/redux/api.ts

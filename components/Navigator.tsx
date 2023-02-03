@@ -2,90 +2,72 @@ import Image from "next/image";
 import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
 import DrawerStyles from "../styles/Drawer.module.css";
-
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { logout } from "./tools/requests";
-import useSWR from "swr";
-import store from "../redux/store";
-import { authorizeToken } from "./tools/fetcher";
-import { useEffect } from "react";
+import { vaildToken, logout } from "./tools/requests";
+import { useEffect, useMemo, useState } from "react";
 import FileHandleOptions from "./FileHandleOptions";
+import { revokeDataType } from "../public/static/types/revokeDataType";
+import { useAppDispatch, useAppSelector } from ".././redux/hooks";
+import {
+  removeUsername,
+  setUsername,
+  setOnFileInput,
+  getUsername,
+  getOnFileInput,
+} from "../redux/features/menu";
+import { getSelected } from "../redux/features/selectedFiles";
 
-const Navigator = ({ refresh_token }) => {
+import { getHistory } from "./tools/functions";
+import { getDrawerSwitch, switchDrawer } from "../redux/features/drawerSwitch";
+
+const Navigator = () => {
   const router = useRouter();
-  const { data, error, isLoading, isValidating, mutate } = useSWR(
-    "/test/validtoken",
-    authorizeToken,
-    {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
-  );
-  useEffect(() => {
-    console.log(store.getState().drawerSwitch.value);
+  // const [onFileOptions, setOnFileOptions] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const drawerSwitch = useAppSelector(getDrawerSwitch);
+  const onFileInput = useAppSelector(getOnFileInput);
+  const username = useAppSelector(getUsername);
+  const selected = useAppSelector(getSelected);
+  const selectedCounter = useMemo(() => {
+    return selected.length;
+  }, [selected]);
 
-    if (data && data.name) {
-      window.localStorage.setItem("name", data.name);
-    }
-  }, [data]);
+  useEffect(() => {
+    if (router.asPath.includes("/storage")) {
+      dispatch(setOnFileInput(true));
+    } else dispatch(setOnFileInput(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.asPath, router.isReady]);
+
+  useEffect(() => {
+    vaildToken(window.localStorage.getItem("access_token"), (res) => {
+      if (!res) return;
+      dispatch(setUsername(res.data.name));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
   const refs = router.query.ref as string[];
 
   const visibleDrawer = () => {
-    const drawer = document.getElementById("drawer") as HTMLDivElement;
-    drawer?.classList.contains(DrawerStyles.fixed_visible)
-      ? drawer?.classList.toggle(DrawerStyles.fixed_visible, false)
-      : drawer?.classList.toggle(DrawerStyles.fixed_visible, true);
+    dispatch(switchDrawer());
   };
 
   const revokeToken = async () => {
-    const revokeData = {
-      name: window.localStorage.getItem("name"),
+    const revokeData: revokeDataType = {
       token: window.localStorage.getItem("access_token"),
-      client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
     };
-
-    logout(revokeData)
-      .then((res) => {
-        if (res.status === 200) {
-          window.localStorage.removeItem("access_token");
-          window.localStorage.removeItem("refresh_token");
-          window.localStorage.removeItem("name");
-
-          mutate({ name: null });
-          // console.log(data);
-          router.reload();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    logout(revokeData, (res) => {
+      if (res.status === 200) {
+        window.localStorage.removeItem("access_token");
+        dispatch(removeUsername());
+        router.push("/");
+      }
+    });
   };
+
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.grid_container}`}>
-        <Link href={"/"}>
-          <div className={`${styles.logo}`}>
-            <Image src={icon} width={45} height={45} alt={"No image"} />
-          </div>
-        </Link>
-        {data && data?.name ? (
-          <div className={`${styles.title}`}>{data.name}</div>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div className={`${styles.grid_container}`}>
-        <div className={`${styles.title} `}>
-          {refs?.join(" > ").replace("_", " ")}
-        </div>
-      </div>
-
-      <div className={`${styles.grid_container}`}>
-        <FileHandleOptions />
-      </div>
-
       <div className={`${styles.grid_container}`}>
         <div
           className={`${styles.drawer_button}  ${styles.cursor_click} `}
@@ -93,16 +75,37 @@ const Navigator = ({ refresh_token }) => {
             visibleDrawer();
           }}
         >
-          OPEN
+          <Image
+            src={"/drawerSwitch.svg"}
+            alt={"#"}
+            width={70}
+            height={70}
+            priority={true}
+          />
         </div>
-        {data && data.name ? (
-          <div
-            className={`${styles.title} ${styles.cursor_click} `}
-            onClick={() => {
-              revokeToken();
-            }}
-          >
-            로그아웃
+        <Link href={"/"}>
+          <div className={`${styles.logo}`}>
+            <Image src={icon} width={45} height={45} alt={"No image"} />
+          </div>
+        </Link>
+      </div>
+
+      <div className={`${styles.grid_container}`}>
+        {onFileInput ? <FileHandleOptions /> : <></>}
+      </div>
+
+      <div className={`${styles.grid_container}`}>
+        {username !== "" ? (
+          <div className={`${styles.option_container}`}>
+            <div className={`${styles.title}`}>{username}</div>
+            <div
+              className={`${styles.title} ${styles.cursor_click} `}
+              onClick={() => {
+                revokeToken();
+              }}
+            >
+              로그아웃
+            </div>
           </div>
         ) : (
           <Link href={"/login"}>
@@ -115,3 +118,5 @@ const Navigator = ({ refresh_token }) => {
 };
 
 export default Navigator;
+
+// .join(" > ").replace("_", " ")

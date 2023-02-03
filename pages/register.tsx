@@ -23,6 +23,7 @@ const Register = () => {
       },
     });
   };
+
   return (
     <div className={`${styles.wrapper}`}>
       <h2 className={`${styles.title}`}>회원가입</h2>

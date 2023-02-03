@@ -1,44 +1,25 @@
-import axios from "axios";
-import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { getTokensByCode } from "../components/tools/requests";
 
-const Home = ({ access_token, refresh_token }) => {
+const Home = () => {
+  const router = useRouter();
+
   useEffect(() => {
-    const isAccessToken =
-      window.localStorage.getItem("access_token") === undefined ? true : false;
-    const isRefreshToken =
-      window.localStorage.getItem("refresh_token") === undefined ? true : false;
-    console.log(window.localStorage.getItem("access_token"));
-    console.log(
-      "isAccessToken",
-      isAccessToken,
-      "isRefreshToken",
-      isRefreshToken
-    );
-    if (!isAccessToken && !isRefreshToken) {
-      window.localStorage.setItem("access_token", access_token);
-      window.localStorage.setItem("refresh_token", refresh_token);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${window.localStorage.getItem("access_token")}`;
+    if (router.isReady === true) {
+      const { code } = router.query;
+      if (code) {
+        getTokensByCode(code, (res) => {
+          window.localStorage.setItem("access_token", res.data.access_token);
+          router.push("/");
+        });
+      }
     }
-  }, []);
-
-  const validtoken = async () => {
-    await axios.get("/test/validtoken").then((res) => {
-      console.log(res.data);
-    });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
 
   return (
     <div>
-      <div
-        onClick={() => {
-          validtoken();
-        }}
-      >
-        <h1>환영합니다</h1>
-      </div>
       <div>
         <h3>즐겨찾기</h3>
         <div>
@@ -47,20 +28,24 @@ const Home = ({ access_token, refresh_token }) => {
       </div>
       <div>
         <h3>최근 열어본 파일</h3>
-        <div></div>
       </div>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  if (context.query.code) {
-    const res = await axios.post(`http://127.0.0.1:8000/login/`, {
-      code: context.query.code,
-    });
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   if (context.query.hasOwnProperty("code")) {
+//     // getTokensByCode();
+//     const res = await axios.post(
+//       `http://127.0.0.1:8000/login/`,
+//       {
+//         code: context.query.code,
+//       },
 
-    return { props: res.data };
-  }
-  return { props: { token: "no" } };
-};
+//     );
+
+//     return { props: res.data };
+//   }
+//   return { props: { access_token: "", refresh_token: "" } };
+// };
 export default Home;

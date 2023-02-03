@@ -1,43 +1,37 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "../styles/Drawer.module.css";
-
 import DrawerBar from "./DrawerBar";
 import StorageSizeBar from "./StorageSizeBar";
-import axios from "axios";
-import { ROOT_REF_NAME, FAVORITE_REF_NAME } from "../static/Strings";
-import DragAndDropArea from "./DragAndDropArea";
+import { ROOT_REF_NAME, FAVORITE_REF_NAME } from "../public/static/Strings";
 
-const getFolders = async () => {
-  return await axios.get("/test/getfolders");
-};
+import { getUsername } from "../redux/features/menu";
+import { useAppSelector } from "../redux/hooks";
+import Curtain from "./Curtain";
+import { getDrawerSwitch } from "../redux/features/drawerSwitch";
 
-const Drawer = ({ refresh_token }) => {
-  // const [folders, setFolders] = useState<string[]>([]);
-  // useEffect(() => {
-  //   getFolders().then((res) => {
-  //     setFolders(res.data);
-  //   });
-  // }, []);
-  const isToken = useMemo(() => {
-    // console.log("istoken : ", refresh_token);
-    if (refresh_token) return true;
-    else false;
-  }, [refresh_token]);
-  if (isToken) {
-    return (
-      <div id="drawer" className={`${styles.wrapper}`}>
-        <DrawerBar name={ROOT_REF_NAME} />
-        <DrawerBar name={FAVORITE_REF_NAME} />
-        {/* {folders?.map((item) => (
-          <DrawerBar key={item} name={item} />
-        ))} */}
-        <StorageSizeBar />
-        <DragAndDropArea />
-      </div>
-    );
-  } else {
-    <div></div>;
-  }
+const Drawer = () => {
+  const username = useAppSelector(getUsername);
+  const drawerSwitch = useAppSelector(getDrawerSwitch);
+
+  return (
+    <div
+      id="drawer"
+      className={`${styles.wrapper} ${
+        drawerSwitch ? styles.fixed_visible : ""
+      }`}
+    >
+      {username !== "" ? (
+        <>
+          {" "}
+          <DrawerBar name={ROOT_REF_NAME} />
+          <DrawerBar name={FAVORITE_REF_NAME} />
+          <StorageSizeBar />
+        </>
+      ) : (
+        <></>
+      )}
+      <Curtain />
+    </div>
+  );
 };
 
 export default Drawer;

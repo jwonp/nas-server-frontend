@@ -1,37 +1,83 @@
 import axios from "axios";
-
-export const getFileListByPath = async (path) => {
-  if (path === undefined) return;
-  return await axios.get(`/test/getfilelistbypath/${path}`, {
-    headers: {
-      "Authorization": `Bearer ${window.localStorage.getItem("access_token")}`,
-    },
-  });
+import { folderDataType } from "../../public/static/types/folderDataType";
+import { revokeDataType } from "../../public/static/types/revokeDataType";
+import { headerShortCutKeys, SendRequest } from "./httpClient";
+export const vaildToken = async (access_token: string, thenFunction: any) => {
+  if (access_token === "null" || access_token === null) return null;
+  SendRequest(thenFunction, "/test/validtoken", "GET", {}, [
+    headerShortCutKeys.Auth,
+  ]);
+};
+export const addFiles = async (
+  formData: FormData,
+  path: string,
+  thenFunction: any
+) => {
+  SendRequest(thenFunction, "/test/uploadfiles", "POST", formData, [
+    headerShortCutKeys.FormData,
+    headerShortCutKeys.Auth,
+    `File-Path&sep;${path}`,
+  ]);
 };
 
-export const logout = async (revokeData) => {
-  return await axios({
-    method: "POST",
-    url: "/test/logout",
-    data: revokeData,
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": document.cookie.split("=")[1],
-    },
-  });
+export const getFileListByPath = async (path: string, thenFunction: any) => {
+  if (path === undefined) return null;
+  SendRequest(thenFunction, `/test/getfilelistbypath/${path}`, "GET", {}, [
+    headerShortCutKeys.Auth,
+  ]);
 };
 
-export const getRemainingStorageSize = async () => {
-  return await axios.get("/test/getStorageSize", {
-    headers: {
-      "Authorization": `Bearer ${window.localStorage.getItem("access_token")}`,
-    },
-  });
-  // .then((res) => {
-  // setMaxStorageSize(res.data.max);
-  // setUsedStorageSize(res.data.used);
-  // })
-  // .catch((error) => {
-  //   console.log(error);
-  // });
+export const logout = async (revokeData: revokeDataType, thenFunction: any) => {
+  SendRequest(thenFunction, `/test/logout`, "POST", revokeData, [
+    headerShortCutKeys.AppJson,
+  ]);
+};
+
+export const getRemainingStorageSize = async (thenFunction: any) => {
+  SendRequest(thenFunction, "/test/getStorageSize", "GET", {}, [
+    headerShortCutKeys.Auth,
+  ]);
+};
+export const addFolder = async (
+  folderData: folderDataType,
+  thenFunction: any
+) => {
+  SendRequest(thenFunction, `/test/addFolder/`, "POST", folderData, [
+    headerShortCutKeys.Auth,
+  ]);
+};
+
+export const getTokensByCode = async (
+  code: string | string[],
+  thenFunction: any
+) => {
+  SendRequest(thenFunction, `/test/login`, "POST", { code: code }, []);
+};
+export const deleteSelectedFiles = async (
+  fileList: string[],
+  path: string,
+  thenFunction: any
+) => {
+  SendRequest(
+    thenFunction,
+    `/test/deletefiles`,
+    "POST",
+    { file_list: fileList, path: path },
+    ["auth"]
+  );
+};
+
+export const downloadFiles = async (
+  fileList: string[],
+  path: string,
+  thenFunction: any
+) => {
+  SendRequest(
+    thenFunction,
+    `/test/downloadfiles`,
+    "POST",
+    { path: path, file_list: fileList },
+    ["auth"],
+    "blob"
+  );
 };

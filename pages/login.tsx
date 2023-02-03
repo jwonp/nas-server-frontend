@@ -35,6 +35,7 @@ const Login = () => {
         $title.current.classList.add(styles.fail);
       });
   };
+
   return (
     <div className={`${styles.wrapper}`}>
       <h1 ref={$title} className={`${styles.title}`}>
@@ -69,6 +70,14 @@ const Login = () => {
             className={`${styles.btn}`}
             onClick={(e) => {
               submitLogin(e);
+              // e.preventDefault();
+              // console.log("submit");
+              // const getfolders = async () => {
+              //   return await axios.post("/test/getfolders");
+              // };
+              // getfolders().then((res) => {
+              //   console.log(res.data);
+              // });
             }}
           >
             로그인

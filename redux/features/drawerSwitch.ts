@@ -1,32 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { AppState } from "../store";
 
 interface DrawerSwitchState {
-  value: boolean;
+  drawerSwitch: boolean;
+  status: "idle" | "loading" | "failed";
 }
 
 const initialState: DrawerSwitchState = {
-  value: false,
+  drawerSwitch: false,
+  status: "idle",
 };
 
 export const drawerSwitch = createSlice({
   name: "drawerSwitch",
   initialState,
   reducers: {
+    HYDRATE: () => {},
     openDrawer: (state) => {
-      return { ...state, value: true };
+      state.drawerSwitch = true;
     },
     closeDrawer: (state) => {
-      return { ...state, value: false };
+      state.drawerSwitch = false;
     },
     switchDrawer: (state) => {
-      return { ...state, value: !state.value };
+      state.drawerSwitch = !state.drawerSwitch;
     },
   },
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(incrementAsync.pending, (state) => {
+  //       state.status = 'loading'
+  //     })
+  //     .addCase(incrementAsync.fulfilled, (state, action) => {
+  //       state.status = 'idle'
+  //       state.value += action.payload
+  //     })
+  // },
 });
 
 export const { openDrawer, closeDrawer, switchDrawer } = drawerSwitch.actions;
 // Other code such as selectors can use the imported `RootState` type
-export const getDrawerState = (state: RootState) => state.drawerSwitch.value;
+export const getDrawerSwitch = (state: AppState) =>
+  state.drawerSwitch.drawerSwitch;
 
 export default drawerSwitch.reducer;
