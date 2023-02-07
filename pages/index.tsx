@@ -33,19 +33,4 @@ const Home = () => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   if (context.query.hasOwnProperty("code")) {
-//     // getTokensByCode();
-//     const res = await axios.post(
-//       `http://127.0.0.1:8000/login/`,
-//       {
-//         code: context.query.code,
-//       },
-
-//     );
-
-//     return { props: res.data };
-//   }
-//   return { props: { access_token: "", refresh_token: "" } };
-// };
 export default Home;

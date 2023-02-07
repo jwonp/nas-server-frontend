@@ -20,12 +20,11 @@ const Login = () => {
       .post("/test/submitlogin", JSON.stringify(login_data), {
         headers: {
           "Content-type": "application/json",
-          "X-CSRFToken": document.cookie.split("=")[1],
         },
       })
       .then((res) => {
         router.push(
-          `http://127.0.0.1:8000/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://127.0.0.1:3000/`
+          `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`
         );
       })
       .catch((err) => {

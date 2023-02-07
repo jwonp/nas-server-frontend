@@ -19,7 +19,6 @@ const Register = () => {
     await axios.post("/test/register", register_data, {
       headers: {
         "Content-type": "application/json",
-        "X-CSRFToken": document.cookie.split("=")[1],
       },
     });
   };

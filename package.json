@@ -9,7 +9,7 @@
     "export": "next export",
     "lint": "next lint"
   },
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "http://api.ikiningyou.com",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@types/node": "18.11.9",

@@ -15,12 +15,12 @@ const nextConfig = {
       },
       {
         source: "/login/authorize",
-        destination: `http://127.0.0.1:8000/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://127.0.0.1:3000/`,
+        destination: `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`,
       },
       {
         source: "/login/authorize",
 
-        destination: `http://127.0.0.1:8000/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://127.0.0.1:3000/`,
+        destination: `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`,
       },
       {
         source: "/kanata",
@@ -33,76 +33,76 @@ const nextConfig = {
       //APIs
       {
         source: "/test/authorizationview",
-        destination: "http://127.0.0.1:8000/authorizationview/",
+        destination: "http://api.ikiningyou.com/authorizationview/",
       },
       {
         source: "/test/boardlist",
-        destination: "http://127.0.0.1:8000/boardlist/",
+        destination: "http://api.ikiningyou.com/boardlist/",
       },
       {
         source: "/test/getStorageSize",
-        destination: "http://127.0.0.1:8000/users/getstoragesize/",
+        destination: "http://api.ikiningyou.com/users/getstoragesize/",
       },
       {
         source: "/test/getfolders",
-        destination: "http://127.0.0.1:8000/getfolders/",
+        destination: "http://api.ikiningyou.com/getfolders/",
       },
       {
         source: "/test/uploadfiles",
-        destination: "http://127.0.0.1:8000/users/uploadfiles/",
+        destination: "http://api.ikiningyou.com/users/uploadfiles/",
       },
       {
         source: "/test/downloadfiles",
-        destination: "http://127.0.0.1:8000/users/downloadfiles/",
+        destination: "http://api.ikiningyou.com/users/downloadfiles/",
       },
       {
         source: "/test/deletefiles",
-        destination: "http://127.0.0.1:8000/users/deletefiles/",
+        destination: "http://api.ikiningyou.com/users/deletefiles/",
       },
       {
         source: "/test/register",
-        destination: "http://127.0.0.1:8000/register/",
+        destination: "http://api.ikiningyou.com/register/",
       },
       {
         source: "/test/login",
-        destination: "http://127.0.0.1:8000/login/",
+        destination: "http://api.ikiningyou.com/login/",
       },
       {
         source: "/test/submitlogin",
-        destination: "http://127.0.0.1:8000/submitlogin/",
+        destination: "http://api.ikiningyou.com/submitlogin/",
       },
       {
         source: "/test/getuser",
-        destination: "http://127.0.0.1:8000/getuser/",
+        destination: "http://api.ikiningyou.com0/getuser/",
       },
       {
         source: "/test/auth",
-        destination: "http://127.0.0.1:8000/users/o/authorize/",
+        destination: "http://api.ikiningyou.com/users/o/authorize/",
       },
       {
         source: "/test/token",
-        destination: "http://127.0.0.1:8000/users/o/token/",
+        destination: "http://api.ikiningyou.com/users/o/token/",
       },
       {
         source: "/test/logout",
-        destination: "http://127.0.0.1:8000/logout/",
+        destination: "http://api.ikiningyou.com/logout/",
       },
 
       {
         source: "/test/refresh",
-        destination: "http://127.0.0.1:8000/refreshtoken/",
+        destination: "http://api.ikiningyou.com/refreshtoken/",
       },
       {
         source: "/test/validtoken",
-        destination: "http://127.0.0.1:8000/users/validtoken/",
+        destination: "http://api.ikiningyou.com/users/validtoken/",
       },
       {
         source: "/test/getfilelistbypath/:path*",
-        destination: "http://127.0.0.1:8000/users/getfilelistbypath/:path*",
+        destination: "http://api.ikiningyou.com/users/getfilelistbypath/:path*",
       },
       {
         source: "/test/addFolder/:path*",
-        destination: "http://127.0.0.1:8000/users/addfolder/",
+        destination: "http://api.ikiningyou.com/users/addfolder/",
       },
     ];
   },
