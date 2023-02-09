@@ -29,9 +29,10 @@ const Navigator = () => {
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
   const selected = useAppSelector(getSelected);
-  const selectedCounter = useMemo(() => {
-    return selected.length;
-  }, [selected]);
+  const loginGrid = useMemo(() => {
+    if (username !== "") {
+    }
+  }, [username]);
 
   useEffect(() => {
     if (router.asPath.includes("/storage")) {
