@@ -23,10 +23,9 @@ const Login = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        // router.push(
-        //   `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`
-        // );
+        router.push(
+          `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`
+        );
       })
       .catch((err) => {
         $user_id.current.value = "";
