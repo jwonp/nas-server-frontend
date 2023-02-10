@@ -73,7 +73,7 @@ const nextConfig = {
       },
       {
         source: "/test/getuser",
-        destination: "http://api.ikiningyou.com0/getuser/",
+        destination: "http://api.ikiningyou.com/getuser/",
       },
       {
         source: "/test/auth",
