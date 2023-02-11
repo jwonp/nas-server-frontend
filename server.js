@@ -17,10 +17,14 @@ app.prepare().then(() => {
       const parsedUrl = parse(req.url, true);
       const { pathname, query } = parsedUrl;
 
-      if (pathname === "/a") {
-        await app.render(req, res, "/a", query);
-      } else if (pathname === "/b") {
-        await app.render(req, res, "/b", query);
+      if (pathname === "/") {
+        await app.render(req, res, "/", query);
+      } else if (pathname === "/login") {
+        await app.render(req, res, "/login", query);
+      } else if (pathname === "/register") {
+        await app.render(req, res, "/register", query);
+      } else if (pathname.startsWith("/storage")) {
+        await app.render(req, res, pathname, query);
       } else {
         await handle(req, res, parsedUrl);
       }
