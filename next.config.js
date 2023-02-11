@@ -65,11 +65,11 @@ const nextConfig = {
       },
       {
         source: "/test/login",
-        destination: "http://52.78.16.47:8000/login/",
+        destination: "http://api.ikiningyou.com/login/",
       },
       {
         source: "/test/submitlogin",
-        destination: "http://52.78.16.47:8000/submitlogin/",
+        destination: "http://api.ikiningyou.com/submitlogin/",
       },
       {
         source: "/test/getuser",
