@@ -146,6 +146,10 @@ export const getTestToken = async (data: any) => {
       headers: {
         "Content-type": "application/x-www-form-urlencoded",
         "Cache-Control": "no-cache",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept, Authorization",
       },
     }
   );
