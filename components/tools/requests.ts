@@ -1,6 +1,7 @@
 import axios from "axios";
 import { folderDataType } from "../../public/static/types/folderDataType";
 import { revokeDataType } from "../../public/static/types/revokeDataType";
+import { userRegistType } from "../../public/static/types/userRegistType";
 import { headerShortCutKeys, SendRequest } from "./httpClient";
 export const vaildToken = async (access_token: string, thenFunction: any) => {
   if (access_token === "null" || access_token === null) return null;
@@ -80,4 +81,15 @@ export const downloadFiles = async (
     ["auth"],
     "blob"
   );
+};
+
+export const submitLogin = async (loginData: string, thenFunction: any) => {
+  SendRequest(thenFunction, `/test/submitlogin`, "POST", loginData, []);
+};
+
+export const registUser = async (
+  userData: userRegistType,
+  thenFunction: any
+) => {
+  SendRequest(thenFunction, `/test/register`, "POST", userData, []);
 };

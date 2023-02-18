@@ -1,25 +1,26 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useRef } from "react";
+import { registUser } from "../components/tools/requests";
+import { userRegistType } from "../public/static/types/userRegistType";
 import styles from "../styles/register.module.css";
 const Register = () => {
+  const router = useRouter();
   const $user_id = useRef<HTMLInputElement>(null);
   const $user_password = useRef<HTMLInputElement>(null);
   const $user_email = useRef<HTMLInputElement>(null);
   const $user_last_name = useRef<HTMLInputElement>(null);
   const $user_first_name = useRef<HTMLInputElement>(null);
   const submit_register = async () => {
-    const register_data = {
+    const register_data: userRegistType = {
       "user_id": $user_id.current.value,
       "user_password": $user_password.current.value,
       "user_email": $user_email.current.value,
       "user_last_name": $user_last_name.current.value,
       "user_first_name": $user_first_name.current.value,
     };
-
-    await axios.post("/test/register", register_data, {
-      headers: {
-        "Content-type": "application/json",
-      },
+    registUser(register_data, () => {
+      router.push("/login");
     });
   };
 

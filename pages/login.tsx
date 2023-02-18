@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "../styles/login.module.css";
+import { submitLogin as requestLogin } from "../components/tools/requests";
 const Login = () => {
   const router = useRouter();
   const $title = useRef<HTMLHeadingElement>(null);
@@ -16,23 +17,16 @@ const Login = () => {
       "user_id": $user_id.current.value,
       "user_password": $user_password.current.value,
     };
-    await axios
-      .post("/test/submitlogin", JSON.stringify(login_data), {
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
-      .then((res) => {
-        router.push(
-          `http://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=http://www.ikiningyou.com/`
-        );
-      })
-      .catch((err) => {
-        $user_id.current.value = "";
-        $user_password.current.value = "";
-        $title.current.innerText = "입력 정보가 잘못되었습니다.";
-        $title.current.classList.add(styles.fail);
-      });
+    requestLogin(JSON.stringify(login_data), (res) => {
+      router.push(
+        `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
+      );
+    }).catch((err) => {
+      $user_id.current.value = "";
+      $user_password.current.value = "";
+      $title.current.innerText = "입력 정보가 잘못되었습니다.";
+      $title.current.classList.add(styles.fail);
+    });
   };
 
   return (
