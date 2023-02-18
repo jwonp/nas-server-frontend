@@ -137,3 +137,16 @@ export const registUser = async (
     []
   );
 };
+
+export const getTestToken = async (data: any) => {
+  await axios.post(
+    `https://api.ikiningyou.com/users/o/token/`,
+    JSON.stringify(data),
+    {
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+        "Cache-Control": "no-cache",
+      },
+    }
+  );
+};

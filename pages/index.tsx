@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { getTokensByCode } from "../components/tools/requests";
+import { getTestToken, getTokensByCode } from "../components/tools/requests";
 
 const Home = () => {
   const router = useRouter();
@@ -9,9 +9,12 @@ const Home = () => {
     if (router.isReady === true) {
       const { code } = router.query;
       if (code) {
-        getTokensByCode(code, (res) => {
-          window.localStorage.setItem("access_token", res.data.access_token);
-          router.push("/");
+        getTokensByCode(code, (res: any) => {
+          getTestToken(res.data).then((res: any) => {
+            console.log(res.data);
+          });
+          // window.localStorage.setItem("access_token", res.data.access_token);
+          // router.push("/");
         });
       }
     }
