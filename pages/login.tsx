@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "../styles/login.module.css";
 import { submitLogin as requestLogin } from "../components/tools/requests";
+import { loginDataType } from "../public/static/types/loginDataType";
 const Login = () => {
   const router = useRouter();
   const $title = useRef<HTMLHeadingElement>(null);
@@ -13,11 +14,11 @@ const Login = () => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    const login_data = {
+    const login_data: loginDataType = {
       "user_id": $user_id.current.value,
       "user_password": $user_password.current.value,
     };
-    requestLogin(JSON.stringify(login_data), (res) => {
+    requestLogin(login_data, (res) => {
       router.push(
         `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
       );
