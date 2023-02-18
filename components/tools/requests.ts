@@ -84,7 +84,13 @@ export const downloadFiles = async (
 };
 
 export const submitLogin = async (loginData: string, thenFunction: any) => {
-  SendRequest(thenFunction, `/test/submitlogin`, "POST", loginData, []);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/submitlogin/`,
+    "POST",
+    loginData,
+    []
+  );
 };
 
 export const registUser = async (
