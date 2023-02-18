@@ -4,6 +4,7 @@ import { loginDataType } from "../../public/static/types/loginDataType";
 import { revokeDataType } from "../../public/static/types/revokeDataType";
 import { userRegistType } from "../../public/static/types/userRegistType";
 import { headerShortCutKeys, SendRequest } from "./httpClient";
+import qs from "qs";
 export const vaildToken = async (access_token: string, thenFunction: any) => {
   if (access_token === "null" || access_token === null) return null;
   SendRequest(thenFunction, "/test/validtoken", "GET", {}, [
@@ -141,7 +142,7 @@ export const registUser = async (
 export const getTestToken = async (data: any) => {
   await axios.post(
     `https://api.ikiningyou.com/users/o/token/`,
-    JSON.stringify(data),
+    qs.stringify(data),
     {
       headers: {
         "Content-type": "application/x-www-form-urlencoded",
