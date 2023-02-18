@@ -15,45 +15,73 @@ export const addFiles = async (
   path: string,
   thenFunction: any
 ) => {
-  SendRequest(thenFunction, "/test/uploadfiles", "POST", formData, [
-    headerShortCutKeys.FormData,
-    headerShortCutKeys.Auth,
-    `File-Path&sep;${path}`,
-  ]);
+  SendRequest(
+    thenFunction,
+    "https://api.ikiningyou.com/users/uploadfiles/",
+    "POST",
+    formData,
+    [
+      headerShortCutKeys.FormData,
+      headerShortCutKeys.Auth,
+      `File-Path&sep;${path}`,
+    ]
+  );
 };
 
 export const getFileListByPath = async (path: string, thenFunction: any) => {
   if (path === undefined) return null;
-  SendRequest(thenFunction, `/test/getfilelistbypath/${path}`, "GET", {}, [
-    headerShortCutKeys.Auth,
-  ]);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/users/getfilelistbypath/${path}`,
+    "GET",
+    {},
+    [headerShortCutKeys.Auth]
+  );
 };
 
 export const logout = async (revokeData: revokeDataType, thenFunction: any) => {
-  SendRequest(thenFunction, `/test/logout`, "POST", revokeData, [
-    headerShortCutKeys.AppJson,
-  ]);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/logout/`,
+    "POST",
+    revokeData,
+    [headerShortCutKeys.AppJson]
+  );
 };
 
 export const getRemainingStorageSize = async (thenFunction: any) => {
-  SendRequest(thenFunction, "/test/getStorageSize", "GET", {}, [
-    headerShortCutKeys.Auth,
-  ]);
+  SendRequest(
+    thenFunction,
+    "https://api.ikiningyou.com/users/getstoragesize/",
+    "GET",
+    {},
+    [headerShortCutKeys.Auth]
+  );
 };
 export const addFolder = async (
   folderData: folderDataType,
   thenFunction: any
 ) => {
-  SendRequest(thenFunction, `/test/addFolder/`, "POST", folderData, [
-    headerShortCutKeys.Auth,
-  ]);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/users/addfolder/`,
+    "POST",
+    folderData,
+    [headerShortCutKeys.Auth]
+  );
 };
 
 export const getTokensByCode = async (
   code: string | string[],
   thenFunction: any
 ) => {
-  SendRequest(thenFunction, `/test/login`, "POST", { code: code }, []);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/login/`,
+    "POST",
+    { code: code },
+    []
+  );
 };
 export const deleteSelectedFiles = async (
   fileList: string[],
@@ -62,7 +90,7 @@ export const deleteSelectedFiles = async (
 ) => {
   SendRequest(
     thenFunction,
-    `/test/deletefiles`,
+    `https://api.ikiningyou.com/users/deletefiles/`,
     "POST",
     { file_list: fileList, path: path },
     ["auth"]
@@ -76,7 +104,7 @@ export const downloadFiles = async (
 ) => {
   SendRequest(
     thenFunction,
-    `/test/downloadfiles`,
+    `https://api.ikiningyou.com/users/downloadfiles/`,
     "POST",
     { path: path, file_list: fileList },
     ["auth"],
@@ -101,5 +129,11 @@ export const registUser = async (
   userData: userRegistType,
   thenFunction: any
 ) => {
-  SendRequest(thenFunction, `/test/register`, "POST", userData, []);
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/register/`,
+    "POST",
+    userData,
+    []
+  );
 };
