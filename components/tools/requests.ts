@@ -1,5 +1,6 @@
 import axios from "axios";
 import { folderDataType } from "../../public/static/types/folderDataType";
+import { loginDataType } from "../../public/static/types/loginDataType";
 import { revokeDataType } from "../../public/static/types/revokeDataType";
 import { userRegistType } from "../../public/static/types/userRegistType";
 import { headerShortCutKeys, SendRequest } from "./httpClient";
@@ -83,7 +84,10 @@ export const downloadFiles = async (
   );
 };
 
-export const submitLogin = async (loginData: string, thenFunction: any) => {
+export const submitLogin = async (
+  loginData: loginDataType,
+  thenFunction: any
+) => {
   SendRequest(
     thenFunction,
     `https://api.ikiningyou.com/submitlogin/`,
