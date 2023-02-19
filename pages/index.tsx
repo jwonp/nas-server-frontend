@@ -10,11 +10,11 @@ const Home = () => {
       const { code } = router.query;
       if (code) {
         getTokensByCode(code, (res: any) => {
-          getTestToken(res.data).then((res: any) => {
-            console.log(res.data);
-          });
-          // window.localStorage.setItem("access_token", res.data.access_token);
-          // router.push("/");
+          // getTestToken(res.data).then((res: any) => {
+          //   console.log(res.data);
+          // });
+          window.localStorage.setItem("access_token", res.data.access_token);
+          router.push("/");
         });
       }
     }
