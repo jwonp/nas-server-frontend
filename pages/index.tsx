@@ -3,7 +3,11 @@ import { useEffect } from "react";
 import { getTestToken, getTokensByCode } from "../components/tools/requests";
 import axios from "axios";
 import qs from "qs";
-const Home = ({ access_token }) => {
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+
+const Home = ({
+  access_token,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -37,11 +41,13 @@ const Home = ({ access_token }) => {
     </div>
   );
 };
-Home.getInitialProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<{
+  access_token: string;
+}> = async (context) => {
   const data = {
     "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
     "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
-    "code": ctx.query.code,
+    "code": context.query.code,
     "code_verifier": process.env.NEXT_PUBLIC_CODE_VERIFIER,
     "redirect_uri": "https://www.ikiningyou.com/",
     "grant_type": "authorization_code",
@@ -50,14 +56,17 @@ Home.getInitialProps = async (ctx) => {
     "Content-type": "application/x-www-form-urlencoded",
     "Cache-Control": "no-cache",
   };
-  await axios
-    .post("https://api.ikiningyou.com/users/o/token/", qs.stringify(data), {
+  const res = await axios.post(
+    "https://api.ikiningyou.com/users/o/token/",
+    qs.stringify(data),
+    {
       headers: header,
-    })
-    .then((res) => {
-      const { access_token, expires_in, token_type, scope, refresh_token } =
-        res.data;
-      return { access_token: access_token };
-    });
+    }
+  );
+
+  const { access_token, expires_in, token_type, scope, refresh_token } =
+    res.data;
+  return { props: { access_token: access_token } };
 };
+
 export default Home;
