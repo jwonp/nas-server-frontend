@@ -81,7 +81,11 @@ export const getTokensByCode = async (
     `https://api.ikiningyou.com/login/`,
     "POST",
     { code: code },
-    []
+    [
+      "Access-Control-Allow-Origin&sep;*",
+      "Access-Control-Allow-Methods&sep;GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers&sep;Origin, X-Requested-With, Content-Type, Accept, Authorization",
+    ]
   );
 };
 export const deleteSelectedFiles = async (
