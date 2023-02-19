@@ -84,7 +84,7 @@ export const getTokensByCode = async (
     [
       "Access-Control-Allow-Origin&sep;*",
       "Access-Control-Allow-Methods&sep;GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers&sep;Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      "Access-Control-Allow-Headers&sep;Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Methods",
     ]
   );
 };
