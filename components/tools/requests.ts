@@ -7,9 +7,13 @@ import { headerShortCutKeys, SendRequest } from "./httpClient";
 import qs from "qs";
 export const vaildToken = async (access_token: string, thenFunction: any) => {
   if (access_token === "null" || access_token === null) return null;
-  SendRequest(thenFunction, "/test/validtoken", "GET", {}, [
-    headerShortCutKeys.Auth,
-  ]);
+  SendRequest(
+    thenFunction,
+    "https://api.ikiningyou.com/users/validtoken/",
+    "GET",
+    {},
+    [headerShortCutKeys.Auth]
+  );
 };
 export const addFiles = async (
   formData: FormData,
