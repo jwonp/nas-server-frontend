@@ -7,7 +7,14 @@ export default async function refreshTokenHandler(
   res: NextApiResponse
 ) {
   const response = await axios.post(
-    "https://api.ikiningyou.com/users/o/refresh/"
+    "https://api.ikiningyou.com/users/o/refresh/",
+    {},
+    {
+      headers: {
+        Cookie: `refresh=${req.cookies.refresh}`,
+        withCredentials: true,
+      },
+    }
   );
   res.status(200).end(response.data);
 }
