@@ -64,32 +64,33 @@ const Navigator = () => {
   };
 
   const refresh = async () => {
-    await axios
-      .post(
-        "https://api.ikiningyou.com/users/o/refresh/",
-        {
-          "grant_type": "refresh_token",
-          "refresh_token": "&RefreshToken;",
-          "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
-          "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
-        },
-        {
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded",
-            withCredentials: true,
-            "Access-Control-Allow-Origin": "https://api.ikiningyou.com",
-            "Access-Control-Allow-Credentials": true,
-          },
-        }
-      )
-      .then(async (res) => {
-        console.log(`new access token ${res.data.access_token} is received`);
-        window.localStorage.setItem("access_token", res.data.access_token);
-        await axios.get(`/api/refresh/${res.data.refresh_token}`);
-      })
-      .catch((error) => {
-        console.log("Fail to refresh the access token");
-      });
+    await axios.get("/api/refresh/token");
+    // await axios
+    //   .post(
+    //     "https://api.ikiningyou.com/users/o/refresh/",
+    //     {
+    //       "grant_type": "refresh_token",
+    //       "refresh_token": "&RefreshToken;",
+    //       "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
+    //       "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-type": "application/x-www-form-urlencoded",
+    //         withCredentials: true,
+    //         "Access-Control-Allow-Origin": "https://api.ikiningyou.com",
+    //         "Access-Control-Allow-Credentials": true,
+    //       },
+    //     }
+    //   )
+    //   .then(async (res) => {
+    //     console.log(`new access token ${res.data.access_token} is received`);
+    //     window.localStorage.setItem("access_token", res.data.access_token);
+    //     await axios.get(`/api/refresh/${res.data.refresh_token}`);
+    //   })
+    //   .catch((error) => {
+    //     console.log("Fail to refresh the access token");
+    //   });
   };
   return (
     <div className={`${styles.wrapper}`}>

@@ -64,7 +64,7 @@ export const SendRequest = async (
     });
 };
 
-export const RefreshExpiredToken = async () => {
+export const RefreshExpiredToken = async (): Promise<any> => {
   await axios
     .post(
       "https://api.ikiningyou.com/users/o/refresh/",
