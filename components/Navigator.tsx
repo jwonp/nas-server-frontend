@@ -63,6 +63,32 @@ const Navigator = () => {
     });
   };
 
+  const refresh = async () => {
+    await axios
+      .post(
+        "https://api.ikiningyou.com/users/o/refresh/",
+        {
+          "grant_type": "refresh_token",
+          "refresh_token": "&RefreshToken;",
+          "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
+          "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
+        },
+        {
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded",
+            withCredentials: true,
+          },
+        }
+      )
+      .then(async (res) => {
+        console.log(`new access token ${res.data.access_token} is received`);
+        window.localStorage.setItem("access_token", res.data.access_token);
+        await axios.get(`/api/refresh/${res.data.refresh_token}`);
+      })
+      .catch((error) => {
+        console.log("Fail to refresh the access token");
+      });
+  };
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.grid_container}`}>
@@ -84,7 +110,7 @@ const Navigator = () => {
         <div
           className={`${styles.logo}`}
           onClick={() => {
-            RefreshExpiredToken();
+            refresh();
           }}
         >
           <Image src={icon} width={45} height={45} alt={"No image"} />
