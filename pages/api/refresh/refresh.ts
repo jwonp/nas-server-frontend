@@ -10,10 +10,15 @@ export default async function refreshTokenHandler(
   await axios
     .post(
       "https://api.ikiningyou.com/users/o/refresh/",
-      { data: "data" },
+      {
+        "grant_type": "refresh_token",
+        "refresh_token": req.cookies.refresh,
+        "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
+        "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
+      },
       {
         headers: {
-          Cookie: `refresh=${req.cookies.refresh}`,
+          "Content-type": "application/x-www-form-urlencoded",
           withCredentials: true,
         },
       }
