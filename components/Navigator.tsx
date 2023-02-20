@@ -51,17 +51,14 @@ const Navigator = () => {
       token: window.localStorage.getItem("access_token"),
     };
     logout(revokeData, async (res) => {
-      await axios
-        .post("/api/revokeToken", {
-          token: window.localStorage.getItem("access_token"),
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            window.localStorage.removeItem("access_token");
-            dispatch(removeUsername());
-            router.push("/");
-          }
-        });
+      const token = window.localStorage.getItem("access_token");
+      await axios.get(`/api/revoke/${token}`).then((res) => {
+        if (res.status === 200) {
+          window.localStorage.removeItem("access_token");
+          dispatch(removeUsername());
+          router.push("/");
+        }
+      });
     });
   };
 

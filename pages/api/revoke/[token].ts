@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import qs from "qs";
-import { revokeAccessToken } from "../../components/tools/requests";
+import { revokeAccessToken } from "../../../components/tools/requests";
 
 export default function revokeTokenHandler(
   req: NextApiRequest,
