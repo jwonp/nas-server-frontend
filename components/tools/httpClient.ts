@@ -77,6 +77,7 @@ export const RefreshExpiredToken = async () => {
       {
         headers: {
           "Content-type": "application/x-www-form-urlencoded",
+          withCredentials: true,
         },
       }
     )
