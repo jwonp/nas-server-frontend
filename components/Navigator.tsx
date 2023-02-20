@@ -64,10 +64,11 @@ const Navigator = () => {
   };
 
   const refresh = async () => {
-    RefreshExpiredToken();
-    // await axios.get("/api/refresh/refresh").then(async (res) => {
-    //   await axios.get(`/api/refresh/token/${res.data.refresh_token}`);
-    // });
+    // RefreshExpiredToken();
+    await axios.get("/api/refresh/refresh").then(async (res) => {
+      console.log(res.data);
+      // await axios.get(`/api/refresh/token/${res.data.refresh_token}`);
+    });
     // await axios
     //   .post(
     //     "https://api.ikiningyou.com/users/o/refresh/",
