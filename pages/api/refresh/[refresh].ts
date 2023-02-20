@@ -10,7 +10,7 @@ export default function revokeTokenHandler(
 
   res.setHeader(
     "set-cookie",
-    `refresh=${refresh}; path=/; samesite=lax; httponly;`
+    `refresh=${refresh}; path=/; samesite=None; Secure; httponly;`
   );
   res.status(200).end(`${refresh} is on Cookie`);
 }
