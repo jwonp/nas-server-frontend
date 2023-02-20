@@ -18,6 +18,7 @@ import {
 
 import { switchDrawer } from "../redux/features/drawerSwitch";
 import axios from "axios";
+import { RefreshExpiredToken } from "./tools/httpClient";
 
 const Navigator = () => {
   const router = useRouter();
@@ -61,10 +62,6 @@ const Navigator = () => {
       });
     });
   };
-
-  function RefreshExpiredToken() {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <div className={`${styles.wrapper}`}>
