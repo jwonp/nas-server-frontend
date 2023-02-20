@@ -7,6 +7,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 const Home = ({
   access_token,
+  refresh_token,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
 
@@ -38,9 +39,10 @@ const Home = ({
 };
 export const getServerSideProps: GetServerSideProps<{
   access_token: string;
+  refresh_token: string;
 }> = async (context) => {
   if (Object.hasOwn(context.query, "code") === false)
-    return { props: { access_token: "" } };
+    return { props: { access_token: "", refresh_token: "" } };
   const data = {
     "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
     "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
@@ -62,8 +64,10 @@ export const getServerSideProps: GetServerSideProps<{
   );
   // const { access_token, expires_in, token_type, scope, refresh_token } =
   const { access_token, refresh_token } = res.data;
-  await axios.get(`/api/refresh/${refresh_token}`);
-  return { props: { access_token: access_token } };
+  // await axios.get(`/api/refresh/${refresh_token}`);
+  return {
+    props: { access_token: access_token, refresh_token: refresh_token },
+  };
 };
 
 export default Home;
