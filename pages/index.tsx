@@ -54,7 +54,8 @@ export const getServerSideProps: GetServerSideProps<{
     "Cache-Control": "no-cache",
   };
   const res = await axios.post(
-    "https://api.ikiningyou.com/users/o/token/",
+    "https://api.ikiningyou.com/gettoken/",
+    // "https://api.ikiningyou.com/users/o/token/",
     qs.stringify(data),
     {
       headers: header,

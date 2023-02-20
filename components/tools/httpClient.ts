@@ -66,7 +66,7 @@ export const SendRequest = async (
 
 const RefreshExpiredToken = async () => {
   await axios
-    .get("/test/refresh")
+    .get("https://api.ikiningyou.com/refreshtoken/")
     .then((res) => {
       console.log(`new access token ${res.data.access_token} is received`);
       window.localStorage.setItem("access_token", res.data.access_token);
