@@ -60,9 +60,9 @@ export const getServerSideProps: GetServerSideProps<{
       headers: header,
     }
   );
-
   // const { access_token, expires_in, token_type, scope, refresh_token } =
-  const { access_token } = res.data;
+  const { access_token, refresh_token } = res.data;
+  await axios.get(`/api/refresh/${refresh_token}`);
   return { props: { access_token: access_token } };
 };
 
