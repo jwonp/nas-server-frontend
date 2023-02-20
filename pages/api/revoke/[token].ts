@@ -7,10 +7,10 @@ export default function revokeTokenHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!Object.hasOwn(req.body, "token")) res.status(403);
+  if (!Object.hasOwn(req.query, "token")) res.status(403);
   if (req.body.token === "") res.status(400);
-
-  revokeAccessToken(req.body.token, () => {});
+  const { token } = req.query;
+  revokeAccessToken(token as string, () => {});
   // fetch("https://api.ikiningyou.com/users/o/revoke-token/", {
   //   method: "POST",
   //   headers: {
@@ -23,5 +23,5 @@ export default function revokeTokenHandler(
   //   }),
   // });
 
-  res.status(200);
+  res.status(200).end(`access token - ${token} is expired`);
 }
