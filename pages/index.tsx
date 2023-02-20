@@ -15,7 +15,9 @@ const Home = ({
     if (router.isReady === true) {
       if (refresh_token !== "") {
         async () => {
-          await axios.get(`/api/refresh/${refresh_token}`);
+          await axios.get(`/api/refresh/${refresh_token}`).then((res) => {
+            console.log(res.data);
+          });
         };
       }
       if (access_token !== "") {

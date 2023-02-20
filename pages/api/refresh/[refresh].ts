@@ -12,5 +12,5 @@ export default function revokeTokenHandler(
     "set-cookie",
     `refresh=${refresh}; path=/; samesite=lax; httponly;`
   );
-  res.status(200);
+  res.status(200).end(`${refresh} is on Cookie`);
 }
