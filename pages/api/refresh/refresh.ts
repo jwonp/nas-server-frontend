@@ -25,7 +25,11 @@ export default async function refreshTokenHandler(
       }
     )
     .then((response) => {
-      res.status(200).json(response.data);
+      res.setHeader(
+        "set-cookie",
+        `refresh=${response.data.refresh_token}; path=/; samesite=lax; httponly;`
+      );
+      res.status(200).json({ access_token: response.data.access_token });
     });
   res.status(200).end();
 }
