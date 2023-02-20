@@ -64,7 +64,7 @@ const Navigator = () => {
   };
 
   const refresh = async () => {
-    await axios.get("/api/refresh/token");
+    await axios.get("/api/refresh/refresh");
     // await axios
     //   .post(
     //     "https://api.ikiningyou.com/users/o/refresh/",
