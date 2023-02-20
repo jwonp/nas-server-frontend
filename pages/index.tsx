@@ -48,6 +48,8 @@ const Home = ({
 export const getServerSideProps: GetServerSideProps<{
   access_token: string;
 }> = async (context) => {
+  if (Object.hasOwn(context.query, "code") === false)
+    return { props: { access_token: "" } };
   const data = {
     "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
     "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
@@ -67,7 +69,7 @@ export const getServerSideProps: GetServerSideProps<{
       headers: header,
     }
   );
-  if (res.status !== 200) return { props: { access_token: "" } };
+
   const { access_token, expires_in, token_type, scope, refresh_token } =
     res.data;
   return { props: { access_token: access_token } };
