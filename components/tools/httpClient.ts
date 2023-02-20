@@ -64,7 +64,7 @@ export const SendRequest = async (
     });
 };
 
-const RefreshExpiredToken = async () => {
+export const RefreshExpiredToken = async () => {
   await axios
     .post("https://api.ikiningyou.com/users/o/refresh/", {
       "grant_type": "refresh_token",
