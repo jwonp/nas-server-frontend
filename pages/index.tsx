@@ -13,7 +13,7 @@ const Home = ({
   useEffect(() => {
     if (router.isReady === true) {
       console.log("access_token is ", access_token);
-      if (access_token) {
+      if (access_token !== "") {
         window.localStorage.setItem("access_token", access_token);
         router.push("/storage");
       } else {
@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<{
       headers: header,
     }
   );
-
+  if (res.status !== 200) return { props: { access_token: "" } };
   const { access_token, expires_in, token_type, scope, refresh_token } =
     res.data;
   return { props: { access_token: access_token } };
