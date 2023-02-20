@@ -62,6 +62,10 @@ const Navigator = () => {
     });
   };
 
+  function RefreshExpiredToken() {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.grid_container}`}>
@@ -80,7 +84,12 @@ const Navigator = () => {
           />
         </div>
 
-        <div className={`${styles.logo}`}>
+        <div
+          className={`${styles.logo}`}
+          onClick={() => {
+            RefreshExpiredToken();
+          }}
+        >
           <Image src={icon} width={45} height={45} alt={"No image"} />
         </div>
       </div>

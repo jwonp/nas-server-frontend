@@ -66,10 +66,16 @@ export const SendRequest = async (
 
 const RefreshExpiredToken = async () => {
   await axios
-    .get("https://api.ikiningyou.com/refreshtoken/")
-    .then((res) => {
+    .post("https://api.ikiningyou.com/users/o/refresh/", {
+      "grant_type": "refresh_token",
+      "refresh_token": "&RefreshToken;",
+      "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
+      "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
+    })
+    .then(async (res) => {
       console.log(`new access token ${res.data.access_token} is received`);
       window.localStorage.setItem("access_token", res.data.access_token);
+      await axios.get(`/api/refresh/${res.data.refresh_token}`);
     })
     .catch((error) => {
       console.log("Fail to refresh the access token");
