@@ -10,7 +10,7 @@ export default async function refreshTokenHandler(
 ) {
   await axios
     .post(
-      "https://api.ikiningyou.com/users/o/refresh/",
+      "https://api.ikiningyou.com/users/o/token/",
       qs.stringify({
         "grant_type": "refresh_token",
         "refresh_token": req.cookies.refresh,
