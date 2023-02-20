@@ -11,7 +11,7 @@ export default async function refreshTokenHandler(
     {},
     {
       headers: {
-        Cookie: `refresh=${req.cookies.refresh}`,
+        Cookie: `refresh=${req.cookies.refresh};`,
         withCredentials: true,
       },
     }
