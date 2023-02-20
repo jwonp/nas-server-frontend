@@ -6,11 +6,11 @@ export default function callbackRefreshToken(
 ) {
   if (!Object.hasOwn(req.query, "token")) res.status(403);
   if (req.body.token === "") res.status(400);
-  const { refresh } = req.query;
+  const { token } = req.query;
 
   res.setHeader(
     "set-cookie",
-    `refresh=${refresh}; path=/; samesite=lax; httponly;`
+    `refresh=${token}; path=/; samesite=lax; httponly;`
   );
-  res.status(200).end(`${refresh} is on Cookie`);
+  res.status(200).end(`${token} is on Cookie`);
 }
