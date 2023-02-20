@@ -77,6 +77,8 @@ const Navigator = () => {
           headers: {
             "Content-type": "application/x-www-form-urlencoded",
             withCredentials: true,
+            "Access-Control-Allow-Origin": "https://api.ikiningyou.com",
+            "Access-Control-Allow-Credentials": true,
           },
         }
       )
