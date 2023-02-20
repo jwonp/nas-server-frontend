@@ -14,6 +14,7 @@ const Home = ({
   useEffect(() => {
     if (router.isReady === true) {
       if (access_token !== "") {
+        console.log(access_token, "and", refresh_token);
         window.localStorage.setItem("access_token", access_token);
         router.push("/storage");
       } else {
