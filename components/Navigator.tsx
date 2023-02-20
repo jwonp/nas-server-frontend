@@ -17,6 +17,7 @@ import {
 } from "../redux/features/menu";
 
 import { switchDrawer } from "../redux/features/drawerSwitch";
+import axios from "axios";
 
 const Navigator = () => {
   const router = useRouter();
@@ -49,14 +50,18 @@ const Navigator = () => {
     const revokeData: revokeDataType = {
       token: window.localStorage.getItem("access_token"),
     };
-    logout(revokeData, (res) => {
-      revokeAccessToken(window.localStorage.getItem("access_token"), (res) => {
-        if (res.status === 200) {
-          window.localStorage.removeItem("access_token");
-          dispatch(removeUsername());
-          router.push("/");
-        }
-      });
+    logout(revokeData, async (res) => {
+      await axios
+        .post("https://www.ikiningyou.com/api/revokeToken", {
+          token: window.localStorage.getItem("access_token"),
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            window.localStorage.removeItem("access_token");
+            dispatch(removeUsername());
+            router.push("/");
+          }
+        });
     });
   };
 
