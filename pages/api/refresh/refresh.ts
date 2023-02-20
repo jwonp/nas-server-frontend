@@ -19,7 +19,7 @@ export default async function refreshTokenHandler(
       }
     )
     .then((response) => {
-      res.status(200).end(response.data);
+      res.status(200).json(response.data);
     });
   res.status(200).end();
 }
