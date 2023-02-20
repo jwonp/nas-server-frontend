@@ -25,11 +25,9 @@ export const addFiles = async (
     "https://api.ikiningyou.com/users/uploadfiles/",
     "POST",
     formData,
-    [
-      headerShortCutKeys.FormData,
-      headerShortCutKeys.Auth,
-      `File-Path&sep;${path}`,
-    ]
+    [headerShortCutKeys.FormData, headerShortCutKeys.Auth],
+    "json",
+    { "File-Path": `${path}` }
   );
 };
 

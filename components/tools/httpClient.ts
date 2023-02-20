@@ -28,7 +28,8 @@ export const SendRequest = async (
   method: METHOD,
   data: any,
   header: string[],
-  responseType: RESPONSETYPE = RESPONSETYPE.json
+  responseType: RESPONSETYPE = RESPONSETYPE.json,
+  params: any = {}
 ) => {
   const headerShortCut = {
     "formData": { "Content-Type": "multipart/form-data;charset=utf-8" },
@@ -45,6 +46,7 @@ export const SendRequest = async (
     data: data,
     url: url,
     headers: convertHEADER(header, headerShortCut),
+    params: params,
     responseType: responseType,
   })
     .then(thenFunction)
