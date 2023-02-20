@@ -56,7 +56,7 @@ const Navigator = () => {
         if (res.status === 200) {
           window.localStorage.removeItem("access_token");
           dispatch(removeUsername());
-          router.push("/");
+          router.push("/login");
         }
       });
     });
