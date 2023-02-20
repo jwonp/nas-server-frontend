@@ -12,21 +12,12 @@ const Home = ({
 
   useEffect(() => {
     if (router.isReady === true) {
-      console.log("access_token is ", access_token);
       if (access_token !== "") {
         window.localStorage.setItem("access_token", access_token);
         router.push("/storage");
       } else {
         router.push("/login");
       }
-      // const { code } = router.query;
-      // if (code) {
-      //   getTokensByCode(code, (res: any) => {
-      // getTestToken(res.data).then((res: any) => {
-      //   console.log(res.data);
-      // });
-      //   });
-      // }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);

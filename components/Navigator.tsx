@@ -1,11 +1,10 @@
 import Image from "next/image";
 import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
-import DrawerStyles from "../styles/Drawer.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { vaildToken, logout } from "./tools/requests";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import FileHandleOptions from "./FileHandleOptions";
 import { revokeDataType } from "../public/static/types/revokeDataType";
 import { useAppDispatch, useAppSelector } from ".././redux/hooks";
@@ -16,23 +15,15 @@ import {
   getUsername,
   getOnFileInput,
 } from "../redux/features/menu";
-import { getSelected } from "../redux/features/selectedFiles";
 
-import { getHistory } from "./tools/functions";
-import { getDrawerSwitch, switchDrawer } from "../redux/features/drawerSwitch";
+import { switchDrawer } from "../redux/features/drawerSwitch";
 
 const Navigator = () => {
   const router = useRouter();
   // const [onFileOptions, setOnFileOptions] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const drawerSwitch = useAppSelector(getDrawerSwitch);
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
-  const selected = useAppSelector(getSelected);
-  const loginGrid = useMemo(() => {
-    if (username !== "") {
-    }
-  }, [username]);
 
   useEffect(() => {
     if (router.asPath.includes("/storage")) {
@@ -84,11 +75,10 @@ const Navigator = () => {
             priority={true}
           />
         </div>
-        <Link href={"/"}>
-          <div className={`${styles.logo}`}>
-            <Image src={icon} width={45} height={45} alt={"No image"} />
-          </div>
-        </Link>
+
+        <div className={`${styles.logo}`}>
+          <Image src={icon} width={45} height={45} alt={"No image"} />
+        </div>
       </div>
 
       <div className={`${styles.grid_container}`}>
@@ -119,5 +109,3 @@ const Navigator = () => {
 };
 
 export default Navigator;
-
-// .join(" > ").replace("_", " ")

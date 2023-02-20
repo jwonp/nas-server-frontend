@@ -79,7 +79,7 @@ const convertHEADER = (header: string[], headerShortCut: any) => {
       Object.assign(resultHeader, headerShortCut[value]);
     else {
       const customHeader = value.split("&sep;");
-      console.log(customHeader);
+
       if (customHeader.length === 2) {
         const header = {};
         Object.defineProperty(header, customHeader[0], {
@@ -87,9 +87,6 @@ const convertHEADER = (header: string[], headerShortCut: any) => {
           writable: true,
           enumerable: true,
         });
-        console.log(header);
-
-        console.log(Object.assign(resultHeader, header));
       }
     }
   });
