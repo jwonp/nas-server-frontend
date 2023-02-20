@@ -53,6 +53,21 @@ export const logout = async (revokeData: revokeDataType, thenFunction: any) => {
     [headerShortCutKeys.AppJson]
   );
 };
+export const revokeAccessToken = async (
+  accessToken: string,
+  thenFunction: any
+) => {
+  SendRequest(
+    thenFunction,
+    `https://api.ikiningyou.com/users/o/revoke-token/`,
+    "POST",
+    qs.stringify({
+      token: accessToken,
+      client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
+    }),
+    [headerShortCutKeys.X, headerShortCutKeys.CCtl]
+  );
+};
 
 export const getRemainingStorageSize = async (thenFunction: any) => {
   SendRequest(

@@ -3,7 +3,7 @@ import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { vaildToken, logout } from "./tools/requests";
+import { vaildToken, logout, revokeAccessToken } from "./tools/requests";
 import { useEffect } from "react";
 import FileHandleOptions from "./FileHandleOptions";
 import { revokeDataType } from "../public/static/types/revokeDataType";
@@ -50,11 +50,13 @@ const Navigator = () => {
       token: window.localStorage.getItem("access_token"),
     };
     logout(revokeData, (res) => {
-      if (res.status === 200) {
-        window.localStorage.removeItem("access_token");
-        dispatch(removeUsername());
-        router.push("/");
-      }
+      revokeAccessToken(window.localStorage.getItem("access_token"), (res) => {
+        if (res.status === 200) {
+          window.localStorage.removeItem("access_token");
+          dispatch(removeUsername());
+          router.push("/");
+        }
+      });
     });
   };
 

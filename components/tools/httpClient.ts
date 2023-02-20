@@ -34,9 +34,11 @@ export const SendRequest = async (
     "formData": { "Content-Type": "multipart/form-data;charset=utf-8" },
     "appJson": { "Content-Type": "application/json" },
     // "csrfToken": { "X-CSRFToken": document.cookie.split("=")[1] },
+    "x-www": { "Content-type": "application/x-www-form-urlencoded" },
     "auth": {
       "Authorization": `Bearer ${window.localStorage.getItem("access_token")}`,
     },
+    "CacheCtrl": { "Cache-Control": "no-cache" },
   };
   await axios({
     method: method,
@@ -96,6 +98,8 @@ const convertHEADER = (header: string[], headerShortCut: any) => {
 export const headerShortCutKeys = {
   FormData: "formData",
   AppJson: "appJson",
+  X: "x-www",
   // CSRFToken: "csrfToken",
   Auth: "auth",
+  CCtl: "CacheCtrl",
 };
