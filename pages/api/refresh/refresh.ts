@@ -14,5 +14,5 @@ export default async function refreshTokenHandler(
       "set-Cookie": `refresh=${req.cookies.refresh};`,
     },
   });
-  res.status(200).end((await response).json());
+  res.status(200).end("good");
 }
