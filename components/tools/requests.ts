@@ -164,5 +164,5 @@ export const setRefreshOnCookie = async (
   refresh: string,
   thenFunction: any
 ) => {
-  SendRequest(thenFunction, `/api/refresh/${refresh}`, "GET", {}, []);
+  SendRequest(thenFunction, `/api/refresh/token/${refresh}`, "GET", {}, []);
 };

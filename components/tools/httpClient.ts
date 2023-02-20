@@ -84,7 +84,7 @@ export const RefreshExpiredToken = async (): Promise<any> => {
     .then(async (res) => {
       console.log(`new access token ${res.data.access_token} is received`);
       window.localStorage.setItem("access_token", res.data.access_token);
-      await axios.get(`/api/refresh/${res.data.refresh_token}`);
+      await axios.get(`/api/refresh/token/${res.data.refresh_token}`);
     })
     .catch((error) => {
       console.log("Fail to refresh the access token");
