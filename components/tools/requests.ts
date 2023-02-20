@@ -160,19 +160,9 @@ export const registUser = async (
   );
 };
 
-export const getTestToken = async (data: any) => {
-  await axios.post(
-    `https://api.ikiningyou.com/users/o/token/`,
-    qs.stringify(data),
-    {
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded",
-        "Cache-Control": "no-cache",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-      },
-    }
-  );
+export const setRefreshOnCookie = async (
+  refresh: string,
+  thenFunction: any
+) => {
+  SendRequest(thenFunction, `/api/refresh/${refresh}`, "GET", {}, []);
 };

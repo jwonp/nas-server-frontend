@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { getTestToken, getTokensByCode } from "../components/tools/requests";
 import axios from "axios";
 import qs from "qs";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { setRefreshOnCookie } from "../components/tools/requests";
 
 const Home = ({
   access_token,
@@ -14,11 +14,9 @@ const Home = ({
   useEffect(() => {
     if (router.isReady === true) {
       if (refresh_token !== "") {
-        async () => {
-          await axios.get(`/api/refresh/${refresh_token}`).then((res) => {
-            console.log(res.data);
-          });
-        };
+        setRefreshOnCookie(refresh_token, (res) => {
+          console.log(res.data);
+        });
       }
       if (access_token !== "") {
         console.log(access_token, "and", refresh_token);
