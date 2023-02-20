@@ -52,7 +52,7 @@ const Navigator = () => {
     };
     logout(revokeData, async (res) => {
       await axios
-        .post("https://www.ikiningyou.com/api/revokeToken", {
+        .post("/api/revokeToken", {
           token: window.localStorage.getItem("access_token"),
         })
         .then((res) => {
