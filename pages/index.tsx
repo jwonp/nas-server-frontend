@@ -13,6 +13,11 @@ const Home = ({
 
   useEffect(() => {
     if (router.isReady === true) {
+      if (refresh_token !== "") {
+        async () => {
+          await axios.get(`/api/refresh/${refresh_token}`);
+        };
+      }
       if (access_token !== "") {
         console.log(access_token, "and", refresh_token);
         window.localStorage.setItem("access_token", access_token);
@@ -65,7 +70,7 @@ export const getServerSideProps: GetServerSideProps<{
   );
   // const { access_token, expires_in, token_type, scope, refresh_token } =
   const { access_token, refresh_token } = res.data;
-  // await axios.get(`/api/refresh/${refresh_token}`);
+  //
   return {
     props: { access_token: access_token, refresh_token: refresh_token },
   };
