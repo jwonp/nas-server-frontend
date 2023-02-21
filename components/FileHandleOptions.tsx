@@ -22,9 +22,10 @@ import {
 const FileHandleOptions = () => {
   const router = useRouter();
 
-  const [fileHref, setFileHref] = useState<string>("#");
-  const [fileDownload, setFileDownload] = useState<string>("#");
+  // const [fileHref, setFileHref] = useState<string>("#");
+  // const [fileDownload, setFileDownload] = useState<string>("#");
   const $folderNameInput = useRef<HTMLInputElement>(null);
+  const $download = useRef<HTMLDivElement>(null);
   const $submitBtn = useRef<HTMLDivElement>(null);
   const $cancelBtn = useRef<HTMLDivElement>(null);
   const selected = useAppSelector(getSelected);
@@ -114,7 +115,7 @@ const FileHandleOptions = () => {
 
       link.setAttribute("download", `${username}.zip`);
       link.click();
-      // link.remove();
+      link.remove();
       // document.body.removeChild(link);
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
@@ -147,7 +148,9 @@ const FileHandleOptions = () => {
             </a> */}
             다운로드
           </div>
-          <div className={`${styles.item}`}>링크 생성</div>
+          <div ref={$download} className={`${styles.item}`}>
+            링크 생성
+          </div>
         </>
       ) : (
         <>
