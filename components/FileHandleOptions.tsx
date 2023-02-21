@@ -139,8 +139,9 @@ const FileHandleOptions = () => {
                   e.stopPropagation();
                 });
               }}
-            />
-            다운로드
+            >
+              다운로드
+            </a>
           </div>
           <div className={`${styles.item}`}>링크 생성</div>
         </>
