@@ -76,7 +76,8 @@ const FileHandleOptions = () => {
       console.log(fileObjectUrl);
       // blob 객체 URL을 설정할 링크를 만듭니다.
 
-      const link = document.createElement("a");
+      const link = $download.current.getElementsByTagName("a")[0];
+      // const link = document.createElement("a");
       link.href = fileObjectUrl;
       // link.style.display = "none";
 
@@ -106,6 +107,7 @@ const FileHandleOptions = () => {
       // window.URL.revokeObjectURL(fileObjectUrl);
     });
   };
+  //className={`${styles.invisible}`}
   return (
     <div className={`${styles.wrapper}`}>
       {selected.length > 0 ? (
@@ -115,6 +117,7 @@ const FileHandleOptions = () => {
             삭제
           </div>
           <div ref={$download} className={`${styles.item}`} onClick={download}>
+            <a href={"#"} download={"#"} />
             다운로드
           </div>
           <div className={`${styles.item}`}>링크 생성</div>
