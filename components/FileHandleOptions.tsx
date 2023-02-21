@@ -91,6 +91,7 @@ const FileHandleOptions = () => {
         );
         return fileName;
       };
+      console.log(extractDownloadFilename(res));
       // 다운로드 파일 이름을 지정 할 수 있습니다.
       // 일반적으로 서버에서 전달해준 파일 이름은 응답 Header의 Content-Disposition에 설정됩니다.
       link.download = extractDownloadFilename(res);
@@ -98,13 +99,13 @@ const FileHandleOptions = () => {
       // link.download = "sample-file.xlsx";
 
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
-      $download.current.append(link);
+      // $download.current.append(link);
       // document.body.appendChild(link);
-      // link.click();
+      link.click();
       // link.remove();
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
-      // window.URL.revokeObjectURL(fileObjectUrl);
+      window.URL.revokeObjectURL(fileObjectUrl);
     });
   };
   //className={`${styles.invisible}`}
