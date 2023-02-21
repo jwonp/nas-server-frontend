@@ -21,7 +21,7 @@ import {
 } from "./tools/requests";
 const FileHandleOptions = () => {
   const router = useRouter();
-  const $download = useRef<HTMLDivElement>(null);
+
   const [fileHref, setFileHref] = useState<string>("#");
   const [fileDownload, setFileDownload] = useState<string>("#");
   const $folderNameInput = useRef<HTMLInputElement>(null);
@@ -107,18 +107,18 @@ const FileHandleOptions = () => {
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
 
       // document.body.appendChild(link);
-      $download.current.appendChild(link);
+      $cancelBtn.current.appendChild(link);
 
       // setFileHref(fileObjectUrl);
       // setFileDownload(`${username}.zip`);
 
       link.setAttribute("download", `${username}.zip`);
       link.click();
-      // link.remove();
       // document.body.removeChild(link);
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
       window.URL.revokeObjectURL(fileObjectUrl);
+      link.remove();
       // setFileHref("#");
       // setFileDownload("#");
     });
@@ -132,7 +132,7 @@ const FileHandleOptions = () => {
           <div className={`${styles.item}`} onClick={deleteFiles}>
             삭제
           </div>
-          <div ref={$download} className={`${styles.item}`} onClick={download}>
+          <div className={`${styles.item}`} onClick={download}>
             {/* <a
               href={fileHref}
               download={fileDownload}
