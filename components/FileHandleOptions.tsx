@@ -29,7 +29,8 @@ const FileHandleOptions = () => {
   const selected = useAppSelector(getSelected);
   const dispatch = useAppDispatch();
   const extractDownloadFilename = (response) => {
-    const disposition = response.headers["content-disposition"];
+    console.log(response);
+    const disposition = response.headers["Content-Disposition"];
     console.log(disposition);
     const fileName = decodeURI(
       disposition
