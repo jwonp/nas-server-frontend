@@ -30,11 +30,13 @@ const FileHandleOptions = () => {
   const dispatch = useAppDispatch();
   const extractDownloadFilename = (response) => {
     const disposition = response.headers["content-disposition"];
+    console.log(disposition);
     const fileName = decodeURI(
       disposition
         .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
         .replace(/['"]/g, "")
     );
+    console.log(fileName);
     return fileName;
   };
   const deleteFiles = () => {
