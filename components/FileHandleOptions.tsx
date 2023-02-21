@@ -92,9 +92,9 @@ const FileHandleOptions = () => {
       // console.log(fileObjectUrl);
       // blob 객체 URL을 설정할 링크를 만듭니다.
 
-      // const link = document.createElement("a");
-      // link.href = fileObjectUrl;
-      // link.style.display = "none";
+      const link = document.createElement("a");
+      link.setAttribute("href", fileObjectUrl);
+      link.style.display = "none";
 
       // 다운로드 파일 이름을 추출하는 함수
 
@@ -105,17 +105,19 @@ const FileHandleOptions = () => {
       // link.download = "sample-file.xlsx";
 
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
-      // $download.current.append(link);
-      // document.body.appendChild(link);
 
-      setFileHref(fileObjectUrl);
-      setFileDownload(`${username}.zip`);
+      document.body.appendChild(link);
 
-      // link.click();
+      // setFileHref(fileObjectUrl);
+      // setFileDownload(`${username}.zip`);
+
+      link.setAttribute("download", `${username}.zip`);
+      link.click();
       // link.remove();
+      document.body.removeChild(link);
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
-      // window.URL.revokeObjectURL(fileObjectUrl);
+      window.URL.revokeObjectURL(fileObjectUrl);
       // setFileHref("#");
       // setFileDownload("#");
     });
@@ -130,7 +132,7 @@ const FileHandleOptions = () => {
             삭제
           </div>
           <div ref={$download} className={`${styles.item}`}>
-            <a
+            {/* <a
               href={fileHref}
               download={fileDownload}
               onClick={(e) => {
@@ -140,8 +142,9 @@ const FileHandleOptions = () => {
                 });
               }}
             >
-              다운로드
-            </a>
+              
+            </a> */}
+            다운로드
           </div>
           <div className={`${styles.item}`}>링크 생성</div>
         </>
