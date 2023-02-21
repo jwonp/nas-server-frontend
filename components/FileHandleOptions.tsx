@@ -74,6 +74,7 @@ const FileHandleOptions = () => {
       const fileObjectUrl = window.URL.createObjectURL(blob);
       console.log(fileObjectUrl);
       // blob 객체 URL을 설정할 링크를 만듭니다.
+
       const link = document.createElement("a");
       link.href = fileObjectUrl;
       link.style.display = "none";
@@ -95,7 +96,8 @@ const FileHandleOptions = () => {
       // link.download = "sample-file.xlsx";
 
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
-      document.body.appendChild(link);
+      $folderNameInput.current.appendChild(link);
+      // document.body.appendChild(link);
       link.click();
       link.remove();
 
