@@ -31,7 +31,7 @@ const Home = ({
 
   return (
     <div>
-      <div>
+      {/* <div>
         <h3>즐겨찾기</h3>
         <div>
           <a href="/test/authorizationview">test</a>
@@ -39,7 +39,7 @@ const Home = ({
       </div>
       <div>
         <h3>최근 열어본 파일</h3>
-      </div>
+      </div> */}
     </div>
   );
 };
