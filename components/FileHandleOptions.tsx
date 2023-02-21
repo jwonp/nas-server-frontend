@@ -108,7 +108,7 @@ const FileHandleOptions = () => {
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
 
       // document.body.appendChild(link);
-      $cancelBtn.current.appendChild(link);
+      $download.current.appendChild(link);
 
       // setFileHref(fileObjectUrl);
       // setFileDownload(`${username}.zip`);
