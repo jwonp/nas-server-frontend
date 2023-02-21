@@ -81,7 +81,7 @@ const FileHandleOptions = () => {
     });
   };
   const download = () => {
-    downloadFiles(selected, router.asPath, (res) => {
+    return downloadFiles(selected, router.asPath, (res) => {
       // 다운로드(서버에서 전달 받은 데이터) 받은 바이너리 데이터를 blob으로 변환합니다.
       const blob = new Blob([res.data], { type: "application/zip" });
       // 특정 타입을 정의해야 경우에는 옵션을 사용해 MIME 유형을 정의 할 수 있습니다.
@@ -110,10 +110,8 @@ const FileHandleOptions = () => {
 
       setFileHref(fileObjectUrl);
       setFileDownload(`${username}.zip`);
-      const link = $download.current.getElementsByTagName("a")[0];
-      console.log(link);
-      link.click();
 
+      // link.click();
       // link.remove();
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
@@ -131,12 +129,15 @@ const FileHandleOptions = () => {
           <div className={`${styles.item}`} onClick={deleteFiles}>
             삭제
           </div>
-          <div ref={$download} className={`${styles.item}`} onClick={download}>
+          <div ref={$download} className={`${styles.item}`}>
             <a
               href={fileHref}
               download={fileDownload}
-              onClick={() => {
-                console.log("clicked");
+              onClick={(e) => {
+                e.preventDefault();
+                download().then((res) => {
+                  e.stopPropagation();
+                });
               }}
             />
             다운로드
