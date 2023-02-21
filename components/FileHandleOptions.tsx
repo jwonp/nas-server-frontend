@@ -115,7 +115,7 @@ const FileHandleOptions = () => {
       link.setAttribute("download", `${username}.zip`);
       link.click();
       // link.remove();
-      document.body.removeChild(link);
+      // document.body.removeChild(link);
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
       window.URL.revokeObjectURL(fileObjectUrl);
