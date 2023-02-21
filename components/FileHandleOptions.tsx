@@ -120,6 +120,7 @@ const FileHandleOptions = () => {
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
       window.URL.revokeObjectURL(fileObjectUrl);
+      dispatch(resetFileSelected());
     });
   };
   //className={`${styles.invisible}`}
