@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { folderDataType } from "../public/static/types/folderDataType";
 import { remainingStorageSizeType } from "../public/static/types/remainingStorageSizeType";
+import { getUsername } from "../redux/features/menu";
 import {
   getSelected,
   resetFileSelected,
@@ -28,6 +29,7 @@ const FileHandleOptions = () => {
   const $cancelBtn = useRef<HTMLDivElement>(null);
   const selected = useAppSelector(getSelected);
   const dispatch = useAppDispatch();
+  const username = useAppSelector(getUsername);
   const extractDownloadFilename = (response) => {
     console.log(response);
     const disposition = response.headers["Content-Disposition"];
@@ -108,7 +110,7 @@ const FileHandleOptions = () => {
 
       const link = $download.current.getElementsByTagName("a")[0];
       setFileHref(fileObjectUrl);
-      setFileDownload(extractDownloadFilename(res));
+      setFileDownload(`${username}.zip`);
       link.click();
 
       // link.remove();
