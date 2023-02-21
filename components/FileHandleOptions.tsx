@@ -132,7 +132,7 @@ const FileHandleOptions = () => {
           <div className={`${styles.item}`} onClick={deleteFiles}>
             삭제
           </div>
-          <div ref={$download} className={`${styles.item}`}>
+          <div ref={$download} className={`${styles.item}`} onClick={download}>
             {/* <a
               href={fileHref}
               download={fileDownload}
