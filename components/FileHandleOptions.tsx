@@ -111,7 +111,8 @@ const FileHandleOptions = () => {
       setFileHref(fileObjectUrl);
       setFileDownload(`${username}.zip`);
       const link = $download.current.getElementsByTagName("a")[0];
-      link.click();
+      console.log(link);
+      // link.click();
 
       // link.remove();
 
