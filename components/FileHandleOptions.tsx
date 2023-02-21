@@ -20,6 +20,7 @@ import {
 } from "./tools/requests";
 const FileHandleOptions = () => {
   const router = useRouter();
+  const $download = useRef<HTMLDivElement>(null);
   const $folderNameInput = useRef<HTMLInputElement>(null);
   const $submitBtn = useRef<HTMLDivElement>(null);
   const $cancelBtn = useRef<HTMLDivElement>(null);
@@ -77,7 +78,7 @@ const FileHandleOptions = () => {
 
       const link = document.createElement("a");
       link.href = fileObjectUrl;
-      link.style.display = "none";
+      // link.style.display = "none";
 
       // 다운로드 파일 이름을 추출하는 함수
       const extractDownloadFilename = (response) => {
@@ -96,13 +97,13 @@ const FileHandleOptions = () => {
       // link.download = "sample-file.xlsx";
 
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
-      $folderNameInput.current.appendChild(link);
+      $download.current.appendChild(link);
       // document.body.appendChild(link);
-      link.click();
-      link.remove();
+      // link.click();
+      // link.remove();
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
-      window.URL.revokeObjectURL(fileObjectUrl);
+      // window.URL.revokeObjectURL(fileObjectUrl);
     });
   };
   return (
@@ -113,7 +114,7 @@ const FileHandleOptions = () => {
           <div className={`${styles.item}`} onClick={deleteFiles}>
             삭제
           </div>
-          <div className={`${styles.item}`} onClick={download}>
+          <div ref={$download} className={`${styles.item}`} onClick={download}>
             다운로드
           </div>
           <div className={`${styles.item}`}>링크 생성</div>
