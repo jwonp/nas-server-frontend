@@ -97,7 +97,7 @@ const FileHandleOptions = () => {
       // link.download = "sample-file.xlsx";
 
       // 링크를 body에 추가하고 강제로 click 이벤트를 발생시켜 파일 다운로드를 실행시킵니다.
-      $download.current.appendChild(link);
+      $download.current.append(link);
       // document.body.appendChild(link);
       // link.click();
       // link.remove();
