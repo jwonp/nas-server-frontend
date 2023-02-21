@@ -120,8 +120,6 @@ const FileHandleOptions = () => {
 
       // 다운로드가 끝난 리소스(객체 URL)를 해제합니다.
       window.URL.revokeObjectURL(fileObjectUrl);
-      // setFileHref("#");
-      // setFileDownload("#");
     });
   };
   //className={`${styles.invisible}`}
@@ -134,23 +132,10 @@ const FileHandleOptions = () => {
             삭제
           </div>
           <div className={`${styles.item}`} onClick={download}>
-            {/* <a
-              href={fileHref}
-              download={fileDownload}
-              onClick={(e) => {
-                e.preventDefault();
-                download().then((res) => {
-                  e.stopPropagation();
-                });
-              }}
-            >
-              
-            </a> */}
             다운로드
           </div>
-          <div ref={$download} className={`${styles.item}`}>
-            링크 생성
-          </div>
+          <div className={`${styles.item}`}>링크 생성</div>
+          <div className={`${styles.invisible}`} ref={$download}></div>
         </>
       ) : (
         <>
