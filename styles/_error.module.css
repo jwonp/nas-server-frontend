@@ -1,18 +1,21 @@
 .wrapper {
     width: 560px;
     height: 240px;
+    border-top: 1px solid #f7f7f7;
     border-bottom: 1px solid #f7f7f7;
     margin: 240px auto;
+    font-size: 32px;
 }
 
 .warning {
     text-align: center;
-    font: 36px;
+    padding: 30px 0;
 }
 
 .button {
     width: 360px;
+    padding: 30px 0;
     text-align: center;
     margin: 0 auto;
-    font: 32px;
+
 }
