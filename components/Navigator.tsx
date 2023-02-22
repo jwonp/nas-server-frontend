@@ -110,9 +110,19 @@ const Navigator = () => {
             </div>
           </div>
         ) : (
-          <Link href={"/login"}>
-            <div className={`${styles.title} `}>로그인</div>
-          </Link>
+          <div
+            className={`${styles.title} `}
+            onClick={() => {
+              router.push(
+                `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
+              );
+            }}
+          >
+            로그인
+          </div>
+          // <Link href={"/login"}>
+          //   <div className={`${styles.title} `}>로그인</div>
+          // </Link>
         )}
       </div>
     </div>
