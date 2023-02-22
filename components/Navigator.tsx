@@ -3,7 +3,7 @@ import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { vaildToken, logout, revokeAccessToken } from "./tools/requests";
+import { vaildToken, logout } from "./tools/requests";
 import { useEffect } from "react";
 import FileHandleOptions from "./FileHandleOptions";
 import { revokeDataType } from "../public/static/types/revokeDataType";
@@ -18,11 +18,9 @@ import {
 
 import { switchDrawer } from "../redux/features/drawerSwitch";
 import axios from "axios";
-import { RefreshExpiredToken } from "./tools/httpClient";
 
 const Navigator = () => {
   const router = useRouter();
-  // const [onFileOptions, setOnFileOptions] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
@@ -41,7 +39,13 @@ const Navigator = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
-  const refs = router.query.ref as string[];
+
+  useEffect(() => {
+    if (username == "" || username == undefined) {
+      router.push("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
 
   const visibleDrawer = () => {
     dispatch(switchDrawer());
@@ -64,37 +68,7 @@ const Navigator = () => {
   };
 
   const refresh = async () => {
-    // RefreshExpiredToken();
-    await axios.get("/api/refresh/refresh").then(async (res) => {
-      console.log(res.data);
-      // await axios.get(`/api/refresh/token/${res.data.refresh_token}`);
-    });
-    // await axios
-    //   .post(
-    //     "https://api.ikiningyou.com/users/o/refresh/",
-    //     {
-    //       "grant_type": "refresh_token",
-    //       "refresh_token": "&RefreshToken;",
-    //       "client_id": process.env.NEXT_PUBLIC_CLIENT_ID,
-    //       "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
-    //     },
-    //     {
-    //       headers: {
-    //         "Content-type": "application/x-www-form-urlencoded",
-    //         withCredentials: true,
-    //         "Access-Control-Allow-Origin": "https://api.ikiningyou.com",
-    //         "Access-Control-Allow-Credentials": true,
-    //       },
-    //     }
-    //   )
-    //   .then(async (res) => {
-    //     console.log(`new access token ${res.data.access_token} is received`);
-    //     window.localStorage.setItem("access_token", res.data.access_token);
-    //     await axios.get(`/api/refresh/${res.data.refresh_token}`);
-    //   })
-    //   .catch((error) => {
-    //     console.log("Fail to refresh the access token");
-    //   });
+    await axios.get("/api/refresh/refresh");
   };
   return (
     <div className={`${styles.wrapper}`}>
