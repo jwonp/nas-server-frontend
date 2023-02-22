@@ -40,13 +40,6 @@ const Navigator = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
-  useEffect(() => {
-    if (username == "" || username == undefined) {
-      router.push("/login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
-
   const visibleDrawer = () => {
     dispatch(switchDrawer());
   };

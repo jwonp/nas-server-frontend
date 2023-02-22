@@ -20,21 +20,28 @@ import FileBar from "../../components/FileBar";
 import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
+import { getUsername } from "../../redux/features/menu";
 
 const StoragePageByRef = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const fileList = useAppSelector(getFileList);
   const refs = router.query.ref as string[];
-
+  const username = useAppSelector(getUsername);
   const $areaDiv = useRef<HTMLDivElement>(null);
   const $fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    if (username == "" || username == undefined) {
+      router.push("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
+  useEffect(() => {
     const { ref } = router.query;
     let file_path = "";
     file_path = (ref as string[])?.join("&");
-    console.log("In [...ref] file_path is ", file_path);
+
     getFileListByPath(file_path, (res) => {
       if (res && res.data) dispatch(setFileList(res.data));
     });

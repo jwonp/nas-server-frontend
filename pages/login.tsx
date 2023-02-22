@@ -1,15 +1,18 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../styles/login.module.css";
 import { submitLogin as requestLogin } from "../components/tools/requests";
 import { loginDataType } from "../public/static/types/loginDataType";
+import { useAppSelector } from "../redux/hooks";
+import { getUsername } from "../redux/features/menu";
 const Login = () => {
   const router = useRouter();
   const $title = useRef<HTMLHeadingElement>(null);
   const $user_id = useRef<HTMLInputElement>(null);
   const $user_password = useRef<HTMLInputElement>(null);
+  const username = useAppSelector(getUsername);
   const submitLogin = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -29,7 +32,11 @@ const Login = () => {
       $title.current.classList.add(styles.fail);
     });
   };
-
+  useEffect(() => {
+    if (username !== undefined || username !== "") {
+      router.push("/storage/내_드라이브");
+    }
+  }, [username]);
   return (
     <div className={`${styles.wrapper}`}>
       <h1 ref={$title} className={`${styles.title}`}>
