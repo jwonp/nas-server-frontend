@@ -7,6 +7,9 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   async rewrites() {
+    return [];
+  },
+  async redirects() {
     return [
       //pages
       {
@@ -18,9 +21,6 @@ const nextConfig = {
         destination: "/",
       },
     ];
-  },
-  async redirects() {
-    return [];
   },
 };
 
