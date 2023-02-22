@@ -3,7 +3,7 @@ const Home = () => {
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.item}`}>환영합니다.</div>
-      <div className={`${styles.item}`}>좌측 상단의 로그인을 클릭하세요.</div>
+      <br />
       <div className={`${styles.item}`}>
         게스트 계정은 생성 제한이 있습니다.
       </div>
