@@ -14,9 +14,7 @@ const Home = ({
   useEffect(() => {
     if (router.isReady === true) {
       if (refresh_token !== "") {
-        setRefreshOnCookie(refresh_token, (res) => {
-          console.log(res.data);
-        });
+        setRefreshOnCookie(refresh_token, (res) => {});
       }
       if (access_token !== "") {
         window.localStorage.setItem("access_token", access_token);
@@ -28,19 +26,7 @@ const Home = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
-  return (
-    <div>
-      {/* <div>
-        <h3>즐겨찾기</h3>
-        <div>
-          <a href="/test/authorizationview">test</a>
-        </div>
-      </div>
-      <div>
-        <h3>최근 열어본 파일</h3>
-      </div> */}
-    </div>
-  );
+  return <div></div>;
 };
 export const getServerSideProps: GetServerSideProps<{
   access_token: string;

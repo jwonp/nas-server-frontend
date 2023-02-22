@@ -128,14 +128,14 @@ const FileHandleOptions = () => {
     <div className={`${styles.wrapper}`}>
       {selected.length > 0 ? (
         <>
-          <div className={`${styles.item}`}>이동</div>
+          {/* <div className={`${styles.item}`}>이동</div> */}
           <div className={`${styles.item}`} onClick={deleteFiles}>
             삭제
           </div>
           <div className={`${styles.item}`} onClick={download}>
             다운로드
           </div>
-          <div className={`${styles.item}`}>링크 생성</div>
+          {/* <div className={`${styles.item}`}>링크 생성</div> */}
           <div className={`${styles.invisible}`} ref={$download}></div>
         </>
       ) : (
