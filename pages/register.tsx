@@ -25,9 +25,10 @@ const Register = () => {
       if (typeof res.data === "number") {
         $title.current.innerText =
           "더 이상 계정을 생성할 수 없습니다. 관리자에게 문의하세요.";
+      } else {
+        router.push(auth_uri);
       }
     });
-    router.push(auth_uri);
   };
 
   return (
