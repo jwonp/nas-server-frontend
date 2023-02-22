@@ -2,7 +2,6 @@ import Image from "next/image";
 import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { vaildToken, logout } from "./tools/requests";
 import { useEffect } from "react";
 import FileHandleOptions from "./FileHandleOptions";

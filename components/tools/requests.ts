@@ -89,22 +89,22 @@ export const addFolder = async (
   );
 };
 
-export const getTokensByCode = async (
-  code: string | string[],
-  thenFunction: any
-) => {
-  SendRequest(
-    thenFunction,
-    `https://api.ikiningyou.com/login/`,
-    "POST",
-    { code: code },
-    []
-    // [
-    //   "Access-Control-Allow-Origin&sep;*",
-    //   "Access-Control-Allow-Methods&sep;GET,HEAD,OPTIONS,POST,PUT",
-    //   "Access-Control-Allow-Headers&sep;Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Methods",
-  );
-};
+// export const getTokensByCode = async (
+//   code: string | string[],
+//   thenFunction: any
+// ) => {
+//   SendRequest(
+//     thenFunction,
+//     `https://api.ikiningyou.com/login/`,
+//     "POST",
+//     { code: code },
+//     []
+// [
+//   "Access-Control-Allow-Origin&sep;*",
+//   "Access-Control-Allow-Methods&sep;GET,HEAD,OPTIONS,POST,PUT",
+//   "Access-Control-Allow-Headers&sep;Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Methods",
+//   );
+// };
 export const deleteSelectedFiles = async (
   fileList: string[],
   path: string,
