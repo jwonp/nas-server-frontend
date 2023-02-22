@@ -49,17 +49,17 @@ const Navigator = () => {
     const revokeData: revokeDataType = {
       token: window.localStorage.getItem("access_token"),
     };
-    logout(revokeData, async (res) => {
-      const token = window.localStorage.getItem("access_token");
-      await axios.get(`/api/revoke/${token}`).then((res) => {
-        if (res.status === 200) {
-          window.localStorage.removeItem("access_token");
-          dispatch(removeUsername());
-          router.push("https://api.ikiningyou.com/admin/logout/");
-        }
-      });
-      await axios.get("/api/revoke/refreshToken");
+    const token = window.localStorage.getItem("access_token");
+    await axios.get(`/api/revoke/${token}`).then((res) => {
+      if (res.status === 200) {
+        window.localStorage.removeItem("access_token");
+        dispatch(removeUsername());
+        router.push("https://api.ikiningyou.com/admin/logout/");
+      }
     });
+    await axios.get("/api/revoke/refreshToken");
+    // logout(revokeData, async (res) => {
+    // });
   };
 
   const refresh = async () => {
