@@ -35,7 +35,6 @@ const Navigator = () => {
   useEffect(() => {
     vaildToken(window.localStorage.getItem("access_token"), (res) => {
       if (!res) return;
-
       if (res.status !== 200) router.push("/login");
       dispatch(setUsername(res.data.name));
     });

@@ -4,6 +4,7 @@ import {
   addFiles,
   getFileListByPath,
   getRemainingStorageSize,
+  vaildToken,
 } from "../../components/tools/requests";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -20,7 +21,7 @@ import FileBar from "../../components/FileBar";
 import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
-import { getUsername } from "../../redux/features/menu";
+import { getUsername, setUsername } from "../../redux/features/menu";
 
 const StoragePageByRef = () => {
   const router = useRouter();
@@ -42,6 +43,15 @@ const StoragePageByRef = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
+
+  useEffect(() => {
+    vaildToken(window.localStorage.getItem("access_token"), (res) => {
+      if (!res) return;
+      if (res.status !== 200) router.push("/login");
+      dispatch(setUsername(res.data.name));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
 
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
