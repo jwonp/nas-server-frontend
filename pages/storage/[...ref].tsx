@@ -45,6 +45,7 @@ const StoragePageByRef = () => {
   }, [router.query]);
 
   useEffect(() => {
+    console.log(window.localStorage.getItem("access_token") === undefined);
     if (window.localStorage.getItem("access_token") === undefined) {
       router.push("/login");
     }
