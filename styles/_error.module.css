@@ -2,14 +2,17 @@
     width: 560px;
     height: 240px;
     border-bottom: 1px solid #f7f7f7;
-    margin: 0 auto;
+    margin: 240px auto;
 }
 
 .warning {
     text-align: center;
-    font: 24px;
+    font: 36px;
 }
 
 .button {
-    font: 18px;
+    width: 360px;
+    text-align: center;
+    margin: 0 auto;
+    font: 32px;
 }
