@@ -27,7 +27,7 @@ const Register = () => {
 
   return (
     <div className={`${styles.wrapper}`}>
-      <h2 className={`${styles.title}`}>회원가입</h2>
+      <div className={`${styles.title}`}>회원가입</div>
       <form>
         <div className={`${styles.input_wrapper}`}>
           <label htmlFor="user_id">아이디</label>
