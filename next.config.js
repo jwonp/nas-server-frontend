@@ -15,10 +15,12 @@ const nextConfig = {
       {
         source: "/storage",
         destination: "/storage/내_드라이브",
+        permanent: true,
       },
       {
         source: "/home",
         destination: "/",
+        permanent: true,
       },
     ];
   },
