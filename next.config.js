@@ -17,11 +17,11 @@ const nextConfig = {
         destination: "/storage/내_드라이브",
         permanent: true,
       },
-      {
-        source: "/home",
-        destination: "/",
-        permanent: true,
-      },
+      // {
+      //   source: "/home",
+      //   destination: "/",
+      //   permanent: true,
+      // },
     ];
   },
 };
