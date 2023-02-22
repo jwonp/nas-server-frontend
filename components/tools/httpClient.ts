@@ -51,16 +51,7 @@ export const SendRequest = async (
   })
     .then(thenFunction)
     .catch((error) => {
-      // if (error.response.status === 403) {
-      //   console.log(
-      //     `access token ${window.localStorage.getItem(
-      //       "access_token"
-      //     )} is expired`
-      //   );
-      RefreshExpiredToken();
-      // } else {
-      //   console.log("Fail to request");
-      // }
+      if (window.localStorage.getItem("access_token")) RefreshExpiredToken();
     });
 };
 
