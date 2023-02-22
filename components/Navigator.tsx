@@ -55,7 +55,8 @@ const Navigator = () => {
         if (res.status === 200) {
           window.localStorage.removeItem("access_token");
           dispatch(removeUsername());
-          router.push("/login");
+          router.push("https://api.ikiningyou.com/admin/logout/");
+          // router.push("/login");
         }
       });
     });
