@@ -45,13 +45,16 @@ const StoragePageByRef = () => {
   }, [router.query]);
 
   useEffect(() => {
+    if (window.localStorage.getItem("access_token") === undefined) {
+      router.push("/login");
+    }
     vaildToken(window.localStorage.getItem("access_token"), (res) => {
       if (!res) return;
       if (res.status !== 200) router.push("/login");
       dispatch(setUsername(res.data.name));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.asPath]);
+  }, [router.isReady]);
 
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
