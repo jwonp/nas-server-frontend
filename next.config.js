@@ -13,6 +13,10 @@ const nextConfig = {
         source: "/storage",
         destination: "/storage/내_드라이브",
       },
+      {
+        source: "/home",
+        destination: "/",
+      },
     ];
   },
   async redirects() {
