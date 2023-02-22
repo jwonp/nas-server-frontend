@@ -92,7 +92,7 @@ const StoragePageByRef = () => {
         className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
       >
         <div className={`${styles.historyContainer}`}>
-          {refs.length > 1 ? (
+          {refs?.length > 1 ? (
             <div className={`${styles.history}`}>
               <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
             </div>
