@@ -70,3 +70,8 @@
 .submit_btn:hover {
     cursor: pointer;
 }
+
+.warning {
+    color: red;
+    font-size: 18px;
+}
