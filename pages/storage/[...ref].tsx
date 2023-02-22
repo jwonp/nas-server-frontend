@@ -21,14 +21,13 @@ import FileBar from "../../components/FileBar";
 import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
-import { getUsername, setUsername } from "../../redux/features/menu";
+import { setUsername } from "../../redux/features/menu";
 
 const StoragePageByRef = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const fileList = useAppSelector(getFileList);
   const refs = router.query.ref as string[];
-  const username = useAppSelector(getUsername);
   const $areaDiv = useRef<HTMLDivElement>(null);
   const $fileInput = useRef<HTMLInputElement>(null);
 
