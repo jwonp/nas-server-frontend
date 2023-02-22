@@ -88,7 +88,7 @@ const Register = () => {
 
         <button
           className={`${styles.submit_btn}`}
-          onClick={() => {
+          onClick={(e) => {
             e.preventDefault();
             submit_register();
           }}
