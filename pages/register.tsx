@@ -20,9 +20,8 @@ const Register = () => {
       "user_last_name": $user_last_name.current.value,
       "user_first_name": $user_first_name.current.value,
     };
-    registUser(register_data, () => {
-      router.push(auth_uri);
-    });
+    registUser(register_data, (res) => {});
+    router.push(auth_uri);
   };
 
   return (
