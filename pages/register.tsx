@@ -7,6 +7,7 @@ import { userRegistType } from "../public/static/types/userRegistType";
 import styles from "../styles/register.module.css";
 const Register = () => {
   const router = useRouter();
+  const $title = useRef<HTMLDivElement>(null);
   const $user_id = useRef<HTMLInputElement>(null);
   const $user_password = useRef<HTMLInputElement>(null);
   const $user_email = useRef<HTMLInputElement>(null);
@@ -20,13 +21,20 @@ const Register = () => {
       "user_last_name": $user_last_name.current.value,
       "user_first_name": $user_first_name.current.value,
     };
-    registUser(register_data, (res) => {});
+    registUser(register_data, (res) => {
+      if (typeof res.data === "number") {
+        $title.current.innerText =
+          "더 이상 계정을 생성할 수 없습니다. 관리자에게 문의하세요.";
+      }
+    });
     router.push(auth_uri);
   };
 
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.title}`}>회원가입</div>
+      <div ref={$title} className={`${styles.title}`}>
+        회원가입
+      </div>
       <form>
         <div className={`${styles.input_wrapper}`}>
           <label htmlFor="user_id">아이디</label>
