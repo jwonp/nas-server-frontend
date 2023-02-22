@@ -32,12 +32,6 @@ const StoragePageByRef = () => {
   const $fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (username == "" || username == undefined) {
-      router.push("/login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
-  useEffect(() => {
     const { ref } = router.query;
     let file_path = "";
     file_path = (ref as string[])?.join("&");
@@ -48,7 +42,12 @@ const StoragePageByRef = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
-
+  useEffect(() => {
+    if (username == "" || username == undefined) {
+      router.push("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
     const formData = new FormData();
