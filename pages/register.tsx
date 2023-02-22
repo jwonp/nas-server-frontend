@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { registUser } from "../components/tools/requests";
+import { auth_uri } from "../public/static/Strings";
 import { userRegistType } from "../public/static/types/userRegistType";
 import styles from "../styles/register.module.css";
 const Register = () => {
@@ -20,9 +21,7 @@ const Register = () => {
       "user_first_name": $user_first_name.current.value,
     };
     registUser(register_data, () => {
-      router.push(
-        `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
-      );
+      router.push(auth_uri);
     });
   };
 

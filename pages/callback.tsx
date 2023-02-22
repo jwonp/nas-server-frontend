@@ -4,6 +4,7 @@ import axios from "axios";
 import qs from "qs";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { setRefreshOnCookie } from "../components/tools/requests";
+import { auth_uri } from "../public/static/Strings";
 
 const Callback = ({
   access_token,
@@ -20,9 +21,7 @@ const Callback = ({
         window.localStorage.setItem("access_token", access_token);
         router.push("/storage/내_드라이브");
       } else {
-        router.push(
-          `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
-        );
+        router.push(auth_uri);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<{
     "client_secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
     "code": context.query.code,
     "code_verifier": process.env.NEXT_PUBLIC_CODE_VERIFIER,
-    "redirect_uri": "https://www.ikiningyou.com/",
+    "redirect_uri": "https://www.ikiningyou.com/callback/",
     "grant_type": "authorization_code",
   };
   const header = {

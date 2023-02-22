@@ -22,6 +22,7 @@ import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
 import { setUsername } from "../../redux/features/menu";
+import { auth_uri } from "../../public/static/Strings";
 
 const StoragePageByRef = () => {
   const router = useRouter();
@@ -45,16 +46,11 @@ const StoragePageByRef = () => {
 
   useEffect(() => {
     if (window.localStorage.getItem("access_token") === null) {
-      router.push(
-        `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
-      );
+      router.push(auth_uri);
     }
     vaildToken(window.localStorage.getItem("access_token"), (res) => {
       if (!res) return;
-      if (res.status !== 200)
-        router.push(
-          `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
-        );
+      if (res.status !== 200) router.push(auth_uri);
       dispatch(setUsername(res.data.name));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
