@@ -20,7 +20,9 @@ const Home = ({
         window.localStorage.setItem("access_token", access_token);
         router.push("/storage/내_드라이브");
       } else {
-        router.push("/login");
+        router.push(
+          `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
+        );
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

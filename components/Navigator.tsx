@@ -35,7 +35,10 @@ const Navigator = () => {
   useEffect(() => {
     vaildToken(window.localStorage.getItem("access_token"), (res) => {
       if (!res) return;
-      if (res.status !== 200) router.push("/login");
+      if (res.status !== 200)
+        router.push(
+          `https://api.ikiningyou.com/users/o/authorize/?response_type=code&code_challenge=${process.env.NEXT_PUBLIC_CODE_CHALLENGE}&code_challenge_method=S256&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=https://www.ikiningyou.com/`
+        );
       dispatch(setUsername(res.data.name));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,7 +59,6 @@ const Navigator = () => {
           window.localStorage.removeItem("access_token");
           dispatch(removeUsername());
           router.push("https://api.ikiningyou.com/admin/logout/");
-          // router.push("/login");
         }
       });
     });
@@ -121,9 +123,6 @@ const Navigator = () => {
           >
             로그인
           </div>
-          // <Link href={"/login"}>
-          //   <div className={`${styles.title} `}>로그인</div>
-          // </Link>
         )}
       </div>
     </div>
