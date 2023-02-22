@@ -34,7 +34,7 @@ const Register = () => {
             ref={$user_id}
             id="user_id"
             type={"text"}
-            defaultValue="prodge"
+            // defaultValue="prodge"
           />
         </div>
         <div className={`${styles.input_wrapper}`}>
@@ -43,7 +43,7 @@ const Register = () => {
             ref={$user_password}
             id="user_password"
             type={"password"}
-            defaultValue="password"
+            // defaultValue="password"
           />
         </div>
         <div className={`${styles.input_wrapper}`}>
@@ -52,7 +52,7 @@ const Register = () => {
             ref={$user_email}
             id="user_email"
             type={"email"}
-            defaultValue="prodge@gmail.com"
+            // defaultValue="prodge@gmail.com"
           />
         </div>
         <div className={`${styles.name_wrapper}`}>
@@ -62,7 +62,7 @@ const Register = () => {
               ref={$user_last_name}
               id="user_last_name"
               type={"text"}
-              defaultValue="joowon"
+              // defaultValue="joowon"
             />
           </span>
           <span className={`${styles.input_wrapper}`}>
@@ -71,7 +71,7 @@ const Register = () => {
               ref={$user_first_name}
               id="user_first_name"
               type={"text"}
-              defaultValue="park"
+              // defaultValue="park"
             />
           </span>
         </div>
