@@ -32,11 +32,7 @@ const Login = () => {
       $title.current.classList.add(styles.fail);
     });
   };
-  useEffect(() => {
-    if (username !== undefined || username !== "") {
-      router.push("/storage/내_드라이브");
-    }
-  }, [username]);
+
   return (
     <div className={`${styles.wrapper}`}>
       <h1 ref={$title} className={`${styles.title}`}>
