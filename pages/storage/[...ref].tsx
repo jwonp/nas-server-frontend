@@ -92,6 +92,9 @@ const StoragePageByRef = () => {
         className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
       >
         <div className={`${styles.historyContainer}`}>
+          <div className={`${styles.history}`}>
+            <Link href={`/storage/내_드라이브`}>{"내 드라이브"}</Link>
+          </div>
           {refs?.map((value, index) => (
             <div key={index} className={`${styles.history}`}>
               <Link href={`/storage/${getHistory(refs, index)}/`}>{value}</Link>
