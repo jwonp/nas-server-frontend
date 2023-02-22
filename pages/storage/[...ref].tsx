@@ -42,12 +42,7 @@ const StoragePageByRef = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
-  useEffect(() => {
-    if (username == "" || username == undefined) {
-      router.push("/login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
+
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
     const formData = new FormData();

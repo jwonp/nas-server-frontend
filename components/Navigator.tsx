@@ -35,6 +35,7 @@ const Navigator = () => {
   useEffect(() => {
     vaildToken(window.localStorage.getItem("access_token"), (res) => {
       if (!res) return;
+      if (res.statusCode !== 200) router.push("/login");
       dispatch(setUsername(res.data.name));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
