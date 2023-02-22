@@ -21,7 +21,7 @@ const Home = ({
       if (access_token !== "") {
         console.log(access_token, "and", refresh_token);
         window.localStorage.setItem("access_token", access_token);
-        router.push("/storage");
+        router.push("/storage/내_드라이브");
       } else {
         router.push("/login");
       }
