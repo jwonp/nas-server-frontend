@@ -22,7 +22,7 @@ import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
 import { setUsername } from "../../redux/features/menu";
-import { auth_uri } from "../../public/static/Strings";
+import { auth_uri, ROOT_REF_NAME } from "../../public/static/Strings";
 
 const StoragePageByRef = () => {
   const router = useRouter();
@@ -93,7 +93,7 @@ const StoragePageByRef = () => {
       >
         <div className={`${styles.historyContainer}`}>
           <div className={`${styles.history}`}>
-            <Link href={`/storage/내_드라이브`}>{"내 드라이브"}</Link>
+            <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
           </div>
           {refs?.map((value, index) => (
             <div key={index} className={`${styles.history}`}>

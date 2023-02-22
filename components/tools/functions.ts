@@ -1,4 +1,4 @@
-import { FileSizeUnit } from "../../public/static/Strings";
+import { FileSizeUnit, ROOT_REF_NAME } from "../../public/static/Strings";
 import { convertedByteType } from "../../public/static/types/convertedByteType";
 
 const GB_DIVIDER = 1000 * 1000 * 1000;
@@ -59,13 +59,14 @@ export const isFolder = (name: string) => {
 
 export const getFolderPathByRef = (ref: string[]) => {
   if (ref) {
-    const filtered_ref = ref.filter((value) => value !== "내_드라이브");
+    const filtered_ref = ref.filter((value) => value !== ROOT_REF_NAME);
     if (filtered_ref.length === 0) return "";
     return filtered_ref.join("/") + "/";
   }
 };
 
 export const getHistory = (list: string[], target: number) => {
+  if (list[0] === ROOT_REF_NAME) return [];
   return list.filter((value, index) => index <= target).join("/");
 };
 
