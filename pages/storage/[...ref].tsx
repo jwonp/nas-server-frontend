@@ -51,7 +51,7 @@ const StoragePageByRef = () => {
       dispatch(setUsername(res.data.name));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [router.asPath]);
 
   const uploadFiles = async () => {
     const files = $fileInput.current.files;
