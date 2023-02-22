@@ -61,6 +61,7 @@ const Navigator = () => {
           router.push("https://api.ikiningyou.com/admin/logout/");
         }
       });
+      await axios.get("/api/revoke/refreshToken");
     });
   };
 

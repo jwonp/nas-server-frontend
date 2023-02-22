@@ -1,13 +1,13 @@
 import axios from "axios";
-import { resolve4 } from "dns/promises";
 import type { NextApiRequest, NextApiResponse } from "next";
 import qs from "qs";
-import { RefreshExpiredToken } from "../../../components/tools/httpClient";
 
 export default async function refreshTokenHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.cookies.refresh === null || req.cookies.refresh === "")
+    res.status(400);
   await axios
     .post(
       "https://api.ikiningyou.com/users/o/token/",
