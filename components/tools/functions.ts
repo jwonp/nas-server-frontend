@@ -66,8 +66,6 @@ export const getFolderPathByRef = (ref: string[]) => {
 };
 
 export const getHistory = (list: string[], target: number) => {
-  console.log(list);
-  if (list[0] === ROOT_REF_NAME) return [];
   return list.filter((value, index) => index <= target).join("/");
 };
 

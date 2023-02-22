@@ -92,9 +92,13 @@ const StoragePageByRef = () => {
         className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
       >
         <div className={`${styles.historyContainer}`}>
-          <div className={`${styles.history}`}>
-            <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
-          </div>
+          {refs.length > 1 ? (
+            <div className={`${styles.history}`}>
+              <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
+            </div>
+          ) : (
+            <></>
+          )}
           {refs?.map((value, index) => (
             <div key={index} className={`${styles.history}`}>
               <Link href={`/storage/${getHistory(refs, index)}/`}>{value}</Link>
