@@ -1,10 +1,16 @@
+import Link from "next/link";
+import styles from "../styles/_error.module.css";
 function Error({ statusCode }) {
   return (
-    <p>
-      {statusCode
-        ? `An error ${statusCode} occurred on server`
-        : "An error occurred on client"}
-    </p>
+    <div className={`${styles.wrapper}`}>
+      <div className={`${styles.warning}`}>
+        해당 요청을 처리할 수 없습니다.
+        {statusCode ? `  Error ${statusCode}` : ""}
+      </div>
+      <div>
+        <Link href={"/storage/내_드라이브"}>메인으로 돌아가기</Link>
+      </div>
+    </div>
   );
 }
 
