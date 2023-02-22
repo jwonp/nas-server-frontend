@@ -81,7 +81,9 @@ const StoragePageByRef = () => {
 
   return (
     <>
-      <div className={`${styles.title}  ${styles.left} ${styles.sticky}`}>
+      <div
+        className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
+      >
         <div className={`${styles.historyContainer}`}>
           {refs?.map((value, index) => (
             <div key={index} className={`${styles.history}`}>
