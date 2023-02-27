@@ -11,7 +11,7 @@ const KEY = {
 
 export type KEY = typeof KEY[keyof typeof KEY];
 const DB = () => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const getData = async (key: KEY) => {
     await axios
       .post(
