@@ -12,7 +12,6 @@ import { getFileList, setFileList } from "../../redux/features/selectedFiles";
 import {
   convertByteByUnit,
   convertByteToUpper,
-  getFolderName,
   getHistory,
   isFolder,
 } from "../../components/tools/functions";
@@ -135,12 +134,7 @@ const StoragePageByRef = () => {
           <div className={`${styles.content_row}`}>
             {fileList.map((value, index) => {
               if (isFolder(value.file_name))
-                return (
-                  <FolderBar
-                    key={index}
-                    name={getFolderName(value.file_name)}
-                  />
-                );
+                return <FolderBar key={index} name={value.file_name} />;
               return <FileBar key={index} data={value} />;
             })}
           </div>
