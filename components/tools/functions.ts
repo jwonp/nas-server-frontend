@@ -66,7 +66,10 @@ export const getFolderPathByRef = (ref: string[]) => {
 };
 
 export const getHistory = (list: string[], target: number) => {
-  return list.filter((value, index) => index <= target).join("/");
+  return list
+    .filter((value, index) => index <= target)
+    .join("/")
+    .replaceAll("folder:", "");
 };
 
 // export const getValidateTokenURL = () => {};
