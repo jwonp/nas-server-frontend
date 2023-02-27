@@ -68,7 +68,7 @@ const DB = () => {
       <br />
       <div className={`${styles.data_wrapper}`}>
         <div className={`${styles.keys_wrapper}`}>
-          {Object.keys(data).map((value, index) => {
+          {Object.keys(data[0]).map((value, index) => {
             return (
               <div key={index} className={`${styles.keys_item}`}>
                 {value}
