@@ -12,6 +12,7 @@ import { getFileList, setFileList } from "../../redux/features/selectedFiles";
 import {
   convertByteByUnit,
   convertByteToUpper,
+  getFolderName,
   getHistory,
   isFolder,
 } from "../../components/tools/functions";
@@ -100,7 +101,9 @@ const StoragePageByRef = () => {
           )}
           {refs?.map((value, index) => (
             <div key={index} className={`${styles.history}`}>
-              <Link href={`/storage/${getHistory(refs, index)}/`}>{value}</Link>
+              <Link href={`/storage/${getHistory(refs, index)}/`}>
+                {getFolderName(value)}
+              </Link>
             </div>
           ))}
         </div>
