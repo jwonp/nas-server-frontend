@@ -61,7 +61,7 @@ export const getFolderPathByRef = (ref: string[]) => {
   if (ref) {
     const filtered_ref = ref.filter((value) => value !== ROOT_REF_NAME);
     if (filtered_ref.length === 0) return "";
-    return filtered_ref.join("/") + "/";
+    return filtered_ref.join("/").replaceAll("folder:", "") + "/";
   }
 };
 

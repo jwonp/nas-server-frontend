@@ -16,7 +16,7 @@ const FolderBar = ({ name }: { name: string }) => {
   const routePath = useMemo(() => {
     return `/storage/${getFolderPathByRef(
       router.query?.ref as string[]
-    )}${name}/`;
+    )}${getFolderName(name)}/`;
   }, [name, router.query?.ref]);
   const dispatch = useAppDispatch();
   const selected = useAppSelector(getSelected);
