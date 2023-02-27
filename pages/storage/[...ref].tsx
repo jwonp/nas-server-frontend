@@ -1,5 +1,5 @@
 import styles from "../../styles/StoragePage.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   addFiles,
   getFileListByPath,
@@ -31,7 +31,6 @@ const StoragePageByRef = () => {
   const refs = router.query.ref as string[];
   const $areaDiv = useRef<HTMLDivElement>(null);
   const $fileInput = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     const { ref } = router.query;
     let file_path = "";
