@@ -25,7 +25,7 @@ const FolderBar = ({ name }: { name: string }) => {
   }, [name, selected]);
   return (
     <div
-      className={`${styles.folderLink}`}
+      className={`${styles.folderLink}  ${isSelected ? styles.selected : ""}`}
       onClick={() => {
         if (isSelected) {
           dispatch(removeFileSelected(name));
