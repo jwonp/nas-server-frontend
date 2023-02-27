@@ -14,8 +14,6 @@
 }
 
 .data_wrapper {
-    display: flex;
-    justify-content: space-between;
     margin: 30px auto;
     width: 95%;
     height: 80px;
