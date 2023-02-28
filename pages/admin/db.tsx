@@ -41,6 +41,7 @@ const DB = () => {
       });
   };
   useEffect(() => {
+    console.log(GRID_COLS[key]);
     getData(key);
   }, [key]);
   return (
