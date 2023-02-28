@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
+
 import styles from "../../styles/db.module.css";
 
 const KEY = {
@@ -17,14 +19,26 @@ const GRID_COLS = {
 export type KEY = typeof KEY[keyof typeof KEY];
 
 const DB = () => {
+  const router = useRouter();
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
   const [selected, setSelected] = useState<any[]>([]);
-
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
-
+  const checkAdmin = async () => {
+    await axios
+      .get("https://api.ikiningyou.com/users/checkadmin/", {
+        headers: {
+          "Authorization": `Bearer ${window.localStorage.getItem(
+            "access_token"
+          )}`,
+        },
+      })
+      .then((res) => {
+        if (res.status !== 200) router.push("/stoarge/냬_드라이브");
+      });
+  };
   const getData = async (key: KEY) => {
     setSelected([]);
     await axios
@@ -67,6 +81,10 @@ const DB = () => {
         else setData(data);
       });
   };
+  useEffect(() => {
+    checkAdmin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     getData(key);
   }, [key]);
