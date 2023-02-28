@@ -30,6 +30,7 @@ const DB = () => {
     await axios
       .get("https://api.ikiningyou.com/users/checkadmin/")
       .then((res) => {
+        console.log(res);
         if (res.status !== 200) router.push("/stoarge/냬_드라이브");
       });
   };
