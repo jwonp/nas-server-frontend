@@ -19,6 +19,7 @@ export type KEY = typeof KEY[keyof typeof KEY];
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
+
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
@@ -41,7 +42,8 @@ const DB = () => {
       });
   };
   useEffect(() => {
-    console.log(GRID_COLS[key]);
+    console.log(key);
+    console.log(GRID_COLS[key.toString()]);
     getData(key);
   }, [key]);
   return (
