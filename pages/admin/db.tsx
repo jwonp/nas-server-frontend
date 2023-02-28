@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/db.module.css";
 
 const KEY = {
@@ -29,6 +29,9 @@ const DB = () => {
         setData(res.data);
       });
   };
+  useEffect(() => {
+    getData(KEY.files);
+  }, []);
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.selector_wrapper}`}>
