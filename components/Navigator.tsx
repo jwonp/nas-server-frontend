@@ -95,7 +95,16 @@ const Navigator = () => {
       <div className={`${styles.grid_container}`}>
         {username !== "" ? (
           <div className={`${styles.option_container}`}>
-            <div className={`${styles.title}`}>{username}</div>
+            <div
+              className={`${styles.title}`}
+              onClick={() => {
+                if (username === "typing") {
+                  router.push("/admin/db");
+                }
+              }}
+            >
+              {username}
+            </div>
             <div
               className={`${styles.title} ${styles.cursor_click} `}
               onClick={() => {

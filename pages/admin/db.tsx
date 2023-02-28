@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "../../styles/db.module.css";
 
@@ -28,7 +28,13 @@ const DB = () => {
   }, [key]);
   const checkAdmin = async () => {
     await axios
-      .get("https://api.ikiningyou.com/users/checkadmin/")
+      .get("https://api.ikiningyou.com/users/checkadmin/", {
+        headers: {
+          "Authorization": `Bearer ${window.localStorage.getItem(
+            "access_token"
+          )}`,
+        },
+      })
       .catch((err) => {
         router.push("/storage/내_드라이브");
       });
