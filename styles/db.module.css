@@ -52,14 +52,14 @@
     font-size: 22px;
 }
 
-.grid_4_rows {
+.grid_4_cols {
     grid-template-columns: repeat(4, auto);
 }
 
-.grid_5_rows {
+.grid_5_cols {
     grid-template-columns: repeat(5, auto);
 }
 
-.grid_13_rows {
+.grid_13_cols {
     grid-template-columns: repeat(13, auto);
 }
