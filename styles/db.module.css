@@ -10,10 +10,11 @@
     width: 100%;
     height: 120px;
     font-size: 32px;
+    border: 1px solid #F7F7F7;
 }
 
 .selector_item {
-    margin: 0 8px;
+    margin-right: 0 8px;
 }
 
 .data_wrapper {
