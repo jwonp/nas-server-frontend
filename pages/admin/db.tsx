@@ -19,13 +19,13 @@ export type KEY = typeof KEY[keyof typeof KEY];
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
-  const $selected = useRef<any[]>([]);
+  const [selected, setSelected] = useState<any[]>([]);
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
 
   const getData = async (key: KEY) => {
-    $selected.current = [];
+    setSelected([]);
     await axios
       .post(
         "https://api.ikiningyou.com/users/data/",
@@ -84,12 +84,12 @@ const DB = () => {
         </div>
         <div
           className={`${styles.action_bar} ${
-            $selected.current.length > 0 ? "" : styles.hidden
+            selected.length > 0 ? "" : styles.hidden
           }`}
         >
           <div
             onClick={() => {
-              console.log($selected);
+              console.log(selected);
             }}
           >
             삭제
@@ -114,12 +114,14 @@ const DB = () => {
                 key={idx}
                 className={`${styles.values_row} ${grid}`}
                 onClick={(e) => {
-                  if ($selected.current.includes(object)) {
-                    $selected.current.push(object);
+                  if (selected.includes(object)) {
+                    setSelected([...selected, object]);
                   } else {
-                    $selected.current = $selected.current.filter((item) => {
-                      return item != object;
-                    });
+                    setSelected(
+                      selected.filter((item) => {
+                        return item != object;
+                      })
+                    );
                   }
                   (e.currentTarget as HTMLDivElement).classList.toggle(
                     styles.selected
