@@ -20,6 +20,9 @@ const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
   const [selected, setSelected] = useState<any[]>([]);
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
