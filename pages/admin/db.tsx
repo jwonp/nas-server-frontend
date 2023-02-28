@@ -28,13 +28,7 @@ const DB = () => {
   }, [key]);
   const checkAdmin = async () => {
     await axios
-      .get("https://api.ikiningyou.com/users/checkadmin/", {
-        headers: {
-          "Authorization": `Bearer ${window.localStorage.getItem(
-            "access_token"
-          )}`,
-        },
-      })
+      .get("https://api.ikiningyou.com/users/checkadmin/")
       .then((res) => {
         if (res.status !== 200) router.push("/stoarge/냬_드라이브");
       });
