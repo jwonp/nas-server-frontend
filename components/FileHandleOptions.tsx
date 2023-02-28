@@ -31,20 +31,8 @@ const FileHandleOptions = () => {
   const selected = useAppSelector(getSelected);
   const dispatch = useAppDispatch();
   const username = useAppSelector(getUsername);
-  const extractDownloadFilename = (response) => {
-    console.log(response);
-    const disposition = response.headers["Content-Disposition"];
-    console.log(disposition);
-    const fileName = decodeURI(
-      disposition
-        .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
-        .replace(/['"]/g, "")
-    );
-    console.log(fileName);
-    return fileName;
-  };
   const deleteFiles = () => {
-    deleteSelectedFiles(selected, router.asPath, (res) => {
+    deleteSelectedFiles(selected, router.asPath, () => {
       dispatch(resetFileSelected());
       const { ref } = router.query;
       let file_path = "";
@@ -72,7 +60,7 @@ const FileHandleOptions = () => {
       path: path,
       folder_name: $folderNameInput.current.value,
     };
-    addFolder(folderData, (res) => {
+    addFolder(folderData, () => {
       const { ref } = router.query;
       let file_path = "";
       file_path = (ref as string[])?.join("&");
@@ -90,7 +78,7 @@ const FileHandleOptions = () => {
 
       // blob을 사용해 객체 URL을 생성합니다.
       const fileObjectUrl = window.URL.createObjectURL(blob);
-      // console.log(fileObjectUrl);
+
       // blob 객체 URL을 설정할 링크를 만듭니다.
 
       const link = document.createElement("a");

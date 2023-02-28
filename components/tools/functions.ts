@@ -70,7 +70,6 @@ export const getHistory = (list: string[], target: number) => {
     .filter((value, index) => index <= target)
     .join("/")
     .replaceAll("folder:", "");
-  console.log(history);
   return history;
 };
 

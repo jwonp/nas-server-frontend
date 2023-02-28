@@ -46,9 +46,6 @@ const Navigator = () => {
   };
 
   const revokeToken = async () => {
-    const revokeData: revokeDataType = {
-      token: window.localStorage.getItem("access_token"),
-    };
     const token = window.localStorage.getItem("access_token");
     await axios.get(`/api/revoke/${token}`).then((res) => {
       if (res.status === 200) {
@@ -58,8 +55,6 @@ const Navigator = () => {
       }
     });
     await axios.get("/api/revoke/refreshToken");
-    // logout(revokeData, async (res) => {
-    // });
   };
 
   const refresh = async () => {
