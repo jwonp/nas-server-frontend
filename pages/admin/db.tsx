@@ -43,7 +43,7 @@ const DB = () => {
   };
   useEffect(() => {
     console.log(key);
-    console.log(GRID_COLS[key.toString()]);
+    console.log(GRID_COLS["files"]);
     getData(key);
   }, [key]);
   return (
