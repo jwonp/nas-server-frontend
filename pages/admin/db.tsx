@@ -118,13 +118,13 @@ const DB = () => {
                 className={`${styles.values_row} ${grid}`}
                 onClick={(e) => {
                   if (selected.includes(object)) {
-                    setSelected([...selected, object]);
-                  } else {
                     setSelected(
                       selected.filter((item) => {
                         return item != object;
                       })
                     );
+                  } else {
+                    setSelected([...selected, object]);
                   }
                   (e.currentTarget as HTMLDivElement).classList.toggle(
                     styles.selected
