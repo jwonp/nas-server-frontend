@@ -22,7 +22,6 @@
 .data_wrapper {
     margin: 30px auto;
     width: 95%;
-    height: 80px;
     font-size: 32px;
     overflow-x: scroll;
     -ms-overflow-style: none;
