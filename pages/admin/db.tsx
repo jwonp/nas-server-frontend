@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "../../styles/db.module.css";
 
 const KEY = {
   files: "files",
   users: "users",
   folders: "folders",
-  storages: "stoarages",
+  storages: "storages",
 } as const;
 const GRID_COLS = {
   "files": styles.grid_5_cols,
@@ -19,12 +19,13 @@ export type KEY = typeof KEY[keyof typeof KEY];
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
-
+  const $selected = useRef<any[]>([]);
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
 
   const getData = async (key: KEY) => {
+    $selected.current = [];
     await axios
       .post(
         "https://api.ikiningyou.com/users/data/",
@@ -46,38 +47,49 @@ const DB = () => {
   }, [key]);
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.selector_wrapper} ${styles.grid_4_cols}`}>
-        <div
-          className={`${styles.selector_item}`}
-          onClick={() => {
-            setKey(KEY.files);
-          }}
-        >
-          files
+      <div className={`${styles.toolbar}`}>
+        <div className={`${styles.selector_wrapper} ${styles.grid_4_cols}`}>
+          <div
+            className={`${styles.selector_item}`}
+            onClick={() => {
+              setKey(KEY.files);
+            }}
+          >
+            files
+          </div>
+          <div
+            className={`${styles.selector_item}`}
+            onClick={() => {
+              setKey(KEY.users);
+            }}
+          >
+            users
+          </div>
+          <div
+            className={`${styles.selector_item}`}
+            onClick={() => {
+              setKey(KEY.folders);
+            }}
+          >
+            folders
+          </div>
+          <div
+            className={`${styles.selector_item}`}
+            onClick={() => {
+              setKey(KEY.storages);
+            }}
+          >
+            stoarges
+          </div>
         </div>
-        <div
-          className={`${styles.selector_item}`}
-          onClick={() => {
-            setKey(KEY.users);
-          }}
-        >
-          users
-        </div>
-        <div
-          className={`${styles.selector_item}`}
-          onClick={() => {
-            setKey(KEY.folders);
-          }}
-        >
-          folders
-        </div>
-        <div
-          className={`${styles.selector_item}`}
-          onClick={() => {
-            setKey(KEY.storages);
-          }}
-        >
-          stoarges
+        <div className={`${styles.action_bar} ${styles.hidden}`}>
+          <div
+            onClick={() => {
+              console.log($selected);
+            }}
+          >
+            삭제
+          </div>
         </div>
       </div>
       <br />
@@ -94,7 +106,22 @@ const DB = () => {
         <div className={`${styles.values_wrapper}`}>
           {data.map((object, idx) => {
             return (
-              <div key={idx} className={`${styles.values_row} ${grid}`}>
+              <div
+                key={idx}
+                className={`${styles.values_row} ${grid}`}
+                onClick={(e) => {
+                  if ($selected.current.includes(object)) {
+                    $selected.current.push(object);
+                  } else {
+                    $selected.current = $selected.current.filter((item) => {
+                      return item != object;
+                    });
+                  }
+                  (e.target as HTMLDivElement).classList.toggle(
+                    styles.selected
+                  );
+                }}
+              >
                 {Object.values(object).map((value: any, index) => {
                   return (
                     <div key={index} className={`${styles.values_item}`}>

@@ -5,12 +5,18 @@
 
 }
 
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action_bar {}
 
 .selector_wrapper {
     display: grid;
-    width: 100%;
+    width: 30%;
     padding: 12px;
-    font-size: 32px;
+    font-size: 26px;
     border: 1px solid #F7F7F7;
 
 }
@@ -100,4 +106,12 @@
 
 .grid_13_cols {
     grid-template-columns: repeat(13, 1fr);
+}
+
+.hidden {
+    display: none;
+}
+
+.selected {
+    color: #6D9886;
 }
