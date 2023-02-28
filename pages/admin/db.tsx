@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "../../styles/db.module.css";
 
 const KEY = {
@@ -8,10 +8,21 @@ const KEY = {
   folders: "folders",
   storages: "stoarages",
 } as const;
-
+const GRID_COLS = {
+  files: styles.grid_5_cols,
+  users: styles.grid_13_cols,
+  folders: styles.grid_5_cols,
+  storages: styles.grid_4_cols,
+};
 export type KEY = typeof KEY[keyof typeof KEY];
+export type GRID_COLS = typeof GRID_COLS[keyof typeof GRID_COLS];
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
+  const [key, setKey] = useState<KEY>(KEY.files);
+  const grid_cols = useMemo(() => {
+    return GRID_COLS[key];
+  }, [key]);
+
   const getData = async (key: KEY) => {
     await axios
       .post(
@@ -30,15 +41,15 @@ const DB = () => {
       });
   };
   useEffect(() => {
-    getData(KEY.files);
-  }, []);
+    getData(key);
+  }, [key]);
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.selector_wrapper}`}>
+      <div className={`${styles.selector_wrapper} ${styles.grid_4_rows}`}>
         <div
           className={`${styles.selector_item}`}
           onClick={() => {
-            getData(KEY.files);
+            setKey(KEY.files);
           }}
         >
           files
@@ -46,7 +57,7 @@ const DB = () => {
         <div
           className={`${styles.selector_item}`}
           onClick={() => {
-            getData(KEY.users);
+            setKey(KEY.users);
           }}
         >
           users
@@ -54,7 +65,7 @@ const DB = () => {
         <div
           className={`${styles.selector_item}`}
           onClick={() => {
-            getData(KEY.folders);
+            setKey(KEY.folders);
           }}
         >
           folders
@@ -62,7 +73,7 @@ const DB = () => {
         <div
           className={`${styles.selector_item}`}
           onClick={() => {
-            getData(KEY.storages);
+            setKey(KEY.storages);
           }}
         >
           stoarges
@@ -70,7 +81,7 @@ const DB = () => {
       </div>
       <br />
       <div className={`${styles.data_wrapper}`}>
-        <div className={`${styles.keys_wrapper}`}>
+        <div className={`${styles.keys_wrapper} ${grid_cols}`}>
           {Object.keys(data[0]).map((value, index) => {
             return (
               <div key={index} className={`${styles.keys_item}`}>
@@ -82,7 +93,7 @@ const DB = () => {
         <div className={`${styles.values_wrapper}`}>
           {data.map((object, idx) => {
             return (
-              <div key={idx} className={`${styles.values_row}`}>
+              <div key={idx} className={`${styles.values_row} ${grid_cols}`}>
                 {Object.values(object).map((value: any, index) => {
                   return (
                     <div key={index} className={`${styles.values_item}`}>

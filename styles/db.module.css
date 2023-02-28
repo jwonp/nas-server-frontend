@@ -6,15 +6,15 @@
 
 
 .selector_wrapper {
-    display: flex;
+    display: grid;
     width: 100%;
-    height: 120px;
+    padding: 12px;
     font-size: 32px;
     border: 1px solid #F7F7F7;
 }
 
 .selector_item {
-    margin-right: 0 8px;
+    margin-right: 12px;
 }
 
 .data_wrapper {
@@ -26,9 +26,8 @@
 
 .keys_wrapper {
     width: 100%;
-    display: flex;
+    display: grid;
     margin-bottom: 6px;
-    justify-content: space-between;
     border-bottom: 2px solid #F7F7F7;
 }
 
@@ -42,12 +41,23 @@
 }
 
 .values_row {
-    display: flex;
+    display: grid;
     border-bottom: 1px solid #F7F7F7;
     margin-bottom: 5px;
-    justify-content: space-between;
 }
 
 .values_item {
     font-size: 22px;
+}
+
+.grid_4_rows {
+    grid-template-columns: repeat(4, auto);
+}
+
+.grid_5_rows {
+    grid-template-columns: repeat(5, auto);
+}
+
+.grid_13_rows {
+    grid-template-columns: repeat(13, auto);
 }
