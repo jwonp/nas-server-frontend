@@ -20,9 +20,7 @@ const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
   const [selected, setSelected] = useState<any[]>([]);
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
+
   const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
@@ -33,6 +31,26 @@ const DB = () => {
       .post(
         "https://api.ikiningyou.com/users/data/",
         { key: key },
+        {
+          headers: {
+            "Authorization": `Bearer ${window.localStorage.getItem(
+              "access_token"
+            )}`,
+          },
+        }
+      )
+      .then((res) => {
+        setData(res.data);
+      });
+  };
+  const deleteData = async () => {
+    await axios
+      .post(
+        "https://api.ikiningyou.com/users/deletedata/",
+        {
+          table: key,
+          selected: selected,
+        },
         {
           headers: {
             "Authorization": `Bearer ${window.localStorage.getItem(
@@ -92,7 +110,7 @@ const DB = () => {
         >
           <div
             onClick={() => {
-              console.log(selected);
+              deleteData();
             }}
           >
             삭제
