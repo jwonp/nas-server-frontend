@@ -82,7 +82,11 @@ const DB = () => {
             stoarges
           </div>
         </div>
-        <div className={`${styles.action_bar} ${styles.hidden}`}>
+        <div
+          className={`${styles.action_bar} ${
+            $selected.current.length > 0 ? "" : styles.hidden
+          }`}
+        >
           <div
             onClick={() => {
               console.log($selected);
@@ -117,7 +121,7 @@ const DB = () => {
                       return item != object;
                     });
                   }
-                  (e.target as HTMLDivElement).classList.toggle(
+                  (e.currentTarget as HTMLDivElement).classList.toggle(
                     styles.selected
                   );
                 }}
