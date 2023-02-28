@@ -9,13 +9,13 @@ const KEY = {
   storages: "stoarages",
 } as const;
 const GRID_COLS = {
-  files: styles.grid_5_cols,
-  users: styles.grid_13_cols,
-  folders: styles.grid_5_cols,
-  storages: styles.grid_4_cols,
+  "files": styles.grid_5_cols,
+  "users": styles.grid_13_cols,
+  "folders": styles.grid_5_cols,
+  "storages": styles.grid_4_cols,
 };
 export type KEY = typeof KEY[keyof typeof KEY];
-export type GRID_COLS = typeof GRID_COLS[keyof typeof GRID_COLS];
+
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);

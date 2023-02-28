@@ -11,6 +11,7 @@
     padding: 12px;
     font-size: 32px;
     border: 1px solid #F7F7F7;
+
 }
 
 .selector_item {
@@ -38,6 +39,7 @@
 .values_wrapper {
     width: 100%;
     display: block;
+    overflow: scroll;
 }
 
 .values_row {
