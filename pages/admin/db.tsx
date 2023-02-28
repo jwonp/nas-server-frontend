@@ -19,7 +19,7 @@ export type KEY = typeof KEY[keyof typeof KEY];
 const DB = () => {
   const [data, setData] = useState<any[]>([{ key: "Null" }]);
   const [key, setKey] = useState<KEY>(KEY.files);
-  const grid_cols = useMemo(() => {
+  const grid = useMemo(() => {
     return GRID_COLS[key];
   }, [key]);
 
@@ -81,7 +81,7 @@ const DB = () => {
       </div>
       <br />
       <div className={`${styles.data_wrapper}`}>
-        <div className={`${styles.keys_wrapper} ${grid_cols}`}>
+        <div className={`${styles.keys_wrapper} ${grid}`}>
           {Object.keys(data[0]).map((value, index) => {
             return (
               <div key={index} className={`${styles.keys_item}`}>
@@ -93,7 +93,7 @@ const DB = () => {
         <div className={`${styles.values_wrapper}`}>
           {data.map((object, idx) => {
             return (
-              <div key={idx} className={`${styles.values_row} ${grid_cols}`}>
+              <div key={idx} className={`${styles.values_row} ${grid}`}>
                 {Object.values(object).map((value: any, index) => {
                   return (
                     <div key={index} className={`${styles.values_item}`}>
