@@ -2,6 +2,7 @@
     width: 90%;
     margin: 3% auto;
     color: #F7F7F7;
+    overflow-x: scroll;
 }
 
 
@@ -50,16 +51,17 @@
 
 .values_item {
     font-size: 22px;
+    overflow-x: scroll;
 }
 
 .grid_4_cols {
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .grid_5_cols {
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .grid_13_cols {
-    grid-template-columns: repeat(13, auto);
+    grid-template-columns: repeat(13, 1fr);
 }

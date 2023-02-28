@@ -46,7 +46,7 @@ const DB = () => {
   }, [key]);
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.selector_wrapper} ${styles.grid_4_rows}`}>
+      <div className={`${styles.selector_wrapper} ${styles.grid_4_cols}`}>
         <div
           className={`${styles.selector_item}`}
           onClick={() => {
