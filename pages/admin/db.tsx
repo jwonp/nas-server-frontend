@@ -40,7 +40,9 @@ const DB = () => {
         }
       )
       .then((res) => {
-        setData(res.data);
+        const data = res.data as any[];
+        if (data.length === 0) setData([{ key: "Null" }]);
+        else setData(data);
       });
   };
   const deleteData = async () => {
@@ -60,7 +62,9 @@ const DB = () => {
         }
       )
       .then((res) => {
-        setData(res.data);
+        const data = res.data as any[];
+        if (data.length === 0) setData([{ key: "Null" }]);
+        else setData(data);
       });
   };
   useEffect(() => {
