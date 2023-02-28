@@ -23,23 +23,27 @@
 .keys_wrapper {
     width: 100%;
     display: flex;
+    margin-bottom: 6px;
     justify-content: space-between;
 }
 
 .keys_item {
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .values_wrapper {
     width: 100%;
     display: block;
+    border-bottom: 2px solid #F7F7F7;
 }
 
 .values_row {
     display: flex;
+    border-bottom: 1px solid #F7F7F7;
+    margin-bottom: 5px;
     justify-content: space-between;
 }
 
 .values_item {
-    font-size: 14px;
+    font-size: 22px;
 }
