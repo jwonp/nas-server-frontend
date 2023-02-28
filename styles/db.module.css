@@ -39,7 +39,7 @@
 .values_wrapper {
     width: 100%;
     display: block;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .values_row {
