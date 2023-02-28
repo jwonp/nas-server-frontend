@@ -2,7 +2,7 @@
     width: 90%;
     margin: 3% auto;
     color: #F7F7F7;
-    overflow-x: scroll;
+
 }
 
 
@@ -24,6 +24,13 @@
     width: 95%;
     height: 80px;
     font-size: 32px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.data_wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .keys_wrapper {
@@ -52,6 +59,12 @@
 .values_item {
     font-size: 22px;
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.values_item::-webkit-scrollbar {
+    display: none;
 }
 
 .grid_4_cols {
