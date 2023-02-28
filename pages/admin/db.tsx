@@ -29,9 +29,8 @@ const DB = () => {
   const checkAdmin = async () => {
     await axios
       .get("https://api.ikiningyou.com/users/checkadmin/")
-      .then((res) => {
-        console.log(res);
-        if (res.status !== 200) router.push("/stoarge/냬_드라이브");
+      .catch((err) => {
+        router.push("/storage/내_드라이브");
       });
   };
   const getData = async (key: KEY) => {
