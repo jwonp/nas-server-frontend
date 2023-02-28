@@ -42,9 +42,16 @@
 }
 
 .keys_item {
-    font-size: 26px;
+    font-size: 23px;
     padding-left: 3px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
+}
+
+.keys_item::-webkit-scrollbar {
+    display: none;
 }
 
 .values_wrapper {
@@ -69,8 +76,10 @@
 }
 
 .values_item {
-    font-size: 22px;
+    font-size: 20px;
     padding-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     overflow-x: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
