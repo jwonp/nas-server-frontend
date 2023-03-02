@@ -104,7 +104,7 @@
 
 @media screen {
     .wrapper {
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 5fr 10fr 18fr;
         font-size: 16px;
         min-width: 100%;
     }

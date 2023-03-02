@@ -67,6 +67,8 @@ const FileHandleOptions = () => {
       getFileListByPath(file_path, (res) => {
         if (res && res.data) dispatch(setFileList(res.data));
       });
+      $folderNameInput.current.value = "";
+      closeFolderInput();
     });
   };
   const download = () => {
@@ -111,7 +113,16 @@ const FileHandleOptions = () => {
       dispatch(resetFileSelected());
     });
   };
-  //className={`${styles.invisible}`}
+  const openFolderInput = () => {
+    $submitBtn.current.innerText = "확인";
+    $folderNameInput.current.classList.toggle(styles.invisible, false);
+    $cancelBtn.current.classList.toggle(styles.invisible, false);
+  };
+  const closeFolderInput = () => {
+    $submitBtn.current.innerText = "폴더 생성";
+    $folderNameInput.current.classList.toggle(styles.invisible, true);
+    $cancelBtn.current.classList.toggle(styles.invisible, true);
+  };
   return (
     <div className={`${styles.wrapper}`}>
       {selected.length > 0 ? (
@@ -131,12 +142,14 @@ const FileHandleOptions = () => {
           <div
             className={`${styles.folderNameForm}`}
             onMouseEnter={() => {
-              $submitBtn.current.innerText = "확인";
-              $folderNameInput.current.classList.toggle(
-                styles.invisible,
-                false
-              );
-              $cancelBtn.current.classList.toggle(styles.invisible, false);
+              if (!window.matchMedia("screen")) {
+                openFolderInput();
+              }
+            }}
+            onClick={() => {
+              if (window.matchMedia("screen")) {
+                openFolderInput();
+              }
             }}
           >
             <input
@@ -157,12 +170,7 @@ const FileHandleOptions = () => {
               ref={$cancelBtn}
               className={`${styles.item} ${styles.invisible}`}
               onClick={() => {
-                $submitBtn.current.innerText = "폴더 생성";
-                $folderNameInput.current.classList.toggle(
-                  styles.invisible,
-                  true
-                );
-                $cancelBtn.current.classList.toggle(styles.invisible, true);
+                closeFolderInput();
               }}
             >
               취소

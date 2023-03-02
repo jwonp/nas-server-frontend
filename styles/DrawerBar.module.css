@@ -8,22 +8,13 @@
     padding: 0 10px;
     vertical-align: middle;
     line-height: 30px;
+    color: #F7F7F7;
 }
 
 .wrapper:hover {
-    background-color: azure;
+    color: #6D9886;
 }
 
 .wrapper>span {
     margin-left: 8px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .wrapper {
-        background-color: #3c3c3c;
-    }
-
-    .wrapper:hover {
-        background-color: #3c3000;
-    }
 }
