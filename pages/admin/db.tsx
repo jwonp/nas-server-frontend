@@ -79,6 +79,7 @@ const DB = () => {
         const data = res.data as any[];
         if (data.length === 0) setData([{ key: "Null" }]);
         else setData(data);
+        router.reload();
       });
   };
   useEffect(() => {
