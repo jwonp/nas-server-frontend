@@ -1,7 +1,6 @@
 .wrapper {
     width: 100%;
     height: calc(100% - 140px);
-    border: 1px solid #393E46;
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
