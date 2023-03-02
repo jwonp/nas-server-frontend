@@ -142,6 +142,7 @@ const FileHandleOptions = () => {
           <div
             className={`${styles.folderNameForm}`}
             onMouseEnter={() => {
+              console.log(window.matchMedia("screen and (max-width:500px)"));
               if (!window.matchMedia("screen and (max-width:500px)")) {
                 openFolderInput();
               }
@@ -169,7 +170,8 @@ const FileHandleOptions = () => {
             <div
               ref={$cancelBtn}
               className={`${styles.item} ${styles.invisible}`}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 closeFolderInput();
               }}
             >
