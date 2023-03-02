@@ -10,6 +10,7 @@ body {
 }
 
 #__next {
+  min-width: 860px;
   height: 100%;
 }
 
