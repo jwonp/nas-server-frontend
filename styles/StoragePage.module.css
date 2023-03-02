@@ -102,6 +102,10 @@
     display: none;
 }
 
+.right {
+    text-align: right;
+}
+
 @media(max-width: 1100px) {
     .wrapper {
         overflow: scroll;
@@ -116,5 +120,11 @@
 
     .title {
         font-size: 21px;
+    }
+}
+
+@media screen {
+    .right {
+        display: none;
     }
 }

@@ -105,8 +105,8 @@ const StoragePageByRef = () => {
         </div>
         <div className={`${styles.index_row}`}>
           <div className={`${styles.head}`}>file name</div>
-          <div className={`${styles.head}`}>file size</div>
-          <div className={`${styles.head}`}>upload date</div>
+          <div className={`${styles.head} ${styles.right}`}>file size</div>
+          <div className={`${styles.head} ${styles.right}`}>upload date</div>
         </div>
       </div>
 
