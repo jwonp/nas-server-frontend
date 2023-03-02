@@ -16,6 +16,7 @@
     cursor: pointer;
 }
 
+
 .item {
     padding: 0 10px;
     font-size: 18px;
@@ -32,4 +33,11 @@
 
 .selected {
     color: #6D9886;
+}
+
+@media(max-width: 860px) {
+
+    .item {
+        font-size: 11px;
+    }
 }

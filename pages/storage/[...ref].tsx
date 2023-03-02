@@ -1,5 +1,5 @@
 import styles from "../../styles/StoragePage.module.css";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   addFiles,
   getFileListByPath,
@@ -12,7 +12,6 @@ import { getFileList, setFileList } from "../../redux/features/selectedFiles";
 import {
   convertByteByUnit,
   convertByteToUpper,
-  getFolderName,
   getHistory,
   isFolder,
 } from "../../components/tools/functions";
