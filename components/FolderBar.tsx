@@ -27,7 +27,7 @@ const FolderBar = ({ name }: { name: string }) => {
     <div
       className={`${styles.folderLink}  ${isSelected ? styles.selected : ""}`}
       onClick={() => {
-        if (window.matchMedia("screen and (max-width:500px)")) {
+        if (window.matchMedia("screen and (max-width:500px)").matches) {
           router.push(routePath);
         } else {
           if (isSelected) {
