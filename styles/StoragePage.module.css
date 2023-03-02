@@ -102,23 +102,19 @@
     display: none;
 }
 
-@media(max-width: 860px) {
+@media(max-width: 1100px) {
     .wrapper {
         overflow: scroll;
-        width: 860px;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        min-width: 860px;
     }
+}
 
-    .wrapper::-webkit-scrollbar {
-        display: none;
-    }
-
+@media(max-width: 860px) {
     .head {
-        font-size: 13px;
+        font-size: 20px;
     }
 
     .title {
-        font-size: 14px;
+        font-size: 21px;
     }
 }

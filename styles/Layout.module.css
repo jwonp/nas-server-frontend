@@ -21,6 +21,7 @@
     .children {
         height: 100%;
         width: 100%;
+        min-width: 860px;
         padding-top: 75px;
 
     }
