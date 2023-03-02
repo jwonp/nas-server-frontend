@@ -102,7 +102,7 @@
 
 }
 
-@media screen {
+@media screen and (max-width:500px) {
     .wrapper {
         grid-template-columns: 5fr 10fr 18fr;
         font-size: 16px;

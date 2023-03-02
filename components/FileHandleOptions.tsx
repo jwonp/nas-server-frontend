@@ -142,12 +142,12 @@ const FileHandleOptions = () => {
           <div
             className={`${styles.folderNameForm}`}
             onMouseEnter={() => {
-              if (!window.matchMedia("screen")) {
+              if (!window.matchMedia("screen and (max-width:500px)")) {
                 openFolderInput();
               }
             }}
             onClick={() => {
-              if (window.matchMedia("screen")) {
+              if (window.matchMedia("screen and (max-width:500px)")) {
                 openFolderInput();
               }
             }}

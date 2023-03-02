@@ -42,7 +42,7 @@ a {
   }
 }
 
-@media screen {
+@media screen and (max-width:500px) {
 
   html,
   body {
