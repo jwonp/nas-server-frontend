@@ -26,6 +26,10 @@
 }
 
 @media screen {
+    .content {
+        min-width: 100%;
+    }
+
     .children {
         min-width: 100%;
     }
