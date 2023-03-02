@@ -67,6 +67,7 @@
 }
 
 .historyContainer {
+    padding: 10px 5px;
     border-bottom: 1px solid rgb(247, 247, 247, 0.5);
     /* background: linear-gradient(#393E46 92%, #f7f7f7); */
     display: flex;
