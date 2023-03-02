@@ -37,6 +37,6 @@
 
 @media screen {
     .folderLink {
-        min-width: none;
+        min-width: 100%;
     }
 }
