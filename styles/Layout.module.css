@@ -24,3 +24,9 @@
 
     }
 }
+
+@media screen {
+    .children {
+        min-width: 100%;
+    }
+}

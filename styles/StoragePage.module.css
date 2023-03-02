@@ -124,6 +124,10 @@
 }
 
 @media screen {
+    .wrapper {
+        min-width: 100%;
+    }
+
     .right {
         display: none;
     }
