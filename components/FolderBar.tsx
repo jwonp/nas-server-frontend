@@ -27,10 +27,14 @@ const FolderBar = ({ name }: { name: string }) => {
     <div
       className={`${styles.folderLink}  ${isSelected ? styles.selected : ""}`}
       onClick={() => {
-        if (isSelected) {
-          dispatch(removeFileSelected(name));
+        if (window.matchMedia("screen")) {
+          router.push(routePath);
         } else {
-          dispatch(addFileSelected(name));
+          if (isSelected) {
+            dispatch(removeFileSelected(name));
+          } else {
+            dispatch(addFileSelected(name));
+          }
         }
       }}
       onDoubleClick={() => {

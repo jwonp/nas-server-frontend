@@ -101,3 +101,11 @@
     }
 
 }
+
+@media screen {
+    .wrapper {
+        grid-template-columns: 1fr 2fr 1fr;
+        font-size: 16px;
+        min-width: 100%;
+    }
+}
