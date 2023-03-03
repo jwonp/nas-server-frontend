@@ -6,11 +6,11 @@ const Home = () => {
   const PHONE = "010-7963-1093";
   const copyStringToClipboard = (
     text: string,
-    target: EventTarget & HTMLDivElement
+    target: EventTarget & HTMLSpanElement
   ) => {
     window.navigator.clipboard.writeText(text).then(() => {
       const pre = target.innerText;
-      target.innerText = "복사 완료";
+      target.innerText = pre + "복사 완료";
       setInterval(() => {
         target.innerText = pre;
       }, 2000);
@@ -23,19 +23,27 @@ const Home = () => {
       </div>
       <br />
       <div className={`${styles.item}`}>Name : 박주원</div>
-      <div
-        className={`${styles.item}`}
-        onClick={(e) => {
-          copyStringToClipboard(PHONE, e.currentTarget);
-        }}
-      >{`Phone : ${PHONE}`}</div>
-      <div
-        className={`${styles.item}`}
-        onClick={(e) => {
-          copyStringToClipboard(EMAIL, e.currentTarget);
-        }}
-      >
-        {`E-mail : ${EMAIL}`}
+      <div className={`${styles.item}`}>
+        Phone :{" "}
+        <span
+          className={` ${styles.cursor}`}
+          onClick={(e) => {
+            copyStringToClipboard(PHONE, e.currentTarget);
+          }}
+        >
+          {PHONE}
+        </span>
+      </div>
+      <div className={`${styles.item}`}>
+        E-mail :{" "}
+        <span
+          className={` ${styles.cursor}`}
+          onClick={(e) => {
+            copyStringToClipboard(EMAIL, e.currentTarget);
+          }}
+        >
+          {EMAIL}
+        </span>
       </div>
       <div className={`${styles.item}`}>
         Github :{" "}
