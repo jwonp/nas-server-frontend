@@ -1,6 +1,6 @@
 .wrapper {
     float: left;
-    padding: 7% 0;
+    padding: 6% 0;
     display: flex;
     height: 70px;
 
@@ -73,7 +73,8 @@
         margin: 0 1%;
         width: 64px;
         font-size: 13px;
-        line-height: 42px;
+        line-height: 45px;
+        text-align: center;
     }
 
     .input_btn_width {
