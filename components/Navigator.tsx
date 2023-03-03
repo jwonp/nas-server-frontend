@@ -106,8 +106,6 @@ const Navigator = () => {
         {onFileInput ? <FileHandleOptions /> : <></>}
       </div>
       {isChangeGrid ? (
-        <></>
-      ) : (
         <div className={`${styles.grid_container}`}>
           {username !== "" ? (
             <div className={`${styles.option_container}`}>
@@ -141,6 +139,8 @@ const Navigator = () => {
             </div>
           )}
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );
