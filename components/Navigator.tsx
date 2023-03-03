@@ -26,9 +26,22 @@ const Navigator = () => {
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
   const selected = useAppSelector(getSelected);
-  const isSelected = useMemo(() => {
-    return selected.length > 0 ? true : false;
-  }, [selected]);
+  const isOnMobile = useMemo(() => {
+    if (router.isReady) {
+      if (window.matchMedia("screen and (max-width:500px)").matches)
+        return true;
+    } else return false;
+  }, [router.isReady]);
+  const isChangeGrid = useMemo(() => {
+    if (router.isReady) {
+      return selected.length == 0 &&
+        window.matchMedia("screen and (max-width:500px)").matches
+        ? true
+        : false;
+    } else {
+      return false;
+    }
+  }, [router.isReady, selected.length]);
   useEffect(() => {
     if (router.asPath.includes("/storage")) {
       dispatch(setOnFileInput(true));
@@ -61,16 +74,11 @@ const Navigator = () => {
     await axios.get("/api/revoke/refreshToken");
   };
 
-  const refresh = async () => {
-    await axios.get("/api/refresh/refresh");
-  };
   return (
     <div
       ref={$wrapper}
       className={`${styles.wrapper} ${
-        !isSelected && window.matchMedia("screen and (max-width:500px)").matches
-          ? styles.wrapper_grid_cols
-          : styles.wrapper_short_grid_cols
+        isChangeGrid ? styles.wrapper_grid_cols : styles.wrapper_short_grid_cols
       }`}
     >
       <div className={`${styles.grid_container}`}>
@@ -89,12 +97,7 @@ const Navigator = () => {
           />
         </div>
 
-        <div
-          className={`${styles.logo}`}
-          onClick={() => {
-            refresh();
-          }}
-        >
+        <div className={`${styles.logo} ${isOnMobile ? styles.hidden : ""}`}>
           <Image src={icon} width={45} height={45} alt={"No image"} />
         </div>
       </div>
@@ -102,8 +105,7 @@ const Navigator = () => {
       <div className={`${styles.grid_container}`}>
         {onFileInput ? <FileHandleOptions /> : <></>}
       </div>
-      {!isSelected &&
-      window.matchMedia("screen and (max-width:500px)").matches ? (
+      {isChangeGrid ? (
         <></>
       ) : (
         <div className={`${styles.grid_container}`}>
