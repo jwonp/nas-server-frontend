@@ -2,6 +2,20 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 const Home = () => {
   const router = useRouter();
+  const EMAIL = "tkdel222@gmail.com";
+  const PHONE = "010-7963-1093";
+  const copyStringToClipboard = (
+    text: string,
+    target: EventTarget & HTMLDivElement
+  ) => {
+    window.navigator.clipboard.writeText(text).then(() => {
+      const pre = target.innerText;
+      target.innerText = "복사 완료";
+      setInterval(() => {
+        target.innerText = pre;
+      }, 2000);
+    });
+  };
   return (
     <div className={`${styles.wrapper}`}>
       <div className={`${styles.item}`}>
@@ -9,8 +23,20 @@ const Home = () => {
       </div>
       <br />
       <div className={`${styles.item}`}>Name : 박주원</div>
-      <div className={`${styles.item}`}>Phone : 010-7963-1093</div>
-      <div className={`${styles.item}`}>E-mail : tkdel222@gmail.com</div>
+      <div
+        className={`${styles.item}`}
+        onClick={(e) => {
+          copyStringToClipboard(PHONE, e.currentTarget);
+        }}
+      >{`Phone : ${PHONE}`}</div>
+      <div
+        className={`${styles.item}`}
+        onClick={(e) => {
+          copyStringToClipboard(EMAIL, e.currentTarget);
+        }}
+      >
+        {`E-mail : ${EMAIL}`}
+      </div>
       <div className={`${styles.item}`}>
         Github :{" "}
         <span
