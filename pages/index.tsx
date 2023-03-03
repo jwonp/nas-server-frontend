@@ -11,7 +11,7 @@ const Home = () => {
     window.navigator.clipboard.writeText(text).then(() => {
       const pre = target.innerText;
       target.innerText = pre + "  복사 완료";
-      setInterval(() => {
+      setTimeout(() => {
         target.innerText = pre;
       }, 2000);
     });
