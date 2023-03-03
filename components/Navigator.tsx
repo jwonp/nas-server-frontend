@@ -68,7 +68,7 @@ const Navigator = () => {
     <div
       ref={$wrapper}
       className={`${styles.wrapper} ${
-        isSelected && window.matchMedia("screen and (max-width:500px)").matches
+        !isSelected && window.matchMedia("screen and (max-width:500px)").matches
           ? styles.wrapper_grid_cols
           : styles.wrapper_short_grid_cols
       }`}
@@ -102,7 +102,7 @@ const Navigator = () => {
       <div className={`${styles.grid_container}`}>
         {onFileInput ? <FileHandleOptions /> : <></>}
       </div>
-      {isSelected &&
+      {!isSelected &&
       window.matchMedia("screen and (max-width:500px)").matches ? (
         <></>
       ) : (
