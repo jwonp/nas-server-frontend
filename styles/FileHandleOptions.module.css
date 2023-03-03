@@ -42,7 +42,7 @@
     margin: 0 10px;
     padding: 0 3%;
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 26px;
     line-height: 46px;
     border: 1px solid #F7F7F7;
     border-radius: 4px;
@@ -65,16 +65,17 @@
 
 
     .wrapper {
-        padding: 6% 0;
+        padding: 2% 0;
     }
 
     .item {
         margin: 0 1.5%;
-        width: 64px;
-        font-size: 20px;
-        line-height: 61px;
+        font-size: 23px;
+        line-height: 52px;
         text-align: center;
     }
+
+
 }
 
 @media screen and (max-width:500px) {
