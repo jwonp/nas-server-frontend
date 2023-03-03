@@ -9,3 +9,11 @@
     color: #F7F7F7;
     padding: 16px;
 }
+
+.cursor {
+    cursor: pointer;
+}
+
+.cursor:hover {
+    color: #6D9886;
+}
