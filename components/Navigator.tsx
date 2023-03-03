@@ -17,7 +17,6 @@ import {
 import { switchDrawer } from "../redux/features/drawerSwitch";
 import axios from "axios";
 import { auth_uri } from "../public/static/Strings";
-import { getSelected } from "../redux/features/selectedFiles";
 
 const Navigator = () => {
   const $wrapper = useRef<HTMLDivElement>(null);
@@ -25,20 +24,14 @@ const Navigator = () => {
   const dispatch = useAppDispatch();
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
-  const selected = useAppSelector(getSelected);
+
   const isOnMobile = useMemo(() => {
     if (router.isReady) {
       if (window.matchMedia("screen and (max-width:500px)").matches)
         return true;
     } else return false;
   }, [router.isReady]);
-  const isSelected = useMemo(() => {
-    if (router.isReady) {
-      return selected.length > 0 ? true : false;
-    } else {
-      return false;
-    }
-  }, [router.isReady, selected.length]);
+
   useEffect(() => {
     if (router.asPath.includes("/storage")) {
       dispatch(setOnFileInput(true));
@@ -86,8 +79,8 @@ const Navigator = () => {
           <Image
             src={"/drawerSwitch.svg"}
             alt={"#"}
-            width={70}
-            height={70}
+            width={isOnMobile ? 35 : 70}
+            height={isOnMobile ? 35 : 70}
             priority={true}
           />
         </div>
