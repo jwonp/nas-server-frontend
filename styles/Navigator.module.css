@@ -119,7 +119,7 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 1fr 3fr 2fr;
+        grid-template-columns: 2fr 11fr 5fr;
     }
 
     .title {
@@ -130,6 +130,7 @@
     }
 
     .option_container {
+        margin: 10% 0;
         display: grid;
         grid-template-rows: 1fr 1fr;
     }

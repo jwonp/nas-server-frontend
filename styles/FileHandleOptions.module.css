@@ -9,7 +9,7 @@
     border: 1px solid #F7f7f7;
     border-radius: 4px;
     background-color: #393E46;
-    margin: 24% 0;
+
     font-size: 18px;
 
     animation-name: visibleInput;
@@ -36,8 +36,8 @@
 
 .item {
     cursor: pointer;
-    margin: 24% 10px;
-    padding: 0 4%;
+    margin: 0 10px;
+    padding: 0 3%;
     vertical-align: middle;
     font-size: 16px;
     line-height: 70px;
@@ -70,6 +70,8 @@
 
     .item {
         margin: 0 1%;
+        width: 27%;
         font-size: 13px;
+        line-height: 100%;
     }
 }
