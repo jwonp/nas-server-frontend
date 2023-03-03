@@ -61,13 +61,11 @@
 
 @media screen and (max-width:500px) {
     .nameInput {
-        width: 60%;
         margin: 12px 0;
         font-size: 16px;
     }
 
     .item {
-        width: 18%;
         margin: 0 1%;
         font-size: 13px;
     }
