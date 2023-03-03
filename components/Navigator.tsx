@@ -32,12 +32,9 @@ const Navigator = () => {
         return true;
     } else return false;
   }, [router.isReady]);
-  const isChangeGrid = useMemo(() => {
+  const isSelected = useMemo(() => {
     if (router.isReady) {
-      return selected.length == 0 &&
-        window.matchMedia("screen and (max-width:500px)").matches
-        ? true
-        : false;
+      return selected.length > 0 ? true : false;
     } else {
       return false;
     }
@@ -77,9 +74,7 @@ const Navigator = () => {
   return (
     <div
       ref={$wrapper}
-      className={`${styles.wrapper} ${
-        isChangeGrid ? styles.wrapper_grid_cols : styles.wrapper_short_grid_cols
-      }`}
+      className={`${styles.wrapper} ${styles.wrapper_grid_cols}`}
     >
       <div className={`${styles.grid_container}`}>
         <div
@@ -105,43 +100,40 @@ const Navigator = () => {
       <div className={`${styles.grid_container}`}>
         {onFileInput ? <FileHandleOptions /> : <></>}
       </div>
-      {isChangeGrid ? (
-        <div className={`${styles.grid_container}`}>
-          {username !== "" ? (
-            <div className={`${styles.option_container}`}>
-              <div
-                className={`${styles.title}`}
-                onClick={() => {
-                  if (username === "typing") {
-                    router.push("/admin/db");
-                  }
-                }}
-              >
-                {username}
-              </div>
-              <div
-                className={`${styles.title} ${styles.cursor_click} `}
-                onClick={() => {
-                  revokeToken();
-                }}
-              >
-                로그아웃
-              </div>
-            </div>
-          ) : (
+
+      <div className={`${styles.grid_container}`}>
+        {username !== "" ? (
+          <div className={`${styles.option_container}`}>
             <div
-              className={`${styles.title} `}
+              className={`${styles.title}`}
               onClick={() => {
-                router.push(auth_uri);
+                if (username === "typing") {
+                  router.push("/admin/db");
+                }
               }}
             >
-              로그인
+              {username}
             </div>
-          )}
-        </div>
-      ) : (
-        <></>
-      )}
+            <div
+              className={`${styles.title} ${styles.cursor_click} `}
+              onClick={() => {
+                revokeToken();
+              }}
+            >
+              로그아웃
+            </div>
+          </div>
+        ) : (
+          <div
+            className={`${styles.title} `}
+            onClick={() => {
+              router.push(auth_uri);
+            }}
+          >
+            로그인
+          </div>
+        )}
+      </div>
     </div>
   );
 };

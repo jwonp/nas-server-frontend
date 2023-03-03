@@ -15,10 +15,6 @@
     grid-template-columns: 240px 1fr 240px;
 }
 
-.wrapper_short_grid_cols {
-    grid-template-columns: 1fr 9fr;
-
-}
 
 .historyContainer {
     display: flex;
@@ -123,6 +119,6 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 1fr 3fr 5fr;
+        grid-template-columns: 1fr 2fr 5fr;
     }
 }
