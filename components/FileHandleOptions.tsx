@@ -96,11 +96,13 @@ const FileHandleOptions = () => {
   };
   const openFolderInput = () => {
     $submitBtn.current.innerText = "확인";
+    $submitBtn.current.classList.toggle(styles.submit_btn_width, true);
     $folderNameInput.current.classList.toggle(styles.invisible, false);
     $cancelBtn.current.classList.toggle(styles.invisible, false);
   };
   const closeFolderInput = () => {
     $submitBtn.current.innerText = "폴더 생성";
+    $submitBtn.current.classList.toggle(styles.submit_btn_width, false);
     $folderNameInput.current.classList.toggle(styles.invisible, true);
     $cancelBtn.current.classList.toggle(styles.invisible, true);
   };
@@ -117,46 +119,44 @@ const FileHandleOptions = () => {
           <div className={`${styles.invisible}`} ref={$download}></div>
         </>
       ) : (
-        <>
+        <div
+          className={`${styles.folderNameForm}`}
+          onMouseEnter={() => {
+            if (!isOnMobile) {
+              openFolderInput();
+            }
+          }}
+          onClick={() => {
+            if (isOnMobile) {
+              openFolderInput();
+            }
+          }}
+        >
+          <input
+            ref={$folderNameInput}
+            className={`${styles.nameInput} ${styles.invisible}`}
+            placeholder={`폴더 이름을 입력하세요`}
+          />
           <div
-            className={`${styles.folderNameForm}`}
-            onMouseEnter={() => {
-              if (!isOnMobile) {
-                openFolderInput();
-              }
-            }}
+            ref={$submitBtn}
+            className={`${styles.item}`}
             onClick={() => {
-              if (isOnMobile) {
-                openFolderInput();
-              }
+              submitToAddFolder();
             }}
           >
-            <input
-              ref={$folderNameInput}
-              className={`${styles.nameInput} ${styles.invisible}`}
-              placeholder={`폴더 이름을 입력하세요`}
-            />
-            <div
-              ref={$submitBtn}
-              className={`${styles.item}`}
-              onClick={() => {
-                submitToAddFolder();
-              }}
-            >
-              폴더 생성
-            </div>
-            <div
-              ref={$cancelBtn}
-              className={`${styles.item} ${styles.invisible}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                closeFolderInput();
-              }}
-            >
-              취소
-            </div>
+            폴더 생성
           </div>
-        </>
+          <div
+            ref={$cancelBtn}
+            className={`${styles.item} ${styles.invisible}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeFolderInput();
+            }}
+          >
+            취소
+          </div>
+        </div>
       )}
     </div>
   );

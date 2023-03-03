@@ -1,5 +1,6 @@
 .wrapper {
     float: left;
+    padding: 10% 0;
     display: flex;
     height: 70px;
 
@@ -31,6 +32,7 @@
 }
 
 .folderNameForm {
+    padding: 10% 0;
     display: flex;
 }
 
@@ -70,8 +72,12 @@
 
     .item {
         margin: 0 1%;
-        width: 27%;
+        width: 64px;
         font-size: 13px;
         line-height: 100%;
+    }
+
+    .submit_btn_width {
+        width: 42px;
     }
 }
