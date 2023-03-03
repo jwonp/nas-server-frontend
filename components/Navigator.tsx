@@ -70,24 +70,32 @@ const Navigator = () => {
       className={`${styles.wrapper} ${styles.wrapper_grid_cols}`}
     >
       <div className={`${styles.grid_container}`}>
-        <div
-          className={`${styles.drawer_button}  ${styles.cursor_click} `}
-          onClick={() => {
-            visibleDrawer();
-          }}
-        >
-          <Image
-            src={"/drawerSwitch.svg"}
-            alt={"#"}
-            width={isOnMobile ? 32 : 70}
-            height={isOnMobile ? 32 : 70}
-            priority={true}
-          />
-        </div>
+        {username !== "" ? (
+          <>
+            <div
+              className={`${styles.drawer_button}  ${styles.cursor_click} `}
+              onClick={() => {
+                visibleDrawer();
+              }}
+            >
+              <Image
+                src={"/drawerSwitch.svg"}
+                alt={"#"}
+                width={isOnMobile ? 32 : 70}
+                height={isOnMobile ? 32 : 70}
+                priority={true}
+              />
+            </div>
 
-        <div className={`${styles.logo} ${isOnMobile ? styles.hidden : ""}`}>
-          <Image src={icon} width={45} height={45} alt={"No image"} />
-        </div>
+            <div
+              className={`${styles.logo} ${isOnMobile ? styles.hidden : ""}`}
+            >
+              <Image src={icon} width={45} height={45} alt={"No image"} />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className={`${styles.grid_container}`}>
