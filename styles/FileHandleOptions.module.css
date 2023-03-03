@@ -77,14 +77,14 @@
     .nameInput {
         width: 70%;
         font-size: 12px;
-        padding: 4% 1%;
+
     }
 
     .item {
         margin: 0 0.5%;
         width: 64px;
         font-size: 12px;
-        line-height: 40px;
+        line-height: 36px;
         text-align: center;
     }
 
