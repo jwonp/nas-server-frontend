@@ -9,7 +9,7 @@ const Home = () => {
     target: EventTarget & HTMLSpanElement
   ) => {
     window.navigator.clipboard.writeText(text).then(() => {
-      target.innerText = text + "  복사 완료";
+      target.innerText = "복사 완료";
       setTimeout(() => {
         target.innerText = text;
       }, 2000);
