@@ -1,6 +1,6 @@
 .wrapper {
     float: left;
-    padding: 10% 0;
+    padding: 7% 0;
     display: flex;
     height: 70px;
 
@@ -32,7 +32,6 @@
 }
 
 .folderNameForm {
-    padding: 10% 0;
     display: flex;
 }
 
