@@ -79,12 +79,12 @@
     .nameInput {
         width: 70%;
         font-size: 12px;
-
+        margin: 5px 0;
     }
 
     .item {
         width: 64px;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 50px;
         text-align: center;
     }
