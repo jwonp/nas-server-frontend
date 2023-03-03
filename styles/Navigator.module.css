@@ -119,6 +119,18 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 1fr 2fr 2fr;
+        grid-template-columns: 1fr 3fr 2fr;
+    }
+
+    .title {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 35px;
+        margin-right: 5px;
+    }
+
+    .option_container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
     }
 }
