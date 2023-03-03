@@ -75,17 +75,17 @@
     }
 
     .nameInput {
-        width: 60%;
-        font-size: 11px;
+        width: 55%;
+        font-size: 12px;
         vertical-align: middle;
-        line-height: 42px;
+        line-height: 40px;
     }
 
     .item {
         margin: 0 0.5%;
         width: 64px;
-        font-size: 11px;
-        line-height: 42px;
+        font-size: 12px;
+        line-height: 40px;
         text-align: center;
     }
 

@@ -116,7 +116,7 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 2fr 11fr 2.8fr;
+        grid-template-columns: 1fr 5fr 2fr;
     }
 
     .title {
