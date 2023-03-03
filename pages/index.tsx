@@ -12,7 +12,7 @@ const Home = () => {
       <div className={`${styles.item}`}>Phone : 010-7963-1093</div>
       <div className={`${styles.item}`}>E-mail : tkdel222@gmail.com</div>
       <div className={`${styles.item}`}>
-        Github :
+        Github :{" "}
         <span
           className={` ${styles.cursor}`}
           onClick={() => {
