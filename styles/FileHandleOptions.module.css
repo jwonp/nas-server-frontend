@@ -82,7 +82,7 @@
     }
 
     .item {
-        margin: 0 1%;
+        margin: 0 0.5%;
         width: 64px;
         font-size: 13px;
         line-height: 42px;
@@ -90,6 +90,6 @@
     }
 
     .input_btn_width {
-        width: 42px !important;
+        width: 40px !important;
     }
 }
