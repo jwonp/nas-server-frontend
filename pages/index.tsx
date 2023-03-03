@@ -10,7 +10,7 @@ const Home = () => {
   ) => {
     window.navigator.clipboard.writeText(text).then(() => {
       const pre = target.innerText;
-      target.innerText = pre + "복사 완료";
+      target.innerText = pre + "  복사 완료";
       setInterval(() => {
         target.innerText = pre;
       }, 2000);
@@ -48,7 +48,7 @@ const Home = () => {
       <div className={`${styles.item}`}>
         Github :{" "}
         <span
-          className={` ${styles.cursor}`}
+          className={` ${styles.cursor} ${styles.hover}`}
           onClick={() => {
             router.push("https://github.com/jwonp");
           }}
