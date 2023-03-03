@@ -96,13 +96,13 @@ const FileHandleOptions = () => {
   };
   const openFolderInput = () => {
     $submitBtn.current.innerText = "확인";
-    $submitBtn.current.classList.toggle(styles.submit_btn_width, true);
+    $submitBtn.current.classList.toggle(styles.input_btn_width, true);
     $folderNameInput.current.classList.toggle(styles.invisible, false);
     $cancelBtn.current.classList.toggle(styles.invisible, false);
   };
   const closeFolderInput = () => {
     $submitBtn.current.innerText = "폴더 생성";
-    $submitBtn.current.classList.toggle(styles.submit_btn_width, false);
+    $submitBtn.current.classList.toggle(styles.input_btn_width, false);
     $folderNameInput.current.classList.toggle(styles.invisible, true);
     $cancelBtn.current.classList.toggle(styles.invisible, true);
   };
@@ -148,7 +148,7 @@ const FileHandleOptions = () => {
           </div>
           <div
             ref={$cancelBtn}
-            className={`${styles.item} ${styles.invisible}`}
+            className={`${styles.item} ${styles.input_btn_width} ${styles.invisible}`}
             onClick={(e) => {
               e.stopPropagation();
               closeFolderInput();
