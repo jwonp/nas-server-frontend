@@ -12,7 +12,7 @@ const Home = () => {
       target.innerText = "복사 완료";
       setTimeout(() => {
         target.innerText = text;
-      }, 2000);
+      }, 500);
     });
   };
   return (
