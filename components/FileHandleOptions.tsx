@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { folderDataType } from "../public/static/types/folderDataType";
 import { remainingStorageSizeType } from "../public/static/types/remainingStorageSizeType";
 import { getUsername } from "../redux/features/menu";

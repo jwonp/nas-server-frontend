@@ -1,7 +1,5 @@
 .wrapper {
     display: grid;
-    grid-template-columns: 240px 1fr 240px;
-
     row-gap: 10px;
     position: absolute;
     font-size: 26px;
@@ -11,6 +9,15 @@
     color: #393E46;
     z-index: 99;
     overflow: hidden;
+}
+
+.wrapper_grid_cols {
+    grid-template-columns: 240px 1fr 240px;
+}
+
+.wrapper_short_grid_cols {
+    grid-template-columns: 5fr 28fr;
+
 }
 
 .historyContainer {
@@ -104,8 +111,11 @@
 
 @media screen and (max-width:500px) {
     .wrapper {
-        grid-template-columns: 5fr 10fr 18fr;
         font-size: 16px;
         min-width: 100%;
+    }
+
+    .wrapper_grid_cols {
+        grid-template-columns: 5fr 10fr 18fr;
     }
 }

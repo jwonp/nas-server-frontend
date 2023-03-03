@@ -2,10 +2,9 @@ import Image from "next/image";
 import icon from "../public/vercel.svg";
 import styles from "../styles/Navigator.module.css";
 import { useRouter } from "next/router";
-import { vaildToken, logout } from "./tools/requests";
-import { useEffect } from "react";
+import { vaildToken } from "./tools/requests";
+import { useEffect, useMemo, useRef } from "react";
 import FileHandleOptions from "./FileHandleOptions";
-import { revokeDataType } from "../public/static/types/revokeDataType";
 import { useAppDispatch, useAppSelector } from ".././redux/hooks";
 import {
   removeUsername,
@@ -18,13 +17,18 @@ import {
 import { switchDrawer } from "../redux/features/drawerSwitch";
 import axios from "axios";
 import { auth_uri } from "../public/static/Strings";
+import { getSelected } from "../redux/features/selectedFiles";
 
 const Navigator = () => {
+  const $wrapper = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const onFileInput = useAppSelector(getOnFileInput);
   const username = useAppSelector(getUsername);
-
+  const selected = useAppSelector(getSelected);
+  const isSelected = useMemo(() => {
+    return selected.length > 0 ? true : false;
+  }, [selected]);
   useEffect(() => {
     if (router.asPath.includes("/storage")) {
       dispatch(setOnFileInput(true));
@@ -61,7 +65,14 @@ const Navigator = () => {
     await axios.get("/api/refresh/refresh");
   };
   return (
-    <div className={`${styles.wrapper}`}>
+    <div
+      ref={$wrapper}
+      className={`${styles.wrapper} ${
+        isSelected && window.matchMedia("screen and (max-width:500px)").matches
+          ? styles.wrapper_grid_cols
+          : styles.wrapper_short_grid_cols
+      }`}
+    >
       <div className={`${styles.grid_container}`}>
         <div
           className={`${styles.drawer_button}  ${styles.cursor_click} `}
@@ -91,40 +102,44 @@ const Navigator = () => {
       <div className={`${styles.grid_container}`}>
         {onFileInput ? <FileHandleOptions /> : <></>}
       </div>
-
-      <div className={`${styles.grid_container}`}>
-        {username !== "" ? (
-          <div className={`${styles.option_container}`}>
+      {isSelected &&
+      window.matchMedia("screen and (max-width:500px)").matches ? (
+        <></>
+      ) : (
+        <div className={`${styles.grid_container}`}>
+          {username !== "" ? (
+            <div className={`${styles.option_container}`}>
+              <div
+                className={`${styles.title}`}
+                onClick={() => {
+                  if (username === "typing") {
+                    router.push("/admin/db");
+                  }
+                }}
+              >
+                {username}
+              </div>
+              <div
+                className={`${styles.title} ${styles.cursor_click} `}
+                onClick={() => {
+                  revokeToken();
+                }}
+              >
+                로그아웃
+              </div>
+            </div>
+          ) : (
             <div
-              className={`${styles.title}`}
+              className={`${styles.title} `}
               onClick={() => {
-                if (username === "typing") {
-                  router.push("/admin/db");
-                }
+                router.push(auth_uri);
               }}
             >
-              {username}
+              로그인
             </div>
-            <div
-              className={`${styles.title} ${styles.cursor_click} `}
-              onClick={() => {
-                revokeToken();
-              }}
-            >
-              로그아웃
-            </div>
-          </div>
-        ) : (
-          <div
-            className={`${styles.title} `}
-            onClick={() => {
-              router.push(auth_uri);
-            }}
-          >
-            로그인
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

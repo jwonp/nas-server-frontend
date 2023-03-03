@@ -22,7 +22,7 @@ import { remainingStorageSizeType } from "../../public/static/types/remainingSto
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
 import { setUsername } from "../../redux/features/menu";
 import { auth_uri, ROOT_REF_NAME } from "../../public/static/Strings";
-
+import { resetFileSelected } from "../../redux/features/selectedFiles";
 const StoragePageByRef = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ const StoragePageByRef = () => {
     getFileListByPath(file_path, (res) => {
       if (res && res.data) dispatch(setFileList(res.data));
     });
-
+    dispatch(resetFileSelected());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
