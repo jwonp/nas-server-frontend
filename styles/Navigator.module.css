@@ -116,7 +116,7 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 1fr 5fr 1.5fr;
+        grid-template-columns: 1fr 5fr 1.3fr;
     }
 
     .title {
@@ -129,7 +129,6 @@
     .option_container {
         display: grid;
         grid-template-rows: 1fr 1fr;
-        text-align: center;
     }
 
     .drawer_button {
