@@ -16,7 +16,7 @@
 }
 
 .wrapper_short_grid_cols {
-    grid-template-columns: 5fr 28fr;
+    grid-template-columns: 1fr 9fr;
 
 }
 
@@ -116,6 +116,6 @@
     }
 
     .wrapper_grid_cols {
-        grid-template-columns: 5fr 10fr 18fr;
+        grid-template-columns: 1fr 3fr 5fr;
     }
 }
