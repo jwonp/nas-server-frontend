@@ -2,15 +2,14 @@ import styles from "../styles/Home.module.css";
 const Home = () => {
   return (
     <div className={`${styles.wrapper}`}>
-      <div className={`${styles.item}`}>환영합니다.</div>
+      <div className={`${styles.item}`}>
+        ID : TEST / PASSWORD : qwerty 로 로그인 할 수 있습니다.
+      </div>
       <br />
-      <div className={`${styles.item}`}>
-        게스트 계정은 생성 제한이 있습니다.
-      </div>
-      <div className={`${styles.item}`}>
-        회원 가입이 안 될 경우에는 <h3>all_time_low@naver.com</h3>로
-        연락해주세요.
-      </div>
+      <div className={`${styles.item}`}>Name : 박주원</div>
+      <div className={`${styles.item}`}>Phone : 010-7963-1093</div>
+      <div className={`${styles.item}`}>E-mail : tkdel222@gmail.com</div>
+      <div className={`${styles.item}`}>Github : https://github.com/jwonp</div>
     </div>
   );
 };
