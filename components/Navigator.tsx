@@ -79,8 +79,8 @@ const Navigator = () => {
           <Image
             src={"/drawerSwitch.svg"}
             alt={"#"}
-            width={isOnMobile ? 35 : 70}
-            height={isOnMobile ? 35 : 70}
+            width={isOnMobile ? 32 : 70}
+            height={isOnMobile ? 32 : 70}
             priority={true}
           />
         </div>
