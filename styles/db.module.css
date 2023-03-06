@@ -10,15 +10,12 @@
     justify-content: space-between;
 }
 
-.action_bar {}
 
 .selector_wrapper {
     display: grid;
     width: 30%;
     padding: 12px;
     font-size: 26px;
-    border: 1px solid #F7F7F7;
-
 }
 
 .selector_item {
