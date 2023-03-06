@@ -108,7 +108,7 @@ const Navigator = () => {
             <div
               className={`${styles.title}`}
               onClick={() => {
-                if (username === "typing") {
+                if (username === process.env.NEXT_PUBLIC_ADMIN_USER) {
                   router.push("/admin/db");
                 }
               }}
