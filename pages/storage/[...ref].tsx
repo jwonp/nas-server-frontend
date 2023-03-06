@@ -20,12 +20,13 @@ import FileBar from "../../components/FileBar";
 import Link from "next/link";
 import { remainingStorageSizeType } from "../../public/static/types/remainingStorageSizeType";
 import { setMax, setUnit, setUsed } from "../../redux/features/storageSize";
-import { setUsername } from "../../redux/features/menu";
+import { getUsername, setUsername } from "../../redux/features/menu";
 import { auth_uri, ROOT_REF_NAME } from "../../public/static/Strings";
 import { resetFileSelected } from "../../redux/features/selectedFiles";
 const StoragePageByRef = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const username = useAppSelector(getUsername);
   const fileList = useAppSelector(getFileList);
   const refs = router.query.ref as string[];
   const $areaDiv = useRef<HTMLDivElement>(null);
@@ -83,70 +84,75 @@ const StoragePageByRef = () => {
       });
     });
   };
-
-  return (
-    <>
-      <div
-        className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
-      >
-        <div className={`${styles.historyContainer}`}>
-          {refs && refs[0] !== ROOT_REF_NAME ? (
-            <div className={`${styles.history}`}>
-              <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
-            </div>
-          ) : (
-            <></>
-          )}
-          {refs?.map((value, index) => (
-            <div key={index} className={`${styles.history}`}>
-              <Link href={`/storage/${getHistory(refs, index)}/`}>{value}</Link>
-            </div>
-          ))}
-        </div>
-        <div className={`${styles.index_row}`}>
-          <div className={`${styles.head}`}>file name</div>
-          <div className={`${styles.head} ${styles.right}`}>file size</div>
-          <div className={`${styles.head} ${styles.right}`}>upload date</div>
-        </div>
-      </div>
-
-      <div
-        className={`${styles.wrapper}`}
-        ref={$areaDiv}
-        onDrop={(e) => {
-          e.preventDefault();
-          const files = e.dataTransfer?.files;
-          $fileInput.current.files = files;
-          uploadFiles();
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-        }}
-        onDragEnter={() => {
-          $areaDiv.current.classList.toggle(styles.drag_entered, true);
-        }}
-        onMouseOut={() => {
-          $areaDiv.current.classList.toggle(styles.drag_entered, false);
-        }}
-      >
-        <div className={`${styles.table}`}>
-          <div className={`${styles.content_row}`}>
-            {fileList.map((value, index) => {
-              if (isFolder(value.file_name))
-                return <FolderBar key={index} name={value.file_name} />;
-              return <FileBar key={index} data={value} />;
-            })}
+  if (username)
+    return (
+      <>
+        <div
+          className={`${styles.wrapper} ${styles.title}  ${styles.left} ${styles.sticky}`}
+        >
+          <div className={`${styles.historyContainer}`}>
+            {refs && refs[0] !== ROOT_REF_NAME ? (
+              <div className={`${styles.history}`}>
+                <Link href={`/storage/${ROOT_REF_NAME}`}>{ROOT_REF_NAME}</Link>
+              </div>
+            ) : (
+              <></>
+            )}
+            {refs?.map((value, index) => (
+              <div key={index} className={`${styles.history}`}>
+                <Link href={`/storage/${getHistory(refs, index)}/`}>
+                  {value}
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className={`${styles.index_row}`}>
+            <div className={`${styles.head}`}>file name</div>
+            <div className={`${styles.head} ${styles.right}`}>file size</div>
+            <div className={`${styles.head} ${styles.right}`}>upload date</div>
           </div>
         </div>
-        <input
-          ref={$fileInput}
-          type="file"
-          id="fileInput"
-          className={`${styles.fileInput}`}
-        />
-      </div>
-    </>
-  );
+
+        <div
+          className={`${styles.wrapper}`}
+          ref={$areaDiv}
+          onDrop={(e) => {
+            e.preventDefault();
+            const files = e.dataTransfer?.files;
+            $fileInput.current.files = files;
+            uploadFiles();
+          }}
+          onDragOver={(e) => {
+            e.preventDefault();
+          }}
+          onDragEnter={() => {
+            $areaDiv.current.classList.toggle(styles.drag_entered, true);
+          }}
+          onMouseOut={() => {
+            $areaDiv.current.classList.toggle(styles.drag_entered, false);
+          }}
+        >
+          <div className={`${styles.table}`}>
+            <div className={`${styles.content_row}`}>
+              {fileList.map((value, index) => {
+                if (isFolder(value.file_name))
+                  return <FolderBar key={index} name={value.file_name} />;
+                return <FileBar key={index} data={value} />;
+              })}
+            </div>
+          </div>
+          <input
+            ref={$fileInput}
+            type="file"
+            id="fileInput"
+            className={`${styles.fileInput}`}
+          />
+        </div>
+      </>
+    );
+  else {
+    <div></div>;
+  }
 };
 
 export default StoragePageByRef;
