@@ -24,19 +24,20 @@ const Register = () => {
     };
 
     const checkResult = checkRegisterData(register_data);
+
     for (const id of Object.keys(checkResult)) {
       if (checkResult[id] == false) {
         document
           .getElementById(id)
           .classList.toggle(styles.warning_border, true);
+        $title.current.classList.toggle(styles.warning, true);
+        $title.current.innerHTML = "해당 입력란을 다시 확인해주세요.";
       } else {
         document
           .getElementById(id)
           .classList.toggle(styles.warning_border, false);
       }
     }
-    $title.current.classList.toggle(styles.warning, true);
-    $title.current.innerHTML = "해당 입력란을 다시 확인해주세요.";
 
     if (Object.values(checkResult).includes(false) == false) {
       registUser(register_data, (res) => {
