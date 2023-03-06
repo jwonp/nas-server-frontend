@@ -41,13 +41,12 @@ const Register = () => {
 
     if (Object.values(checkResult).includes(false) == false) {
       registUser(register_data, (res) => {
-        if (typeof res.data === "number") {
-          $title.current.classList.add(styles.warning);
-          $title.current.innerText =
-            "더 이상 계정을 생성할 수 없습니다. 관리자에게 문의하세요.";
-        } else {
-          router.push(auth_uri);
-        }
+        router.push(auth_uri);
+      }).catch((err) => {
+        console.log(err.status);
+        $title.current.classList.add(styles.warning);
+        $title.current.innerText =
+          "더 이상 계정을 생성할 수 없습니다. 관리자에게 문의하세요.";
       });
     }
   };
