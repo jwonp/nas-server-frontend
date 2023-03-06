@@ -99,7 +99,7 @@ const Navigator = () => {
       </div>
 
       <div className={`${styles.grid_container}`}>
-        {onFileInput ? <FileHandleOptions /> : <></>}
+        {username && onFileInput ? <FileHandleOptions /> : <></>}
       </div>
 
       <div className={`${styles.grid_container}`}>
