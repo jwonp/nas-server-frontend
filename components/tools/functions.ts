@@ -1,5 +1,7 @@
 import { FileSizeUnit, ROOT_REF_NAME } from "../../public/static/Strings";
 import { convertedByteType } from "../../public/static/types/convertedByteType";
+import { registerDataCheckType } from "../../public/static/types/registerDataCheckType";
+import { userRegistType } from "../../public/static/types/userRegistType";
 
 const GB_DIVIDER = 1000 * 1000 * 1000;
 const MB_DIVIDER = 1000 * 1000;
@@ -73,5 +75,25 @@ export const getHistory = (list: string[], target: number) => {
   return history;
 };
 
-// export const getValidateTokenURL = () => {};
-// export const getValidateTokenFeteher = () => {};
+export const checkRegisterData = (
+  register_data: userRegistType
+): registerDataCheckType => {
+  const result = {
+    "user_id": false,
+    "user_password": false,
+    "user_email": false,
+    "user_last_name": false,
+    "user_first_name": false,
+  };
+
+  const emailReg = new RegExp(
+    "^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+  );
+  if (register_data.user_id != "") result.user_id = true;
+  if (register_data.user_password != "") result.user_password = true;
+  if (emailReg.test(register_data.user_email)) result.user_email = true;
+  if (register_data.user_last_name != "") result.user_last_name = true;
+  if (register_data.user_first_name != "") result.user_first_name = true;
+
+  return result;
+};
