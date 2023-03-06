@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Head>
-        <title>Clips NAS</title>
+        <title>JW Drive</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="UTF-8"></meta>
       </Head>
