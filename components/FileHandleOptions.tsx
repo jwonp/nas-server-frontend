@@ -63,16 +63,17 @@ const FileHandleOptions = () => {
       path: path,
       folder_name: $folderNameInput.current.value,
     };
-    addFolder(folderData, () => {
-      const { ref } = router.query;
-      let file_path = "";
-      file_path = (ref as string[])?.join("&");
-      getFileListByPath(file_path, (res) => {
-        if (res && res.data) dispatch(setFileList(res.data));
+    if (folderData.folder_name)
+      addFolder(folderData, () => {
+        const { ref } = router.query;
+        let file_path = "";
+        file_path = (ref as string[])?.join("&");
+        getFileListByPath(file_path, (res) => {
+          if (res && res.data) dispatch(setFileList(res.data));
+        });
+        $folderNameInput.current.value = "";
+        closeFolderInput();
       });
-      $folderNameInput.current.value = "";
-      closeFolderInput();
-    });
   };
   const download = () => {
     return downloadFiles(selected, router.asPath, (res) => {
@@ -136,6 +137,7 @@ const FileHandleOptions = () => {
             ref={$folderNameInput}
             className={`${styles.nameInput} ${styles.invisible}`}
             placeholder={`폴더 이름을 입력하세요`}
+            required
           />
           <div
             ref={$submitBtn}
