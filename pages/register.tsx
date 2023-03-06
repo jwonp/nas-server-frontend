@@ -31,10 +31,11 @@ const Register = () => {
         document
           .getElementById(id)
           .classList.toggle(styles.warning_border, true);
+      } else {
+        document
+          .getElementById(id)
+          .classList.toggle(styles.warning_border, false);
       }
-      document
-        .getElementById(id)
-        .classList.toggle(styles.warning_border, false);
     }
     $title.current.innerHTML = "해당 입력란을 다시 확인해주세요.";
 
