@@ -24,7 +24,9 @@ const Register = () => {
     };
 
     const checkResult = checkRegisterData(register_data);
-    for (const id in Object.keys(checkResult)) {
+    for (const id of Object.keys(checkResult)) {
+      console.log(id);
+
       if (checkResult[id] == false) {
         document
           .getElementById(id)
