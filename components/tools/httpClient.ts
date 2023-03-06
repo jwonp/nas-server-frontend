@@ -51,7 +51,18 @@ export const SendRequest = async (
   })
     .then(thenFunction)
     .catch((error) => {
-      if (window.localStorage.getItem("access_token")) RefreshExpiredToken();
+      if (window.localStorage.getItem("access_token"))
+        RefreshExpiredToken().then(async () => {
+          //repeat request
+          await axios({
+            method: method,
+            data: data,
+            url: url,
+            headers: convertHEADER(header, headerShortCut),
+            params: params,
+            responseType: responseType,
+          });
+        });
     });
 };
 
