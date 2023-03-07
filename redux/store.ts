@@ -4,7 +4,7 @@ import usernameReducer from "./features/menu";
 import selectedFilesReducer from "./features/selectedFiles";
 import storageSizeReducer from "./features/storageSize";
 import { Action } from "redux";
-import { createWrapper } from "next-redux-wrapper";
+
 export const makeStore = () => {
   return configureStore({
     reducer: {

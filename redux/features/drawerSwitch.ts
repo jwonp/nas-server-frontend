@@ -26,20 +26,9 @@ export const drawerSwitch = createSlice({
       state.drawerSwitch = !state.drawerSwitch;
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(incrementAsync.pending, (state) => {
-  //       state.status = 'loading'
-  //     })
-  //     .addCase(incrementAsync.fulfilled, (state, action) => {
-  //       state.status = 'idle'
-  //       state.value += action.payload
-  //     })
-  // },
 });
 
 export const { openDrawer, closeDrawer, switchDrawer } = drawerSwitch.actions;
-// Other code such as selectors can use the imported `RootState` type
 export const getDrawerSwitch = (state: AppState) =>
   state.drawerSwitch.drawerSwitch;
 

@@ -23,7 +23,6 @@ const Drawer = () => {
         <>
           {" "}
           <DrawerBar name={ROOT_REF_NAME} />
-          {/* <DrawerBar name={FAVORITE_REF_NAME} /> */}
           <StorageSizeBar />
         </>
       ) : (
