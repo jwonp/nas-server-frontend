@@ -9,23 +9,40 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
 ## 기술 스택
 
 ### Front-end
-
-1. html
-2. css
-3. typescript
-4. react
-5. Redux toolkit
-6. Next.js
-
-### Back-end
-
-1. python
-    1. django-rest-framework
-2. django
-
+<table>
+    <tr>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566879300/noticon/fvty9lnsbjol5lq9u3by.svg" width="80px" height="80px"/></td>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913457/noticon/eh4d0dnic4n1neth3fui.png" width="80px" height="80px"/></td>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567749614/noticon/zgdaxpaif5ojeduonygb.png" width="80px" height="80px"/></td>
+    </tr>
+    <tr>
+        <td>Next.js</td>
+        <td>Typescript</td>
+        <td>Redux Toolkit</td>
+    </tr>
+</table>
+### Back-end    
+<table>
+    <tr>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566791609/noticon/nen1y11gazeqhejw7nm1.png" width="80px" height="80px"/></td>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566919539/noticon/j2h9ud10ssbihscfqlwy.png" width="80px" height="80px"/></td>
+        <td><image src="https://www.django-rest-framework.org/img/logo.png" width="80px" height="80px"/></td>
+    </tr>
+    <tr>
+        <td>Python</td>
+        <td>Django</td>
+        <td>Django Rest Framework</td>
+    </tr>
+</table>
 ### Database
-
-1. mysql
+<table>
+    <tr>
+        <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913591/noticon/e2bd9zw78n6zw6his4bd.png" width="80px" height="80px"/></td>
+    </tr>
+    <tr>
+        <td>Mysql</td>
+    </tr>
+</table>
 
 # 프로젝트 소개
 
