@@ -1,4 +1,4 @@
-## 개요
+![image](https://github.com/jwonp/nas-server-frontend/assets/114650298/f486c1de-9f4c-40ed-93d6-7edf14695984)## 개요
 
 Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니다.
 
@@ -26,7 +26,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
     <tr>
         <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566791609/noticon/nen1y11gazeqhejw7nm1.png" width="80px" height="80px"/></td>
         <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566919539/noticon/j2h9ud10ssbihscfqlwy.png" width="80px" height="80px"/></td>
-        <td><image src="https://www.django-rest-framework.org/img/logo.png" width="80px" height="80px"/></td>
+        <td><image src="https://github.com/jwonp/nas-server-frontend/assets/114650298/1f26ee9c-68d1-404d-ab60-bc6fd6629259" width="80px" height="80px"/></td>
     </tr>
     <tr>
         <td>Python</td>
