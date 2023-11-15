@@ -162,6 +162,8 @@ Authorization Code Grant 인증 방식의 Oauth2 application을 django로 등록
 
 상단 바의 폴더 생성으로 해당 디렉터리의 폴더를 생성할 수 있습니다.
 
+---
+
 ![폴더 히스토리](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5+%E1%84%92%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5.png)
 
 폴더로 이동할 경우 상단에 히스토리로 위치를 확인할 수 있습니다.
