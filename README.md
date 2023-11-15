@@ -1,4 +1,4 @@
-![image](https://github.com/jwonp/nas-server-frontend/assets/114650298/f486c1de-9f4c-40ed-93d6-7edf14695984)## 개요
+## 개요
 
 Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니다.
 
