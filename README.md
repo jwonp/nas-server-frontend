@@ -1,4 +1,4 @@
-## 개요
+# 개요
 
 Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니다.
 
@@ -6,7 +6,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
 
 추가적으로 AWS에서는 RDS를 사용해서 DB를, AWS Certificate Manager에서 HTTPS 지원을 위한 TLS/SSL 인증서를 관리하고 있습니다.
 
-## 기술 스택
+# 기술 스택
 
 ### Front-end
 <table>
@@ -101,30 +101,30 @@ Authorization Code Grant 인증 방식의 Oauth2 application을 django로 등록
     
 - 배포
     
-    [https://www.ikiningyou.com/](https://www.ikiningyou.com/)
+    현재 이 프로젝트는 배포하고 있지 않습니다.
     
 
 ### 프로젝트 구조
 
-![프로젝트구조도.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/005ff3e6-ba40-4fe2-918f-0e4959b623b6/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B5%AC%EC%A1%B0%EB%8F%84.png)
+![프로젝트구조도.png](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%E1%84%83%E1%85%A9.png)
 
 ### DB 구조
 
-![Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/86cb346c-38a2-46f5-9a9b-10a1b91a796e/Untitled.png)
+![DB 구조](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/db%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9.png)
 
-### 프로젝트 상세 설명
+## 프로젝트 상세 설명
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4dbe5d86-48b9-4d7d-ad30-29a63e7caee8/Untitled.png)
-
----
+![인덱스페이지](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%A6%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB.png)
 
 인덱스 페이지에서는 저의 기본 프로필을 확인하실 수 있습니다.
 
 상단 ‘로그인’을 통해 회원가입 페이지로 이동해 계정을 생성하거나, 테스트용 계정으로 바로 로그인 할 수 있습니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ff1ca12-7229-4b22-be59-97a8749fc730/Untitled.png)
+---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c77d2fcd-8b1b-4204-80a7-0d23ab008f75/Untitled.png)
+![회원가입](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8.png)
+
+![회원가입 유효성검사](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8+%E1%84%8B%E1%85%B2%E1%84%92%E1%85%AD%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A1.png)
 
 회원가입에서는 간단한 유효성 검사를 실행합니다.
 
@@ -132,7 +132,7 @@ Authorization Code Grant 인증 방식의 Oauth2 application을 django로 등록
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2521fe69-4ac8-46e3-8a46-5b939c4ff0e7/Untitled.png)
+![로그인](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB.png)
 
 로그인 페이지에서 회원가입을 진행할 수 있습니다.
 
@@ -140,37 +140,37 @@ Authorization Code Grant 인증 방식의 Oauth2 application을 django로 등록
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30f72dee-1823-4d5d-aa24-dc5ac43ffb3f/Untitled.png)
+![드라이브](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%83%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3.png)
 
 로그인을 성공했을 시 다음과 같은 파일 관리 페이지로 이동합니다.
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59acf301-5a73-489c-b1c9-99493ad8575a/Untitled.png)
+![폴더](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc62247c-734a-4add-896f-b2407e280428/Untitled.png)
+![저장용량](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%85%E1%85%A3%E1%86%BC.png)
 
 좌측의 메뉴에서는 루트 디렉터리로 할 수 있는 버튼과 업로드 할 수 있는 저장용량을 표시했습니다.
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57da0313-25a2-461e-887d-8d0b332a68cc/Untitled.png)
+![폴더추가1](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A11.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/162a0b2c-fb13-4ee9-a8f1-22a930f91a52/Untitled.png)
+![폴더추가2](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5%E1%84%8E%E1%85%AE%E1%84%80%E1%85%A12.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e59b844-6a98-4b9d-9619-1ec4a443e524/Untitled.png)
+![폴더생성완료](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%AA%E1%86%AB%E1%84%85%E1%85%AD.png)
 
 상단 바의 폴더 생성으로 해당 디렉터리의 폴더를 생성할 수 있습니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51ed8a-714f-4212-b635-21b76b3cd8f4/Untitled.png)
+![폴더 히스토리](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A9%E1%86%AF%E1%84%83%E1%85%A5+%E1%84%92%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%A9%E1%84%85%E1%85%B5.png)
 
 폴더로 이동할 경우 상단에 히스토리로 위치를 확인할 수 있습니다.
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd9d8d6e-3296-405b-8aad-6a42c34688a8/Untitled.png)
+![드라이브 반응형](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%83%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3+%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B3%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/91be5b94-bf26-4fb5-a03d-8e906952d513/Untitled.png)
+![드라이브 모바일 반응형](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%83%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3+%E1%84%86%E1%85%A9%E1%84%87%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF+%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%B3%E1%86%BC%E1%84%92%E1%85%A7%E1%86%BC.png)
 
 브라우저의 크기에 따라 반응형 웹페이지를 지원합니다.
 
@@ -178,13 +178,13 @@ Authorization Code Grant 인증 방식의 Oauth2 application을 django로 등록
 
 ---
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/790c1620-81e0-443c-9e06-92e3c6e6e2cc/Untitled.png)
+![파일선택](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%ED%8C%8C%EC%9D%BC%EC%84%A0%ED%83%9D.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a61a91e8-adda-4fa4-a030-7b1c5559cc41/Untitled.png)
+![파일선택후](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%89%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A2%E1%86%A8%E1%84%92%E1%85%AE.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de4d33ad-5ed2-4927-ab55-3d7f0d5d49d2/Untitled.png)
+![파일저장](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8af09c6-347d-4dea-a217-dcce59570bfd/Untitled.png)
+![파일저장2](https://s3.ap-northeast-2.amazonaws.com/ikiningyou.portfolio.s3.bucket/Images/nasServer/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB/%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC2.png)
 
 파일 또는 폴더를 선택하고 삭제나 다운로드를 할 수 있습니다.
 
