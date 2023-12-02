@@ -21,6 +21,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
         <td>Redux Toolkit</td>
     </tr>
 </table>
+            
 ### Backend    
 <table>
     <tr>
@@ -34,6 +35,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
         <td>Django Rest Framework</td>
     </tr>
 </table>
+            
 ### Database
 <table>
     <tr>
