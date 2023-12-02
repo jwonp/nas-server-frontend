@@ -8,7 +8,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
 
 # 기술 스택
 
-### Front-end
+### Frontend
 <table>
     <tr>
         <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566879300/noticon/fvty9lnsbjol5lq9u3by.svg" width="80px" height="80px"/></td>
@@ -21,7 +21,7 @@ Front-end 에서는 Nextjs / Back-end 에서는 Django를 사용하고 있습니
         <td>Redux Toolkit</td>
     </tr>
 </table>
-### Back-end    
+### Backend    
 <table>
     <tr>
         <td><image src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566791609/noticon/nen1y11gazeqhejw7nm1.png" width="80px" height="80px"/></td>
